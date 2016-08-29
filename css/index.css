@@ -1,0 +1,318 @@
+@charset "utf-8";
+/*CSS document*/
+
+/*
+=============
+全屏广告
+=============
+*/
+.fullpage-ad .slide-ad {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.fullpage-ad .slide-ad li {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.fullpage-ad .slide-ad li span.index-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.fullpage-ad .slide-ad li span.index-bg-1 {
+  background-image: url(../img/index-bg-1.jpg);
+}
+
+.fullpage-ad .slide-ad li span.index-bg-2 {
+  background-image: url(../img/index-bg-2.jpg);
+}
+
+.fullpage-ad .slide-ad li span.index-bg-3 {
+  background-image: url(../img/index-bg-3.jpg);
+}
+
+.fullpage-ad .slide-ad li .ad-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  text-align: center;
+  
+}
+
+.fullpage-ad .slide-ad li .ad-content img.num1 {
+  width: 100rem;
+  margin-top: 17.5rem;
+  transition: all .3s ease-in-out;
+}
+
+.fullpage-ad .slide-ad li .ad-content img.num2 {
+  width: 54.5rem;
+  margin-top: 6rem;
+  transition: all .3s ease-in-out;
+}
+
+.fullpage-ad .slide-ad li .ad-content span {
+  display: block;
+  width: 18rem;
+  height: 0.83rem;
+  margin: 0 auto;
+  margin-top: 10.5rem;
+  background-color: #fbd34b;
+}
+
+@media only screen and (max-width: 1440px) {
+  .fullpage-ad .slide-ad li .ad-content img.num1 {
+    width: 70rem;
+    margin-top: 11rem;
+  }
+
+  .fullpage-ad .slide-ad li .ad-content img.num2 {
+    width: 38rem;
+    margin-top: 4rem;
+  }
+
+  .fullpage-ad .slide-ad li .ad-content span {
+    height: 0.5rem;
+    margin-top: 7rem;
+  }
+}
+
+.fullpage-ad .slideBtn {
+  position: absolute;
+  top: 50%;
+  z-index: 999;
+  width: 40px;
+  height: 79px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.fullpage-ad .prevBtn {
+  left: 5%;
+  background: url(../img/slideBtn-pic.png) no-repeat;
+  background-position: top left;
+  transition: all .2s ease-in-out;
+}
+
+.fullpage-ad .nextBtn {
+  right: 5%;
+  background: url(../img/slideBtn-pic.png) no-repeat;
+  background-position: right bottom;
+  transition: all .2s ease-in-out;  
+}
+
+.fullpage-ad .prevBtn:hover {
+  background-position: top right;
+}
+
+.fullpage-ad .nextBtn:hover {
+  background-position: left bottom;
+}
+
+.fullpage-ad .slidePoint {
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-50%);
+}
+
+.fullpage-ad .slidePoint li {
+  float: left;
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  background-color: #17314a;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.fullpage-ad .slidePoint li.active {
+  background-color: #fbd34b;
+}
+
+/*
+=============
+头部
+=============
+*/
+header .logo {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 13rem;
+  transition: all .3s ease-in-out;
+}
+
+@media only screen and (max-width: 1440px) {
+  header .logo {
+    width: 9.1rem;
+  }
+}
+
+header nav {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+
+header nav a {
+  display: inline-block;
+  margin: 0 .83rem;
+  font-size: 1.17rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+header nav a:hover:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: #fbd34b;
+}
+
+header nav span {
+  z-index: 999;
+  display: inline-block;
+  margin: 0 .83rem;
+  background-image: url(../img/nav-icon.png);
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+header nav span.call {
+  background-position: 0 0;
+  width: 25px;
+  height: 25px;
+}
+
+header nav span.wechat {
+  background-position: 0 -35px;
+  width: 30px;
+  height: 24px;
+}
+
+header nav span.qq {
+  background-position: 0 -66px;
+  width: 22px;
+  height: 29px;
+}
+
+header nav span div.dropdown {
+  z-index: 98;
+  padding: 10px;
+  background-color: red;
+}
+
+/*
+=============
+底部
+=============
+*/
+footer nav {
+  position: absolute;
+  z-index: 999;
+  left: 5%;
+  bottom: 5%;
+  color: #fff;
+}
+
+footer nav a {
+  margin: 0 5px;
+  font-family: "宋体";
+  font-size: 1rem;
+  color: #d0dae4;
+  text-decoration: none;
+  transition: all .2s ease-in-out;
+}
+
+footer nav a:hover {
+  color: #fbd34b;
+}
+
+footer p {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  font-family: Arial,"宋体";
+  font-size: 1rem;
+  color: #d0dae4;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
