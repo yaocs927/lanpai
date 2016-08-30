@@ -1,0 +1,145 @@
+@charset "utf-8";
+/*CSS document*/
+
+/*
+=============
+场地
+=============
+*/
+
+/*头部*/
+.topBox {
+  position: relative;
+  width: 100%;
+  background: url(../img/index-bg-2.jpg) no-repeat center;
+  background-size: cover;
+}
+
+.topBox header .logo {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  z-index: 999;
+  width: 13rem;
+  transition: all .3s ease-in-out;
+}
+
+@media only screen and (max-width: 1440px) {
+  .topBox header .logo {
+    width: 9.1rem;
+  }
+}
+
+.topBox header nav {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  z-index: 999;
+}
+
+.topBox header nav a {
+  display: block;
+  float: left;
+  margin: 0 .83rem;
+  line-height: 29px;
+  font-size: 1.17rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.topBox header nav a:hover {
+  transition: all .5s ease-in-out;
+}
+
+.topBox header nav a:hover:after,
+.topBox header nav a.active:after {
+  z-index: 999;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #fbd34b;
+}
+
+.topBox header nav a.active {
+  color: #fbd34b;
+}
+
+.topBox header nav span {
+  z-index: 999;
+  display: inline-block;
+  margin: 0 .83rem;
+  background-image: url(../img/nav-icon.png);
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.topBox header nav span.call {
+  background-position: 0 0;
+  width: 25px;
+  height: 25px;
+}
+
+.topBox header nav span.wechat {
+  background-position: 0 -35px;
+  width: 30px;
+  height: 24px;
+}
+
+.topBox header nav span.qq {
+  background-position: 0 -66px;
+  width: 22px;
+  height: 29px;
+}
+
+.topBox header nav span div.dropdown {
+  z-index: 98;
+  padding: 10px;
+  background-color: red;
+}
+
+.topBox .slogan {
+  position: absolute;
+  top: 25%;
+  left: 5%;
+  z-index: 999;
+  width: 34.5rem;
+  transition: all .3s ease-in-out;
+}
+
+@media only screen and (max-width: 1440px) {
+  .topBox .slogan {
+    width: 24rem;
+  }
+}
+
+.topBox p {
+  position: absolute;
+  top: 65%;
+  left: 5%;
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+@media only screen and (max-width: 1440px) {
+  .topBox p {
+    font-size: 1.75rem;
+  }
+}
+
+.topBox .strip {
+  position: absolute;
+  top: 80%;
+  left: 5%;
+  width: 18rem;
+  height: 0.83rem;
+  background-color: #fbd34b;
+}
+
+@media only screen and (max-width: 1440px) {
+  .topBox .strip {
+    width: 12.5rem;
+    height: 0.5rem;
+  }
+}

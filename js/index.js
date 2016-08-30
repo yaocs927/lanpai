@@ -1,67 +1,53 @@
-window.onload = function () {
-  var slideAd = document.getElementById('slideAd');
-  var slideAdList = slideAd.getElementsByTagName('li');
-  var slidePoint = document.getElementById('slidePoint');
-  var slidePointList = slidePoint.getElementsByTagName('li');
-  var prevBtn = document.getElementById('prevBtn');
-  var nextBtn = document.getElementById('nextBtn');
-  var curIndex = 1;  //当前展示图片
+$(document).ready(function () {
+  // =======
+  // 首页轮播
+  // =======
+
+  var curIndex = 1;
   var timer;
+  // 初始状态
+  $('#slideAd li').eq(0).show();
+  $('#slidePoint li').eq(0).addClass('active');
 
-  //设置初始样式
-  slideAdList[curIndex - 1].style.opacity = 1;
-  slidePointList[curIndex - 1].className = 'active';
-
-  // 自动
-  // timer = setInterval(function () {
-  //   nextBtn.onclick();
-  // },2000)
-
-  // 点击切换
-  prevBtn.onclick = function () {
-    if (curIndex == 1) {
-      curIndex = 3
-    } else {
-      curIndex--;
-    }
-    pointSlide();
-    slideAnimate();
-  }
-
-  nextBtn.onclick = function () {
+  // 按钮切换 
+  $('#nextBtn').on('click', function () {
     if (curIndex == 3) {
-      curIndex = 1
+      curIndex = 1;
     } else {
       curIndex++;
     }
-    pointSlide();
-    slideAnimate();
-  }
+    $('#slideAd li').eq(curIndex - 1).stop().fadeIn(800).siblings().stop().fadeOut(800);
+    $('#slidePoint li').eq(curIndex - 1).addClass('active').siblings().removeClass('active');
+  })
 
-  for (var n = 0; n < slidePointList.length; n++) {
-    slidePointList[n].onclick = function () {
-      slidePointList[n].className = 'active';
-      return;
+  $('#prevBtn').on('click', function () {
+    if (curIndex == 1) {
+      curIndex = 3;
+    } else {
+      curIndex--;
     }
-  }
+    $('#slideAd li').eq(curIndex - 1).stop().fadeIn(800).siblings().stop().fadeOut(800);
+    $('#slidePoint li').eq(curIndex - 1).addClass('active').siblings().removeClass('active');
+  })
 
-  // 图片切换
-  function slideAnimate() {
-    for (var i = 0; i < slideAdList.length; i++) {
-      if (slideAdList[i].style.opacity == 1) {
-        slideAdList[i].style.opacity = 0;
-      }
-      slideAdList[curIndex - 1].style.opacity = 1;
-    }
-  }
+  $('#slidePoint li').each(function () {
+    $(this).on('click', function () {
+      var myIndex = $(this).index();
+      curIndex = myIndex + 1;
+      $('#slideAd li').eq(myIndex).stop().fadeIn(800).siblings().stop().fadeOut(800);
+      $(this).addClass('active').siblings().removeClass('active');
+    })
+  })
 
-  // 圆点切换
-  function pointSlide() {
-    for (var j = 0; j < slidePointList.length; j++) {
-      if (slidePointList[j].className == 'active') {
-        slidePointList[j].className = '';
-      }
-      slidePointList[curIndex - 1].className = 'active';
+  timer = setInterval(function () {
+    if (curIndex == 3) {
+      curIndex = 1;
+    } else {
+      curIndex++;
     }
-  }
-}
+    $('#slideAd li').eq(curIndex - 1).stop().fadeIn(800).siblings().stop().fadeOut(800);
+    $('#slidePoint li').eq(curIndex - 1).addClass('active').siblings().removeClass('active');
+  },3000)
+
+
+})

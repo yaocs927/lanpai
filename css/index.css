@@ -13,6 +13,7 @@
   left: 0;
   top: 0;
   z-index: 0;
+  background-color: #000; 
   overflow: hidden;
 }
 
@@ -22,7 +23,7 @@
   height: 100%;
   left: 0;
   top: 0;
-  opacity: 0;
+  display: none;
 }
 
 .fullpage-ad .slide-ad li span.index-bg {
@@ -49,7 +50,7 @@
   background-image: url(../img/index-bg-3.jpg);
 }
 
-.fullpage-ad .slide-ad li .ad-content {
+.fullpage-ad .ad-content {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -58,19 +59,19 @@
   
 }
 
-.fullpage-ad .slide-ad li .ad-content img.num1 {
+.fullpage-ad .ad-content img.num1 {
   width: 100rem;
   margin-top: 17.5rem;
   transition: all .3s ease-in-out;
 }
 
-.fullpage-ad .slide-ad li .ad-content img.num2 {
+.fullpage-ad .ad-content img.num2 {
   width: 54.5rem;
   margin-top: 6rem;
   transition: all .3s ease-in-out;
 }
 
-.fullpage-ad .slide-ad li .ad-content span {
+.fullpage-ad .ad-content span {
   display: block;
   width: 18rem;
   height: 0.83rem;
@@ -80,17 +81,17 @@
 }
 
 @media only screen and (max-width: 1440px) {
-  .fullpage-ad .slide-ad li .ad-content img.num1 {
+  .fullpage-ad .ad-content img.num1 {
     width: 70rem;
     margin-top: 11rem;
   }
 
-  .fullpage-ad .slide-ad li .ad-content img.num2 {
+  .fullpage-ad .ad-content img.num2 {
     width: 38rem;
     margin-top: 4rem;
   }
 
-  .fullpage-ad .slide-ad li .ad-content span {
+  .fullpage-ad .ad-content span {
     height: 0.5rem;
     margin-top: 7rem;
   }
@@ -132,6 +133,7 @@
   position: absolute;
   left: 50%;
   bottom: 10%;
+  z-index: 999;
   transform: translateX(-50%);
 }
 
@@ -158,6 +160,7 @@ header .logo {
   position: absolute;
   top: 5%;
   left: 5%;
+  z-index: 999;
   width: 13rem;
   transition: all .3s ease-in-out;
 }
@@ -172,26 +175,35 @@ header nav {
   position: absolute;
   top: 5%;
   right: 5%;
+  z-index: 999;
 }
 
 header nav a {
-  display: inline-block;
+  display: block;
+  float: left;
   margin: 0 .83rem;
+  line-height: 29px;
   font-size: 1.17rem;
   color: #fff;
   text-decoration: none;
 }
 
-header nav a:hover:after {
-  position: absolute;
-  top: 0;
-  left: 0;
+header nav a:hover {
+  transition: all .5s ease-in-out;
+}
+
+header nav a:hover:after,
+header nav a.active:after {
   z-index: 999;
   content: "";
   display: block;
   width: 100%;
-  height: 4px;
+  height: 2px;
   background-color: #fbd34b;
+}
+
+header nav a.active {
+  color: #fbd34b;
 }
 
 header nav span {

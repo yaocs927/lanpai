@@ -19,8 +19,12 @@
   <!--[if lte IE 9]>
     <p>您的浏览器版本过低，建议您升级浏览器。</p>
     <style type="text/css">
-      nav {
+      header,footer,div {
       display: none;
+      }
+
+      body {
+        background-color: #000919;
       }
     </style>
   <![endif]-->
@@ -30,11 +34,7 @@
     <ul class="slide-ad" id="slideAd">
       <li>
         <span class="index-bg index-bg-1"></span>
-        <div class="ad-content ad-content-1">
-          <img src="img/index-ad-1(1).png" class="num1" alt="123">
-          <span></span>
-          <img src="img/index-ad-1(2).png" class="num2" alt="123">
-        </div>
+
       </li>
       <li>
         <span class="index-bg index-bg-2"></span>
@@ -43,28 +43,29 @@
         <span class="index-bg index-bg-3"></span>
       </li>
     </ul>
+    <div class="ad-content ad-content-1">
+      <img src="img/index-ad-1(1).png" class="num1" alt="123">
+      <span></span>
+      <img src="img/index-ad-1(2).png" class="num2" alt="123">
+    </div>
     <div class="slideBtn prevBtn" id="prevBtn"></div>
     <div class="slideBtn nextBtn" id="nextBtn"></div>
     <ul class="slidePoint" id="slidePoint">
-      <li></li>
-      <li></li>
-      <li></li>
+      <li index="1"></li>
+      <li index="2"></li>
+      <li index="3"></li>
     </ul>
   </div>
 
   <!--头部-->
   <header>
-    <img src="img/logo.png" alt="蓝派别墅轰趴馆" class="logo">
+    <a href="index.html"><img src="img/logo.png" alt="蓝派别墅轰趴馆" class="logo"></a>
     <nav>
-      <a href="index.html">首页</a>
+      <a href="index.html" class="active">首页</a>
       <a href="place.html">所有场地</a>
       <a href="food.html">餐饮</a>
       <a href="photo.html">照片墙</a>
-      <span class="call">
-        <!--<div class="dropdown">
-          
-        </div>-->
-      </span>
+      <span class="call"></span>
       <span class="wechat"></span>
       <span class="qq"></span>
     </nav>
@@ -82,6 +83,7 @@
   </footer>
 
   <!--JS文件-->
+  <script src="js/jquery-2.0.0.min.js"></script>
   <script src="js/index.js"></script>
 </body>
 
