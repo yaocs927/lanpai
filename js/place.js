@@ -1,5 +1,11 @@
 $(document).ready(function () {
   var height = $(window).height();
-  console.log(height);
   $('.topBox').css('height', height);
+
+  var maxTextWidth = 100;
+  var curTextWidth = $('.dailyContent').text().length;
+  if (curTextWidth > maxTextWidth) {
+    $('.dailyContent').text($('.dailyContent').text().substring(0, maxTextWidth));
+    $('.dailyContent').html($('.dailyContent').text() + '...');
+  }
 })

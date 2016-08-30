@@ -11,6 +11,7 @@
 .topBox {
   position: relative;
   width: 100%;
+  margin-bottom: 60px;
   background: url(../img/index-bg-2.jpg) no-repeat center;
   background-size: cover;
 }
@@ -45,10 +46,22 @@
   font-size: 1.17rem;
   color: #fff;
   text-decoration: none;
+  transition: all .3s ease-in-out;
 }
 
 .topBox header nav a:hover {
-  transition: all .5s ease-in-out;
+  color: #fbd34b;
+}
+
+.topBox header nav a:after {
+  z-index: 999;
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  margin-left: 50%;
+  background-color: #fbd34b;
+  transition: all .3s ease-in-out;
 }
 
 .topBox header nav a:hover:after,
@@ -58,6 +71,7 @@
   display: block;
   width: 100%;
   height: 2px;
+  margin-left: 0;
   background-color: #fbd34b;
 }
 
@@ -103,7 +117,6 @@
   position: absolute;
   top: 25%;
   left: 5%;
-  z-index: 999;
   width: 34.5rem;
   transition: all .3s ease-in-out;
 }
@@ -135,6 +148,7 @@
   width: 18rem;
   height: 0.83rem;
   background-color: #fbd34b;
+  transition: all .3s ease-in-out;
 }
 
 @media only screen and (max-width: 1440px) {
@@ -143,3 +157,259 @@
     height: 0.5rem;
   }
 }
+
+.daily {
+  position: absolute;
+  top: 30%;
+  right: 5%;
+  width: 80rem;
+  height: 37rem;
+  transition: all .3s ease-in-out;
+}
+
+.daily .daily-slogan {
+  position: absolute;
+  z-index: 10;
+  width: 15.1rem;
+  transition: all .3s ease-in-out;
+}
+
+.daily .dailyPic {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  z-index: 9;
+  width: 45.6rem;
+  height: 31.08rem;
+  overflow: hidden;
+  transition: all .3s ease-in-out;
+}
+
+.daily .dailyPic ul {
+  position: absolute;
+  width: 136.8rem;
+}
+
+.daily .dailyPic ul li {
+  float: left;
+  width: 45.6rem;
+  height: 28.25rem;
+}
+
+.daily .dailyPic ul li img {
+  width: 45.6rem;
+}
+
+.daily .daily-slideBtn {
+  position: absolute;
+  z-index: 8;
+  top: 28.25rem;
+  left: 0;
+  font-size: 0;
+}
+
+.daily .daily-slideBtn .daily-slideBtn-style {
+  z-index: 99;
+  display: inline-block;
+  width: 2.83rem;
+  height: 2.83rem;
+  background-color: #081430;
+  background-image: url(../img/daily-slide-icon.png);
+  background-repeat: no-repeat;
+  color: #fff;
+  cursor: pointer;
+}
+
+.daily .daily-slideBtn .prev {
+  background-position: 5px top;
+}
+
+.daily .daily-slideBtn .next {
+  background-position: -28px top;
+}
+
+.daily .daily-slideBtn .active {
+  background-color: #fbd34b;
+}
+
+.daily .daily-bg {
+  position: absolute;
+  bottom: 0;
+  left: 3%;
+  z-index: 8;
+  width: 45.6rem;
+  height: 28.25rem;
+  background-color: #010818;
+  transition: all .3s ease-in-out;
+}
+
+.daily h1 {
+  position: absolute;
+  top: 8%;
+  left: 65%;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.daily .strip1 {
+  position: absolute;
+  top: 30%;
+  left: 65%;
+  width: 20px;
+  height: 4px;
+  background-color: #fbd34b;
+}
+
+.daily .dailyContent {
+  position: absolute;
+  top: 35%;
+  left: 65%;
+  height: 10rem;
+  font-size: 14px;
+  line-height: 1.2;
+  overflow: hidden;
+}
+
+.daily .dailyDetailBtn {
+  position: absolute;
+  top: 80%;
+  left: 65%;
+}
+
+.detailBtn {
+  position: relative;
+  z-index: 5;
+  width: 100px;
+  height: 32px;
+  border: 2px solid #fbd34b;
+  font-weight: 700;
+  line-height: 32px;
+  text-indent: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: all .1s ease-in-out;
+}
+
+.detailBtn:before {
+  position: absolute;
+  top: 50%;;
+  right: 5px;
+  z-index: 3;
+  content: "";
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-left-color: #fff;
+  transform: translateY(-50%);
+  transition: all .3s ease-in-out;
+}
+
+.detailBtn:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  content: "";
+  width: 0;
+  height: 32px;
+  background-color: #fbd34b;
+  transition: all .3s ease-in-out;
+}
+
+.detailBtn:hover {
+  color: #000;
+}
+
+.detailBtn:hover:before {
+  border-left-color: #000;
+}
+
+.detailBtn:hover:after {
+  content: "VIEW";
+  width: 100px;
+}
+
+@media only screen and (max-width: 1440px) {
+  .daily {
+    width: 56rem;
+    height: 26rem;
+  }
+
+  .daily .daily-slogan {
+    width: 10.5rem;
+  }
+
+  .daily .dailyPic {
+    width: 31.92rem;
+    height: 21.78rem;
+  }
+
+  .daily .dailyPic ul li,
+  .daily .dailyPic ul li img,
+  .daily .daily-bg {
+    width: 31.92rem;
+    height: 19.8rem;
+  }
+
+  .daily .dailyPic ul {
+    width: 95.76rem;
+  }
+
+  .daily .daily-slideBtn {
+    top: 19.8rem;
+  }
+
+  .daily .daily-slideBtn .daily-slideBtn-style {
+    width: 1.98rem;
+    height: 1.98rem;
+    background-size: 90%;
+  }
+
+  .daily .daily-slideBtn .prev {
+    background-position: 10px 7px;
+  }
+
+  .daily .daily-slideBtn .next {
+    background-position: -6px 7px;
+  }
+}
+
+
+/*场地列表*/
+.typeList {
+  width: 90%;
+  margin: 0 5%;
+}
+ 
+.typeList h2 {
+  float: left;
+  width: 20%;
+}
+
+.typeList .colList {
+  float: right;
+  width: 80%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

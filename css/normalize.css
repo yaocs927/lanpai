@@ -26,7 +26,7 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,
 
 body {
   min-width: 600px;
-  background-color: #000919;
+  background-color: #010818;
   transition: all .5s ease-in-out;
 }
 
@@ -432,4 +432,12 @@ textarea {
 ::-webkit-file-upload-button {
   -webkit-appearance: button; /* 1 */
   font: inherit; /* 2 */
+}
+
+/*清除浮动*/
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  clear: both;
 }

@@ -186,10 +186,22 @@ header nav a {
   font-size: 1.17rem;
   color: #fff;
   text-decoration: none;
+  transition: all .3s ease-in-out;
 }
 
 header nav a:hover {
-  transition: all .5s ease-in-out;
+  color: #fbd34b;
+}
+
+header nav a:after {
+  z-index: 999;
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  margin-left: 50%;
+  background-color: #fbd34b;
+  transition: all .3s ease-in-out;
 }
 
 header nav a:hover:after,
@@ -199,6 +211,7 @@ header nav a.active:after {
   display: block;
   width: 100%;
   height: 2px;
+  margin-left: 0;
   background-color: #fbd34b;
 }
 
@@ -274,57 +287,3 @@ footer p {
   font-size: 1rem;
   color: #d0dae4;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
