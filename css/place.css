@@ -1,26 +1,33 @@
 @charset "utf-8";
+
 /*CSS document*/
+
 
 /*
 =============
-场地
+头部
 =============
 */
 
-/*头部*/
 .topBox {
   position: relative;
   width: 100%;
-  margin-bottom: 60px;
   background: url(../img/index-bg-2.jpg) no-repeat center;
   background-size: cover;
 }
 
-.topBox header .logo {
+.topBox header {
   position: absolute;
   top: 5%;
   left: 5%;
-  z-index: 999;
+  width: 90%;
+}
+
+.topBox header .logo {
+  float: left;
+}
+
+.topBox header .logo {
   width: 13rem;
   transition: all .3s ease-in-out;
 }
@@ -32,10 +39,7 @@
 }
 
 .topBox header nav {
-  position: absolute;
-  top: 5%;
-  right: 5%;
-  z-index: 999;
+  float: right;
 }
 
 .topBox header nav a {
@@ -113,50 +117,53 @@
   background-color: red;
 }
 
+
+/*slogan*/
+
 .topBox .slogan {
   position: absolute;
   top: 25%;
   left: 5%;
+  -webkit-animation: flyLeftAnimate 1s ease-in-out 1;
+  -moz-animation: flyLeftAnimate 1s ease-in-out 1;
+  -o-animation: flyLeftAnimate 1s ease-in-out 1;
+  animation: flyLeftAnimate 1s ease-in-out 1;
+}
+
+.topBox .slogan .sloganPic {
   width: 34.5rem;
   transition: all .3s ease-in-out;
 }
 
-@media only screen and (max-width: 1440px) {
-  .topBox .slogan {
-    width: 24rem;
-  }
-}
-
-.topBox p {
-  position: absolute;
-  top: 65%;
-  left: 5%;
+.topBox .slogan .slogan-nr {
+  margin-top: 30%;
   font-size: 2.5rem;
   color: #fff;
 }
 
-@media only screen and (max-width: 1440px) {
-  .topBox p {
-    font-size: 1.75rem;
-  }
-}
-
-.topBox .strip {
-  position: absolute;
-  top: 80%;
-  left: 5%;
+.topBox .slogan .strip {
   width: 18rem;
   height: 0.83rem;
+  margin-top: 10%;
   background-color: #fbd34b;
   transition: all .3s ease-in-out;
 }
 
 @media only screen and (max-width: 1440px) {
-  .topBox .strip {
+  .topBox .slogan .sloganPic {
+    width: 24rem;
+  }
+  .topBox .slogan .slogan-nr {
+    font-size: 1.75rem;
+  }
+  .topBox .slogan .strip {
     width: 12.5rem;
     height: 0.5rem;
   }
 }
+
+
+/*每日推荐*/
 
 .daily {
   position: absolute;
@@ -164,7 +171,6 @@
   right: 5%;
   width: 80rem;
   height: 37rem;
-  transition: all .3s ease-in-out;
 }
 
 .daily .daily-slogan {
@@ -172,6 +178,10 @@
   z-index: 10;
   width: 15.1rem;
   transition: all .3s ease-in-out;
+  -webkit-animation: flyRightAnimate 1.5s ease-in-out 1;
+  -moz-animation: flyRightAnimate 1.5s ease-in-out 1;
+  -o-animation: flyRightAnimate 1.5s ease-in-out 1;
+  animation: flyRightAnimate 1.5s ease-in-out 1;
 }
 
 .daily .dailyPic {
@@ -183,6 +193,10 @@
   height: 31.08rem;
   overflow: hidden;
   transition: all .3s ease-in-out;
+  -webkit-animation: flyRightAnimate 2s ease-in-out 1;
+  -moz-animation: flyRightAnimate 2s ease-in-out 1;
+  -o-animation: flyRightAnimate 2s ease-in-out 1;
+  animation: flyRightAnimate 2s ease-in-out 1;
 }
 
 .daily .dailyPic ul {
@@ -241,6 +255,10 @@
   height: 28.25rem;
   background-color: #010818;
   transition: all .3s ease-in-out;
+  -webkit-animation: flyRightAnimate 2s ease-in-out 1;
+  -moz-animation: flyRightAnimate 2s ease-in-out 1;
+  -o-animation: flyRightAnimate 2s ease-in-out 1;
+  animation: flyRightAnimate 2s ease-in-out 1;
 }
 
 .daily h1 {
@@ -252,7 +270,7 @@
   color: #fff;
 }
 
-.daily .strip1 {
+.daily .dailyStrip {
   position: absolute;
   top: 30%;
   left: 65%;
@@ -263,18 +281,30 @@
 
 .daily .dailyContent {
   position: absolute;
-  top: 35%;
+  top: 38%;
   left: 65%;
   height: 10rem;
   font-size: 14px;
   line-height: 1.2;
+  color: #fff;
   overflow: hidden;
+  text-align: justify;
 }
 
 .daily .dailyDetailBtn {
   position: absolute;
   top: 80%;
   left: 65%;
+}
+
+.daily h1,
+.daily .dailyStrip,
+.daily .dailyContent,
+.daily .dailyDetailBtn {
+  -webkit-animation: flyRightAnimate 2.5s ease-in-out 1;
+  -moz-animation: flyRightAnimate 2.5s ease-in-out 1;
+  -o-animation: flyRightAnimate 2.5s ease-in-out 1;
+  animation: flyRightAnimate 2.5s ease-in-out 1;
 }
 
 .detailBtn {
@@ -293,7 +323,7 @@
 
 .detailBtn:before {
   position: absolute;
-  top: 50%;;
+  top: 50%;
   right: 5px;
   z-index: 3;
   content: "";
@@ -335,81 +365,454 @@
     width: 56rem;
     height: 26rem;
   }
-
   .daily .daily-slogan {
     width: 10.5rem;
   }
-
   .daily .dailyPic {
     width: 31.92rem;
     height: 21.78rem;
   }
-
   .daily .dailyPic ul li,
   .daily .dailyPic ul li img,
   .daily .daily-bg {
     width: 31.92rem;
     height: 19.8rem;
   }
-
   .daily .dailyPic ul {
     width: 95.76rem;
   }
-
   .daily .daily-slideBtn {
     top: 19.8rem;
   }
-
   .daily .daily-slideBtn .daily-slideBtn-style {
     width: 1.98rem;
     height: 1.98rem;
     background-size: 90%;
   }
-
   .daily .daily-slideBtn .prev {
     background-position: 10px 7px;
   }
-
   .daily .daily-slideBtn .next {
     background-position: -6px 7px;
   }
 }
 
 
-/*场地列表*/
+/*向下滑动提示*/
+
+.scrolldown {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+}
+
+.scrolldown:after {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  content: "";
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-top-color: #fff;
+  transform: translateX(-50%);
+  -webkit-animation: scrollDown 1s linear 3s infinite;
+  -moz-animation: scrollDown 1s linear 3s infinite;
+  -o-animation: scrollDown 1s linear 3s infinite;
+  animation: scrollDown 1s linear 3s infinite;
+}
+
+@-webkit-keyframes scrollDown {
+  0% {
+    bottom: -20px;
+  }
+  50% {
+    bottom: -30px;
+  }
+  100% {
+    bottom: -20px;
+  }
+}
+
+@-moz-keyframes scrollDown {
+  0% {
+    bottom: -20px;
+  }
+  50% {
+    bottom: -30px;
+  }
+  100% {
+    bottom: -20px;
+  }
+}
+
+@-o-keyframes scrollDown {
+  0% {
+    bottom: -20px;
+  }
+  50% {
+    bottom: -30px;
+  }
+  100% {
+    bottom: -20px;
+  }
+}
+
+@keyframes scrollDown {
+  0% {
+    bottom: -20px;
+  }
+  50% {
+    bottom: -30px;
+  }
+  100% {
+    bottom: -20px;
+  }
+}
+
+
+/*
+==============
+提供的类型列表
+==============
+*/
+
+.container {
+  margin: 5rem 0;
+}
+
 .typeList {
   width: 90%;
   margin: 0 5%;
 }
- 
-.typeList h2 {
+
+
+/*分类标题*/
+
+.typeList .typeList-title {
+  position: relative;
   float: left;
-  width: 20%;
+  width: 10%;
+  transform: translateX(-500px);
 }
+
+.typeList .typeList-title h2 {
+  width: 3.2rem;
+  font-size: 3.2rem;
+  line-height: 1.3;
+  color: #fbd34b;
+}
+
+.typeList .typeList-title span {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+}
+
+.typeList .typeList-title span i {
+  display: block;
+  width: 3.2rem;
+  height: 4px;
+  background-color: #fbd34b;
+  margin-top: 6px;
+}
+
+@media only screen and (max-width: 1440px) {
+  .typeList .typeList-title h2 {
+    width: 2rem;
+    font-size: 2rem;
+  }
+  .typeList .typeList-title span i {
+    width: 2rem;
+    height: 2px;
+    margin-top: 4px;
+  }
+}
+
+
+/*列表详细*/
 
 .typeList .colList {
   float: right;
-  width: 80%;
+  width: 90%;
+  transform: translateX(2000px);
+}
+
+.typeList .colList .left {
+  float: left;
+  margin-left: 3%;
+  margin-bottom: 5rem;
+}
+
+.typeList .colList .right {
+  float: right;
+}
+
+.typeList .colList .product {
+  position: relative;
+  width: 60rem;
+  height: 33.3rem;
+}
+
+.typeList .colList .product .productPic {
+  width: 55.5%;
+  height: 100%;
+}
+
+.typeList .colList .product img {
+  width: 100%;
+  height: 100%;
+}
+
+.typeList .colList .product .product-content-bg {
+  position: absolute;
+  top: 5.5%;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 70%;
+  background-color: #081430;
+}
+
+.typeList .colList .product .product-content {
+  position: absolute;
+  left: 60%;
+  top: 0;
+  width: 35%;
+  height: 100%;
+}
+
+.typeList .colList .product .product-content h3 {
+  font-size: 18px;
+  line-height: 3;
+  color: #fff;
+}
+
+.typeList .colList .product .product-content p {
+  height: 70%;
+  line-height: 1.2;
+  color: #fff;
+  text-align: justify;
+  overflow: hidden;
+}
+
+.typeList .colList .product .productStrip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #fbd34b;
+}
+
+.typeList .colList .product .productBtn {
+  position: absolute;
+  bottom: 5%;
+  left: 60%;
+}
+
+@media only screen and (max-width: 1440px) {
+  .typeList .colList .product {
+    width: 42rem;
+    height: 23.3rem;
+  }
+  .typeList .colList .product .productPic {
+    width: 55.5%;
+    height: 100%;
+  }
+  .typeList .colList .product img {
+    width: 100%;
+  }
+  .typeList .colList .product .product-content h3 {
+    font-size: 14px;
+  }
 }
 
 
+/*查看更多按钮*/
+
+.seeMore {
+  margin: 20px auto;
+  width: 20rem;
+  height: 3rem;
+  background-color: #010818;
+  border: 2px solid #0d172e;
+  border-radius: 3rem;
+  font: 14px/3rem "Microsoft Yahei";
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+.seeMore:hover {
+  border-color: #fbd34b;
+  background-color: rgba(251, 211, 77, .1);
+}
 
 
+/*
+=========
+页尾
+=========
+*/
+
+footer .footerPic {
+  width: 100%;
+  height: 10rem;
+  background: url(../img/footer-pic.jpg) no-repeat center;
+  background-size: cover;
+}
+
+footer .info {
+  width: 100%;
+  height: 5rem;
+  background-color: #000206;
+}
+
+footer .info .info-nr {
+  width: 90%;
+  margin: 0 auto;
+}
+
+footer .info .info-nr nav {
+  float: left;
+  color: #fff;
+  line-height: 5rem;
+}
+
+footer .info .info-nr nav a {
+  margin: 0 5px;
+  font-family: "宋体";
+  font-size: 1rem;
+  color: #d0dae4;
+  text-decoration: none;
+  transition: all .2s ease-in-out;
+}
+
+footer .info .info-nr nav a:hover {
+  color: #fbd34b;
+}
+
+footer .info .info-nr p {
+  float: right;
+  font-family: Arial, "宋体";
+  font-size: 1rem;
+  line-height: 5rem;
+  color: #d0dae4;
+}
 
 
+/*
+===========
+元素飞入动画
+===========
+*/
 
 
+/*左飞入*/
+
+@-webkit-keyframes flyLeftAnimate {
+  0% {
+    transform: translateX(-2000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes flyLeftAnimate {
+  0% {
+    transform: translateX(-2000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@-o-keyframes flyLeftAnimate {
+  0% {
+    transform: translateX(-2000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes flyLeftAnimate {
+  0% {
+    transform: translateX(-2000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 
 
+/*右飞入*/
 
+@-webkit-keyframes flyRightAnimate {
+  0% {
+    transform: translateX(2000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 
+@-moz-keyframes flyRightAnimate {
+  0% {
+    transform: translateX(2000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 
+@-ms-keyframes flyRightAnimate {
+  0% {
+    transform: translateX(2000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 
+@-o-keyframes flyRightAnimate {
+  0% {
+    transform: translateX(2000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 
-
-
-
-
-
-
-
+@keyframes flyRightAnimate {
+  0% {
+    transform: translateX(2000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

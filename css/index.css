@@ -1,37 +1,33 @@
 @charset "utf-8";
+
 /*CSS document*/
+
 
 /*
 =============
 全屏广告
 =============
 */
+
 .fullpage-ad .slide-ad {
-  position: absolute;
   width: 100%;
   height: 100%;
-  left: 0;
-  top: 0;
-  z-index: 0;
-  background-color: #000; 
+  background-color: #000;
   overflow: hidden;
 }
 
 .fullpage-ad .slide-ad li {
-  position: absolute;
   width: 100%;
   height: 100%;
-  left: 0;
-  top: 0;
   display: none;
 }
 
 .fullpage-ad .slide-ad li span.index-bg {
   position: absolute;
-  width: 100%;
-  height: 100%;
   left: 0;
   top: 0;
+  width: 100%;
+  height: 100%;
   z-index: 0;
   background-size: cover;
   background-position: center;
@@ -51,12 +47,11 @@
 }
 
 .fullpage-ad .ad-content {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   z-index: 5;
   text-align: center;
-  
 }
 
 .fullpage-ad .ad-content img.num1 {
@@ -85,12 +80,10 @@
     width: 70rem;
     margin-top: 11rem;
   }
-
   .fullpage-ad .ad-content img.num2 {
     width: 38rem;
     margin-top: 4rem;
   }
-
   .fullpage-ad .ad-content span {
     height: 0.5rem;
     margin-top: 7rem;
@@ -98,7 +91,7 @@
 }
 
 .fullpage-ad .slideBtn {
-  position: absolute;
+  position: fixed;
   top: 50%;
   z-index: 999;
   width: 40px;
@@ -118,7 +111,7 @@
   right: 5%;
   background: url(../img/slideBtn-pic.png) no-repeat;
   background-position: right bottom;
-  transition: all .2s ease-in-out;  
+  transition: all .2s ease-in-out;
 }
 
 .fullpage-ad .prevBtn:hover {
@@ -130,7 +123,7 @@
 }
 
 .fullpage-ad .slidePoint {
-  position: absolute;
+  position: fixed;
   left: 50%;
   bottom: 10%;
   z-index: 999;
@@ -151,13 +144,15 @@
   background-color: #fbd34b;
 }
 
+
 /*
 =============
 头部
 =============
 */
+
 header .logo {
-  position: absolute;
+  position: fixed;
   top: 5%;
   left: 5%;
   z-index: 999;
@@ -172,7 +167,7 @@ header .logo {
 }
 
 header nav {
-  position: absolute;
+  position: fixed;
   top: 5%;
   right: 5%;
   z-index: 999;
@@ -253,13 +248,15 @@ header nav span div.dropdown {
   background-color: red;
 }
 
+
 /*
 =============
 底部
 =============
 */
+
 footer nav {
-  position: absolute;
+  position: fixed;
   z-index: 999;
   left: 5%;
   bottom: 5%;
@@ -280,10 +277,10 @@ footer nav a:hover {
 }
 
 footer p {
-  position: absolute;
+  position: fixed;
   right: 5%;
   bottom: 5%;
-  font-family: Arial,"宋体";
+  font-family: Arial, "宋体";
   font-size: 1rem;
   color: #d0dae4;
 }
