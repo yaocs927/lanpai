@@ -178,3 +178,60 @@
     bottom: -20px;
   }
 }
+
+/*右飞入*/
+
+@-webkit-keyframes flyRightAnimate {
+  0% {
+    transform: translateX(2000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes flyRightAnimate {
+  0% {
+    transform: translateX(2000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes flyRightAnimate {
+  0% {
+    transform: translateX(2000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@-o-keyframes flyRightAnimate {
+  0% {
+    transform: translateX(2000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes flyRightAnimate {
+  0% {
+    transform: translateX(2000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
