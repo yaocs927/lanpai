@@ -42,5 +42,35 @@ $(document).ready(function () {
         })
       }
     })
+
+    if (scrollHeight > windowHeight - 100) {
+      $('.stick .backtop').slideDown();
+    } else {
+      $('.stick .backtop').slideUp();
+    }
+
+
   })
+
+
+  // =======
+  // 回到顶部
+  // =======
+  $('.stick .backtop').on('click', function () {
+    $('body').animate({ scrollTop: 0 }, 300);
+    return false;
+  })
+
+  // 显示二维码
+  var stickH = $('.stick').outerHeight();
+  var erweimaH = $('.erweima').outerHeight();
+  var erweimaH1 = erweimaH / 2 - stickH / 2;
+  $('.erweima').css('bottom', 80 - erweimaH1 + 'px');
+  $('.stick .wechat').hover(function () {
+    $('.erweima').show();
+  }, function () {
+    $('.erweima').hide();
+  })
+
+
 })

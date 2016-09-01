@@ -47,7 +47,17 @@ $(document).ready(function () {
     }
     $('#slideAd li').eq(curIndex - 1).stop().fadeIn(800).siblings().stop().fadeOut(800);
     $('#slidePoint li').eq(curIndex - 1).addClass('active').siblings().removeClass('active');
-  },3000)
+  }, 4000)
 
+  // 显示二维码
+  var stickH = $('.stick').outerHeight();
+  var erweimaH = $('.erweima').outerHeight();
+  var erweimaH1 = erweimaH / 2 - stickH / 2;
+  $('.erweima').css('bottom', 80 - erweimaH1 + 'px');
+  $('.stick .wechat').hover(function () {
+    $('.erweima').show();
+  }, function () {
+    $('.erweima').fadeOut(150);
+  })
 
 })
