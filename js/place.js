@@ -3,6 +3,54 @@ $(document).ready(function () {
   var height = $(window).height();
   $('.topBox').css('height', height);
 
+  // 每日推荐轮播
+  var dailyIndex = 0;
+  var clone = $('#dailySlidePic li').first().clone();
+  $('#dailySlidePic').append(clone);
+  var dailySize = $('#dailySlidePic li').size();
+  console.log(dailySize)
+  var dailyPicWidth = $('.dailyPic li').outerWidth();
+  $('.daily-slideBtn .next').on('click', function () {
+    dailyNext();
+  })
+  $('.daily-slideBtn .prev').on('click', function () {
+    dailyPrev();
+  })
+
+  function dailyNext() {
+    dailyIndex += 1;
+    if (dailyIndex == dailySize) {
+      $('#dailySlidePic').css({
+        'left': 0
+      })
+      dailyIndex = 1;
+    }
+    $('#dailySlidePic').stop().animate({
+      'left': -dailyIndex * dailyPicWidth
+    }, 300)
+  }
+
+  function dailyPrev() {
+    dailyIndex -= 1;
+    if (dailyIndex == -1) {
+      $('#dailySlidePic').css({
+        'left': -(dailySize - 1) * dailyPicWidth
+      })
+      dailyIndex = dailySize - 2;
+    }
+    $('#dailySlidePic').stop().animate({
+      'left': -dailyIndex * dailyPicWidth
+    }, 300)
+  }
+
+  $('.daily-slideBtn span').each(function () {
+    $(this).hover(function () {
+      $(this).addClass('active')
+    }, function () {
+      $(this).removeClass('active')
+    })
+  })
+
   // 设置字段长度 
   var maxTextWidth = 100;
   $('.introduce').each(function () {
@@ -49,7 +97,6 @@ $(document).ready(function () {
       $('.stick .backtop').slideUp();
     }
 
-
   })
 
 
@@ -57,7 +104,9 @@ $(document).ready(function () {
   // 回到顶部
   // =======
   $('.stick .backtop').on('click', function () {
-    $('body').animate({ scrollTop: 0 }, 300);
+    $('body').animate({
+      scrollTop: 0
+    }, 300);
     return false;
   })
 
