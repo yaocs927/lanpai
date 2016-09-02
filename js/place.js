@@ -8,7 +8,6 @@ $(document).ready(function () {
   var clone = $('#dailySlidePic li').first().clone();
   $('#dailySlidePic').append(clone);
   var dailySize = $('#dailySlidePic li').size();
-  console.log(dailySize)
   var dailyPicWidth = $('.dailyPic li').outerWidth();
   $('.daily-slideBtn .next').on('click', function () {
     dailyNext();
@@ -68,29 +67,44 @@ $(document).ready(function () {
   $(window).scroll(function () {
     var windowHeight = $(window).height();
     var scrollHeight = $(window).scrollTop();
-    $('.typeList-title').each(function () {
-      var eleHeight1 = $(this).offset().top;
-      if (eleHeight1 - scrollHeight < windowHeight - 30) {
-        $(this).css({
-          '-webkit-animation': 'flyLeftAnimate 1s ease-in-out 1 forwards',
-          '-moz-animation': 'flyLeftAnimate 1s ease-in-out 1 forwards',
-          '-o-animation': 'flyLeftAnimate 1s ease-in-out 1 forwards',
-          'animation': 'flyLeftAnimate 1s ease-in-out 1 forwards'
+    function flyLeftAnimate(ele, hhh) {
+      var eleHeight1 = $(ele).offset().top;
+      if (eleHeight1 - scrollHeight < windowHeight - hhh) {
+        $(ele).css({
+          '-webkit-animation': 'flyLeftAnimate .5s ease-in-out 1 forwards',
+          '-moz-animation': 'flyLeftAnimate .5s ease-in-out 1 forwards',
+          '-o-animation': 'flyLeftAnimate .5s ease-in-out 1 forwards',
+          'animation': 'flyLeftAnimate .5s ease-in-out 1 forwards'
         })
       }
+    }
+    function flyRightAnimate(ele, hhh) {
+      var eleHeight2 = $(ele).offset().top;
+      if (eleHeight2 - scrollHeight < windowHeight - hhh) {
+        $(ele).css({
+          '-webkit-animation': 'flyRightAnimate .5s ease-in-out 1 forwards',
+          '-moz-animation': 'flyRightAnimate .5s ease-in-out 1 forwards',
+          '-o-animation': 'flyRightAnimate .5s ease-in-out 1 forwards',
+          'animation': 'flyRightAnimate .5s ease-in-out 1 forwards'
+        })
+      }
+    }
+
+    $('.container .flyLeftAnimate').each(function () {
+      flyLeftAnimate(this, 30);
     })
-    $('.colList').each(function () {
-      var eleHeight2 = $(this).offset().top;
-      if (eleHeight2 - scrollHeight < windowHeight - 30) {
-        $(this).css({
-          '-webkit-animation': 'flyRightAnimate 1s ease-in-out 1 forwards',
-          '-moz-animation': 'flyRightAnimate 1s ease-in-out 1 forwards',
-          '-o-animation': 'flyRightAnimate 1s ease-in-out 1 forwards',
-          'animation': 'flyRightAnimate 1s ease-in-out 1 forwards'
-        })
-      }
+    $('.container .flyRightAnimate').each(function () {
+      flyRightAnimate(this, 30);
+    })
+    $('.about-container .flyLeftAnimate').each(function () {
+      flyLeftAnimate(this, 20);
+    })
+    $('.about-container .flyRightAnimate').each(function () {
+      flyRightAnimate(this, 20);
     })
 
+
+    // 回到顶部按钮出现
     if (scrollHeight > windowHeight - 100) {
       $('.stick .backtop').slideDown();
     } else {
@@ -100,9 +114,9 @@ $(document).ready(function () {
   })
 
 
-  // =======
+  // =================
   // 回到顶部
-  // =======
+  // =================
   $('.stick .backtop').on('click', function () {
     $('body').animate({
       scrollTop: 0
@@ -121,5 +135,20 @@ $(document).ready(function () {
     $('.erweima').hide();
   })
 
+  // =================
+  // 详情部分
+  // =================
+
+  // 详情弹出
+  // $('.detailBtn').each(function () {
+  //   $(this).on('click', function () {
+  //     $('.detailCover').animate({ left: 0}, 500);
+  //   })
+  // })
+
+  // 关闭按钮
+  $('#closeBtn').on('click', function () {
+    $(this).parents('.detailCover').animate({left: '100%'}, 500)
+  })
 
 })
