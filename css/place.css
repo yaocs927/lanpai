@@ -1179,12 +1179,23 @@ footer .info .info-nr p {
 
 .detailCover .detailContent {
   box-sizing: border-box;
-  width: 90%;
+  width: 95%;
   height: auto;
-  margin-left: 10%;
-  padding: 2% 5%;
-  border: 4px solid #fbd34b;
+  margin-left: 5%;
+  padding: 2% 0;
+  border: 6px solid #fbd34b;
   background-color: #010818;
+}
+
+.detailCover .detailContent .comWidth {
+  width: 1400px;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 1440px) {
+  .detailCover .detailContent .comWidth {
+    width: 1100px;
+  }
 }
 
 .detailCover .detailContent h2 {
@@ -1198,22 +1209,94 @@ footer .info .info-nr p {
   float: right;
 }
 
+
 /*详情图片*/
+
 .picSlideBox {
+  position: relative;
   width: 100%;
+  height: 610px;
+  overflow: hidden;
 }
 
 .picSlideBox .picSlideBig {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 20000px;
+  height: 470px;
+  margin-bottom: 20px;
 }
 
 .picSlideBox .picSlideBig li {
   float: left;
+  width: 1100px;
+  height: 470px;
+  overflow: hidden;
 }
 
 .picSlideBox .picSlideBig li img {
-  width: 100%;
+  width: auto;
+  height: 470px;
 }
+
+.picSlideBox .picSlideSmallBox {
+  position: absolute;
+  top: 490px;
+  left: 50px;
+  width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.picSlideBox .picSlideSmall {
+  width: 20000px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.picSlideBox .picSlideSmall li {
+  float: left;
+  /*width: 140px;*/
+  height: 100px;
+  margin-right: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.picSlideBox .picSlideSmall li.active {
+  border: 2px solid #fbd34b;
+}
+
+.picSlideBox .picSlideSmall li img {
+  width: auto;
+  height: 100%;
+}
+
+.picSlideBox .picSlideBtn {
+  position: absolute;
+  bottom: 57px;
+  display: block;
+  width: 60px;
+  height: 26px;
+  cursor: pointer;
+}
+
+.picSlideBox .prev {
+  left: 0;
+  background: #375b7f url(../img/details/prev.png) no-repeat center center;
+}
+
+.picSlideBox .next {
+  right: 0;
+  background: #375b7f url(../img/details/next.png) no-repeat center center;
+}
+
+.picSlideBox .prev:hover,
+.picSlideBox .next:hover {
+  background-color: #fbd34b;
+}
+
 
 /*关闭按钮*/
 
@@ -1366,106 +1449,106 @@ footer .info .info-nr p {
 
 @-webkit-keyframes closeBtnB {
   0% {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
   }
   50% {
-  -webkit-transform: rotate(-80deg);
-  -moz-transform: rotate(-80deg);
-  -o-transform: rotate(-80deg);
-  transform: rotate(-80deg);
+    -webkit-transform: rotate(-80deg);
+    -moz-transform: rotate(-80deg);
+    -o-transform: rotate(-80deg);
+    transform: rotate(-80deg);
   }
   100% {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
   }
 }
 
 @-moz-keyframes closeBtnB {
   0% {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
   }
   50% {
-  -webkit-transform: rotate(-80deg);
-  -moz-transform: rotate(-80deg);
-  -o-transform: rotate(-80deg);
-  transform: rotate(-80deg);
+    -webkit-transform: rotate(-80deg);
+    -moz-transform: rotate(-80deg);
+    -o-transform: rotate(-80deg);
+    transform: rotate(-80deg);
   }
   100% {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
   }
 }
 
 @-ms-keyframes closeBtnB {
   0% {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
   }
   50% {
-  -webkit-transform: rotate(-80deg);
-  -moz-transform: rotate(-80deg);
-  -o-transform: rotate(-80deg);
-  transform: rotate(-80deg);
+    -webkit-transform: rotate(-80deg);
+    -moz-transform: rotate(-80deg);
+    -o-transform: rotate(-80deg);
+    transform: rotate(-80deg);
   }
   100% {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
   }
 }
 
 @-o-keyframes closeBtnB {
   0% {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
   }
   50% {
-  -webkit-transform: rotate(-80deg);
-  -moz-transform: rotate(-80deg);
-  -o-transform: rotate(-80deg);
-  transform: rotate(-80deg);
+    -webkit-transform: rotate(-80deg);
+    -moz-transform: rotate(-80deg);
+    -o-transform: rotate(-80deg);
+    transform: rotate(-80deg);
   }
   100% {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
   }
 }
 
 @keyframes closeBtnB {
   0% {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
   }
   50% {
-  -webkit-transform: rotate(-80deg);
-  -moz-transform: rotate(-80deg);
-  -o-transform: rotate(-80deg);
-  transform: rotate(-80deg);
+    -webkit-transform: rotate(-80deg);
+    -moz-transform: rotate(-80deg);
+    -o-transform: rotate(-80deg);
+    transform: rotate(-80deg);
   }
   100% {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
   }
 }
 

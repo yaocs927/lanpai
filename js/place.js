@@ -9,9 +9,11 @@ $(document).ready(function () {
   $('#dailySlidePic').append(clone);
   var dailySize = $('#dailySlidePic li').size();
   var dailyPicWidth = $('.dailyPic li').outerWidth();
+
   $('.daily-slideBtn .next').on('click', function () {
     dailyNext();
   })
+
   $('.daily-slideBtn .prev').on('click', function () {
     dailyPrev();
   })
@@ -25,7 +27,7 @@ $(document).ready(function () {
       dailyIndex = 1;
     }
     $('#dailySlidePic').stop().animate({
-      'left': -dailyIndex * dailyPicWidth
+      'left': -dailyIndex * dailyPicWidth + 'px'
     }, 300)
   }
 
@@ -33,12 +35,12 @@ $(document).ready(function () {
     dailyIndex -= 1;
     if (dailyIndex == -1) {
       $('#dailySlidePic').css({
-        'left': -(dailySize - 1) * dailyPicWidth
+        'left': -((dailySize - 1) * dailyPicWidth) + 'px'
       })
       dailyIndex = dailySize - 2;
     }
     $('#dailySlidePic').stop().animate({
-      'left': -dailyIndex * dailyPicWidth
+      'left': -dailyIndex * dailyPicWidth + 'px'
     }, 300)
   }
 
@@ -50,7 +52,7 @@ $(document).ready(function () {
     })
   })
 
-  // 设置字段长度 
+  // 设置介绍字段长度 
   var maxTextWidth = 100;
   $('.introduce').each(function () {
     var curTextWidth = $(this).text().length;
@@ -67,6 +69,7 @@ $(document).ready(function () {
   $(window).scroll(function () {
     var windowHeight = $(window).height();
     var scrollHeight = $(window).scrollTop();
+
     function flyLeftAnimate(ele, hhh) {
       var eleHeight1 = $(ele).offset().top;
       if (eleHeight1 - scrollHeight < windowHeight - hhh) {
@@ -78,6 +81,7 @@ $(document).ready(function () {
         })
       }
     }
+
     function flyRightAnimate(ele, hhh) {
       var eleHeight2 = $(ele).offset().top;
       if (eleHeight2 - scrollHeight < windowHeight - hhh) {
@@ -93,12 +97,15 @@ $(document).ready(function () {
     $('.container .flyLeftAnimate').each(function () {
       flyLeftAnimate(this, 30);
     })
+
     $('.container .flyRightAnimate').each(function () {
       flyRightAnimate(this, 30);
     })
+
     $('.about-container .flyLeftAnimate').each(function () {
       flyLeftAnimate(this, 20);
     })
+
     $('.about-container .flyRightAnimate').each(function () {
       flyRightAnimate(this, 20);
     })
@@ -148,7 +155,153 @@ $(document).ready(function () {
 
   // 关闭按钮
   $('#closeBtn').on('click', function () {
-    $(this).parents('.detailCover').animate({left: '100%'}, 500)
+    $(this).parents('.detailCover').animate({
+      left: '100%'
+    }, 500)
+  })
+
+  // 详情轮播
+  var dtIndex = 1;
+  $('.picSlideSmall li').eq(0).addClass('active').siblings().removeClass('active');
+  var dtClone = $('.picSlideBig li').first().clone();
+  $('.picSlideBig').append(dtClone);
+  var dtImgSize = $('.picSlideBig li').size();
+  $('#picSlideBtnNext').on('click', function () {
+    dtIndex += 1;
+    console.log(dtIndex)
+    if (dtIndex == dtImgSize - 1) {
+      $('.picSlideBig').css('left', 0);
+      dtIndex = 1;
+    }
+    $('.picSlideBig').animate({ 'left': -dtIndex * 1100 + 'px' }, 300);
+    $('.picSlideSmall li').eq(dtIndex).addClass('active').siblings().removeClass('active');
+  })
+
+  $('#picSlideBtnPrev').on('click', function () {
+    dtIndex -= 1;
+    $('.picSlideBig').animate({ 'left': -dtIndex * 1100 + 'px' }, 300);
   })
 
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // 详情图片滚动器
+//   var dtIndex = 0; //辅助参数
+//   $('.picSlideSmall li').eq(0).addClass('active');
+//   var dtClone = $('.picSlideBig li').first().clone();
+//   $('.picSlideBig').append(dtClone);
+//   var dtSize = $('.picSlideBig li').size(); //7
+
+//   // 左右按钮点击滚动
+//   $('#picSlideBtnPrev').on('click', function () {
+//     movePrev();
+//     $('.picSlideSmall li').eq(dtIndex).addClass('active').siblings().removeClass('active');
+//   })
+
+//   $('#picSlideBtnNext').on('click', function () {
+//     moveNext();
+//   })
+
+
+//   $('.picSlideSmall li').each(function () {
+//     $(this).on('click', function () {
+//       var dtSmallIndex = $(this).index();
+//       console.log(dtSmallIndex)
+//       $(this).addClass('active').siblings().removeClass('active');
+//       dtIndex = dtSmallIndex - 1;
+//       moveNext();
+//     })
+//   })
+
+//   function movePrev() {
+//     if (dtIndex == 0) {
+//       $('.picSlideBig').css({
+//         'left': -((dtSize - 1) * 1100) + 'px'
+//       })
+//       dtIndex = dtSize - 2;
+//     } else {
+//       dtIndex -= 1;
+//     }
+//     console.log('prev:' + dtIndex);
+//     $('.picSlideBig').stop().animate({
+//       'left': -dtIndex * 1100 + 'px'
+//     }, 300)
+//   }
+
+//   function moveNext() {
+//     if (dtIndex == dtSize - 1) {
+//       $('.picSlideBig').css({ 'left': 0 })
+//       $('.picSlideSmall li').eq(0).addClass('active').siblings().removeClass('active');
+//       dtIndex = 1;
+//     }
+//     dtIndex += 1;
+//     $('.picSlideBig').stop().animate({ 'left': -dtIndex * 1100 + 'px' }, 300)
+//     $('.picSlideSmall li').eq(dtIndex).addClass('active').siblings().removeClass('active');
+//   }
