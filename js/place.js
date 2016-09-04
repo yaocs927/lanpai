@@ -161,25 +161,40 @@ $(document).ready(function () {
   })
 
   // 详情轮播
-  var dtIndex = 1;
+  var dtIndex = 0;
   $('.picSlideSmall li').eq(0).addClass('active').siblings().removeClass('active');
   var dtClone = $('.picSlideBig li').first().clone();
   $('.picSlideBig').append(dtClone);
   var dtImgSize = $('.picSlideBig li').size();
+
+  $('.picSlideSmall li').on('click', function () {
+    var dtNumIndex = $(this).index();
+    dtIndex = dtNumIndex;
+    $('.picSlideBig').animate({ 'left': -dtNumIndex * 1100 + 'px' }, 300);
+    $(this).addClass('active').siblings().removeClass('active');
+  })
+
   $('#picSlideBtnNext').on('click', function () {
     dtIndex += 1;
-    console.log(dtIndex)
-    if (dtIndex == dtImgSize - 1) {
+    if (dtIndex == dtImgSize) {
       $('.picSlideBig').css('left', 0);
       dtIndex = 1;
     }
     $('.picSlideBig').animate({ 'left': -dtIndex * 1100 + 'px' }, 300);
+    if (dtIndex == dtImgSize - 1) {
+      $('.picSlideSmall li').eq(0).addClass('active').siblings().removeClass('active');
+    }
     $('.picSlideSmall li').eq(dtIndex).addClass('active').siblings().removeClass('active');
   })
 
   $('#picSlideBtnPrev').on('click', function () {
     dtIndex -= 1;
+    if (dtIndex == -1) {
+      $('.picSlideBig').css('left', -(dtImgSize - 1) * 1100);
+      dtIndex = dtImgSize - 2;
+    }
     $('.picSlideBig').animate({ 'left': -dtIndex * 1100 + 'px' }, 300);
+    $('.picSlideSmall li').eq(dtIndex).addClass('active').siblings().removeClass('active');
   })
 
 })

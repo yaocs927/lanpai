@@ -1212,6 +1212,10 @@ footer .info .info-nr p {
 
 /*详情图片*/
 
+.detailPic {
+  margin-bottom: 40px;
+}
+
 .picSlideBox {
   position: relative;
   width: 100%;
@@ -1295,6 +1299,41 @@ footer .info .info-nr p {
 .picSlideBox .prev:hover,
 .picSlideBox .next:hover {
   background-color: #fbd34b;
+}
+
+/*详细信息介绍*/
+.detailInfo h3 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.detailInfo .detailInfoText {
+  margin-bottom: 100px;
+}
+
+.detailInfo .detailInfoText > li {
+  padding: 30px 5% 20px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #375b7f;
+  font-size: 14px;
+  color: #fff;
+}
+
+.detailInfo .detailInfoText > li span {
+  float: left;
+  /*display: inline-block;*/
+  width: 15%;
+  margin-right: 5%;
+  text-align: right;
+  font-size: 22px;
+  color: #fbd34b;
+}
+
+.detailInfo .detailInfoText > li i {
+  float: right;
+  width: 80%;
+  font-style: normal;
 }
 
 

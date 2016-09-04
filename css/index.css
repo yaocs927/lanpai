@@ -57,6 +57,10 @@
 .fullpage-ad .ad-content img.num1 {
   width: 100rem;
   margin-top: 17.5rem;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
   -webkit-animation: flyDown 1s ease-in-out 1;
   -moz-animation: flyDown 1s ease-in-out 1;
   -o-animation: flyDown 1s ease-in-out 1;
@@ -66,6 +70,10 @@
 .fullpage-ad .ad-content img.num2 {
   width: 54.5rem;
   margin-top: 6rem;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
   -webkit-animation: flyDown 1s ease-in-out .5s 1 forwards;
   -moz-animation: flyDown 1s ease-in-out .5s 1 forwards;
   -o-animation: flyDown 1s ease-in-out .5s 1 forwards;
@@ -80,6 +88,10 @@
   margin: 0 auto;
   margin-top: 10.5rem;
   background-color: #fbd34b;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
   -webkit-animation: flyDown 1s ease-in-out .3s 1 forwards;
   -moz-animation: flyDown 1s ease-in-out .3s 1 forwards;
   -o-animation: flyDown 1s ease-in-out .3s 1 forwards;
@@ -153,7 +165,7 @@
   -moz-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
-  transform: translateY(-50%);
+  transform: translateX(-50%);
 }
 
 .fullpage-ad .slidePoint li {
@@ -183,6 +195,10 @@ header .logo {
   left: 5%;
   z-index: 999;
   width: 13rem;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
 }
 
 @media only screen and (max-width: 1440px) {
