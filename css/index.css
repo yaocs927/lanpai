@@ -61,33 +61,16 @@
   -moz-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
-  -webkit-animation: flyDown 1s ease-in-out 1;
-  -moz-animation: flyDown 1s ease-in-out 1;
-  -o-animation: flyDown 1s ease-in-out 1;
-  animation: flyDown 1s ease-in-out 1;
+  -webkit-animation: flyDown 1s ease-in-out 1 forwards;
+  -moz-animation: flyDown 1s ease-in-out 1 forwards;
+  -o-animation: flyDown 1s ease-in-out 1 forwards;
+  animation: flyDown 1s ease-in-out 1 forwards;
+  opacity: 0;
 }
 
 .fullpage-ad .ad-content img.num2 {
   width: 54.5rem;
   margin-top: 6rem;
-  -webkit-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
-  -webkit-animation: flyDown 1s ease-in-out .5s 1 forwards;
-  -moz-animation: flyDown 1s ease-in-out .5s 1 forwards;
-  -o-animation: flyDown 1s ease-in-out .5s 1 forwards;
-  animation: flyDown 1s ease-in-out .5s 1 forwards;
-  opacity: 0;
-}
-
-.fullpage-ad .ad-content span {
-  display: block;
-  width: 18rem;
-  height: 0.83rem;
-  margin: 0 auto;
-  margin-top: 10.5rem;
-  background-color: #fbd34b;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
@@ -99,17 +82,33 @@
   opacity: 0;
 }
 
+.fullpage-ad .ad-content span {
+  display: block;
+  width: 18rem;
+  height: 0.5rem;
+  margin: 10.5rem auto 0;
+  background-color: #fbd34b;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+  -webkit-animation: flyDown 1s ease-in-out .2s 1 forwards;
+  -moz-animation: flyDown 1s ease-in-out .2s 1 forwards;
+  -o-animation: flyDown 1s ease-in-out .2s 1 forwards;
+  animation: flyDown 1s ease-in-out .2s 1 forwards;
+  opacity: 0;
+}
+
 @media only screen and (max-width: 1440px) {
   .fullpage-ad .ad-content img.num1 {
     width: 70rem;
-    /*margin-top: 11rem;*/
   }
   .fullpage-ad .ad-content img.num2 {
     width: 38rem;
     margin-top: 4rem;
   }
   .fullpage-ad .ad-content span {
-    height: 0.5rem;
+    height: 0.3rem;
     margin-top: 7rem;
   }
 }
@@ -207,7 +206,6 @@
   float: left;
   width: 200px;
   height: 300px;
-  /*overflow: hidden;*/
   margin-right: 20px;
   border: 3px solid #3a5977;
   box-shadow: 0 0 20px rgba(0, 0, 0, .7);
@@ -353,17 +351,11 @@ header .logo {
   top: 5%;
   left: 5%;
   z-index: 999;
-  width: 13rem;
+  width: 9rem;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
-}
-
-@media only screen and (max-width: 1440px) {
-  header .logo {
-    width: 9.1rem;
-  }
 }
 
 header nav {
@@ -829,14 +821,17 @@ footer p {
 /*详情图片*/
 
 .picSlideBox {
-  position: absolute;
+  /*position: absolute;
   left: 50%;
   top: 53%;
-  border: 6px solid #fbd34b;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);*/
 }
 
 .picSlideBox .picSlideBig {
+  /*position: absolute;*/
+  /*left: 50%;*/
+  /*top: 53%;*/
+  /*transform: translate(-50%, -50%);*/
   /*min-width: 200px;*/
   /*height: auto;*/
   max-width: 1200px;
@@ -845,21 +840,23 @@ footer p {
 
 .picSlideBox .picSlideBig li {
   display: none;
-  /*position: absolute;
-  left: 0;
-  top: 0;*/
-  max-width: 1200px;
-  max-height: 500px;
+  position: absolute;
+  left: 50%;
+  top: 53%;
+  transform: translate(-50%, -50%);
+  /*max-width: 1200px;*/
+  /*max-height: 500px;*/
 }
 
 .picSlideBox .picSlideBig li img {
   width: auto;
   max-height: 500px;
+  border: 6px solid #fbd34b;
 }
 
 .picSlideBox .picSlideSmallBox {
   position: absolute;
-  left: 0;
+  left: 50%;
   bottom: 0;
   width: 50px;
   height: 26px;
@@ -868,6 +865,7 @@ footer p {
   text-align: center;
   line-height: 26px;
   color: #fff;
+  transform: translateX(-50%)
 }
 
 .picSlideBox .picSlideSmallBox span {
@@ -885,13 +883,15 @@ footer p {
 }
 
 .picSlideBox .prev {
-  right: 50px;
+  left: 50%;
   background: rgba(55, 91, 127, .7) url(../img/details/prev.png) no-repeat center center;
+  margin-left: -75px;
 }
 
 .picSlideBox .next {
-  right: 0;
+  left: 50%;
   background: rgba(55, 91, 127, .7) url(../img/details/next.png) no-repeat center center;
+  margin-left: 25px;
 }
 
 .picSlideBox .prev:hover,
@@ -1154,31 +1154,4 @@ footer p {
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
   }
-}
-
-
-/*测试页面*/
-
-.testcover {
-  position: fixed;
-  z-index: 9999;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 0, 0, .5);
-}
-
-.testcover .content {
-  position: relative;
-  left: 50%;
-  top: 50%;
-  /*width: 200px;
-  height: 200px;*/
-  background-color: green;
-  transform: translate(-50%, -50%);
-}
-
-.testcover .content .picSlideBig,
-.testcover .content .picSlideSmallBox,
-.testcover .content .picSlideBtn {
-  position: absolute;
 }
