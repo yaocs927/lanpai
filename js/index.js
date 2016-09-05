@@ -39,7 +39,15 @@ $(document).ready(function () {
     })
   })
 
-  timer = setInterval(function () {
+  timer = setInterval(autoGo, 4000);
+  $('.slideBtn').hover(function () {
+    clearInterval(timer);
+  }, function () {
+    timer = setInterval(autoGo, 4000);
+  })
+
+  // 自动播放
+  function autoGo() {
     if (curIndex == 3) {
       curIndex = 1;
     } else {
@@ -47,7 +55,7 @@ $(document).ready(function () {
     }
     $('#slideAd li').eq(curIndex - 1).stop().fadeIn(800).siblings().stop().fadeOut(800);
     $('#slidePoint li').eq(curIndex - 1).addClass('active').siblings().removeClass('active');
-  }, 4000)
+  }
 
   // 显示二维码
   var stickH = $('.stick').outerHeight();
@@ -58,6 +66,14 @@ $(document).ready(function () {
     $('.erweima').show();
   }, function () {
     $('.erweima').fadeOut(150);
+  })
+
+
+  // 相册页面
+  $('.photoList li').hover(function () {
+    $(this).find('span').stop().fadeIn(300);
+  }, function () {;
+    $(this).find('span').stop().fadeOut(300);
   })
 
 })

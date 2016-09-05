@@ -67,8 +67,15 @@ $(document).ready(function () {
 
   // 页面滚动内容飞入
   $(window).scroll(function () {
-    var windowHeight = $(window).height();
-    var scrollHeight = $(window).scrollTop();
+    var windowHeight = $(this).height();
+    var scrollHeight = $(this).scrollTop();
+
+    // 回到顶部按钮出现
+    if (scrollHeight >= 200) {
+      $('.stick .backtop').slideDown();
+    } else {
+      $('.stick .backtop').slideUp();
+    }
 
     function flyLeftAnimate(ele, hhh) {
       var eleHeight1 = $(ele).offset().top;
@@ -111,12 +118,9 @@ $(document).ready(function () {
     })
 
 
-    // 回到顶部按钮出现
-    if (scrollHeight > windowHeight - 100) {
-      $('.stick .backtop').slideDown();
-    } else {
-      $('.stick .backtop').slideUp();
-    }
+
+
+    // $('.detailCover').css('top', 0 - scrollHeight + 'px');
 
   })
 
@@ -125,9 +129,7 @@ $(document).ready(function () {
   // 回到顶部
   // =================
   $('.stick .backtop').on('click', function () {
-    $('body').animate({
-      scrollTop: 0
-    }, 300);
+    $('body').animate({ scrollTop: 0 }, 300);
     return false;
   })
 
@@ -147,17 +149,17 @@ $(document).ready(function () {
   // =================
 
   // 详情弹出
-  // $('.detailBtn').each(function () {
-  //   $(this).on('click', function () {
-  //     $('.detailCover').animate({ left: 0}, 500);
-  //   })
-  // })
+  $('.detailBtn').each(function () {
+    $(this).on('click', function () {
+      $('.detailCover').animate({ left: 0 }, 500);
+      $('body').css('overflow-y', 'hidden');
+    })
+  })
 
   // 关闭按钮
   $('#closeBtn').on('click', function () {
-    $(this).parents('.detailCover').animate({
-      left: '100%'
-    }, 500)
+    $(this).parents('.detailCover').animate({ left: '100%' }, 500);
+    $('body').css('overflow-y', 'auto');
   })
 
   // 详情轮播
@@ -166,13 +168,8 @@ $(document).ready(function () {
   var dtClone = $('.picSlideBig li').first().clone();
   $('.picSlideBig').append(dtClone);
   var dtImgSize = $('.picSlideBig li').size();
-
-  $('.picSlideSmall li').on('click', function () {
-    var dtNumIndex = $(this).index();
-    dtIndex = dtNumIndex;
-    $('.picSlideBig').animate({ 'left': -dtNumIndex * 1100 + 'px' }, 300);
-    $(this).addClass('active').siblings().removeClass('active');
-  })
+  $('.totalNum').text(dtImgSize - 1);
+  $('.curNum').text('1');
 
   $('#picSlideBtnNext').on('click', function () {
     dtIndex += 1;
@@ -180,11 +177,11 @@ $(document).ready(function () {
       $('.picSlideBig').css('left', 0);
       dtIndex = 1;
     }
-    $('.picSlideBig').animate({ 'left': -dtIndex * 1100 + 'px' }, 300);
+    $('.curNum').text(dtIndex + 1);
+    $('.picSlideBig').stop().animate({ 'left': -dtIndex * 1100 + 'px' }, 300);
     if (dtIndex == dtImgSize - 1) {
-      $('.picSlideSmall li').eq(0).addClass('active').siblings().removeClass('active');
+      $('.curNum').text('1');
     }
-    $('.picSlideSmall li').eq(dtIndex).addClass('active').siblings().removeClass('active');
   })
 
   $('#picSlideBtnPrev').on('click', function () {
@@ -193,8 +190,8 @@ $(document).ready(function () {
       $('.picSlideBig').css('left', -(dtImgSize - 1) * 1100);
       dtIndex = dtImgSize - 2;
     }
-    $('.picSlideBig').animate({ 'left': -dtIndex * 1100 + 'px' }, 300);
-    $('.picSlideSmall li').eq(dtIndex).addClass('active').siblings().removeClass('active');
+    $('.curNum').text(dtIndex + 1);
+    $('.picSlideBig').stop().animate({ 'left': -dtIndex * 1100 + 'px' }, 300);
   })
 
 })

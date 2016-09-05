@@ -790,11 +790,19 @@ footer .info .info-nr p {
   margin-top: 5px;
   background-color: #fbd34b;
   border-radius: 4px 0 0 3px;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.stick li a {
   line-height: 4rem;
   font-size: 14px;
-  text-align: center;
   color: #fff;
-  cursor: pointer;
+  text-decoration: none;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
@@ -819,7 +827,7 @@ footer .info .info-nr p {
   display: none;
 }
 
-.stick .backtop:hover {
+.stick .backtop:hover a {
   color: #00233d;
 }
 
@@ -1167,12 +1175,14 @@ footer .info .info-nr p {
 */
 
 .detailCover {
-  position: absolute;
+  /*display: none;*/
+  position: fixed;
   top: 0;
-  left: 0;
+  left: 100%;
   z-index: 9999;
   width: 100%;
   height: auto;
+  overflow-y: scroll;
   padding-bottom: 100px;
   background-color: rgba(1, 8, 24, .8);
 }
@@ -1199,7 +1209,7 @@ footer .info .info-nr p {
 }
 
 .detailCover .detailContent h2 {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   font-size: 24px;
   font-weight: 400;
   color: #fff;
@@ -1219,7 +1229,7 @@ footer .info .info-nr p {
 .picSlideBox {
   position: relative;
   width: 100%;
-  height: 610px;
+  height: 470px;
   overflow: hidden;
 }
 
@@ -1246,54 +1256,39 @@ footer .info .info-nr p {
 
 .picSlideBox .picSlideSmallBox {
   position: absolute;
-  top: 490px;
-  left: 50px;
-  width: 1000px;
-  margin: 0 auto;
-  overflow: hidden;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 26px;
+  background-color: rgba(55, 91, 127, .7);
+  font-size: 14px;
+  text-align: center;
+  line-height: 26px;
+  color: #fff;
 }
 
-.picSlideBox .picSlideSmall {
-  width: 20000px;
-  height: 100px;
-  margin-bottom: 20px;
-}
-
-.picSlideBox .picSlideSmall li {
-  float: left;
-  /*width: 140px;*/
-  height: 100px;
-  margin-right: 10px;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.picSlideBox .picSlideSmall li.active {
-  border: 2px solid #fbd34b;
-}
-
-.picSlideBox .picSlideSmall li img {
-  width: auto;
-  height: 100%;
+.picSlideBox .picSlideSmallBox span {
+  margin: 0 3px;
 }
 
 .picSlideBox .picSlideBtn {
   position: absolute;
-  bottom: 57px;
+  bottom: 0;
   display: block;
-  width: 60px;
+  width: 50px;
   height: 26px;
   cursor: pointer;
+  transition: all .2s ease-in-out;
 }
 
 .picSlideBox .prev {
-  left: 0;
-  background: #375b7f url(../img/details/prev.png) no-repeat center center;
+  right: 50px;
+  background: rgba(55, 91, 127, .7) url(../img/details/prev.png) no-repeat center center;
 }
 
 .picSlideBox .next {
   right: 0;
-  background: #375b7f url(../img/details/next.png) no-repeat center center;
+  background: rgba(55, 91, 127, .7) url(../img/details/next.png) no-repeat center center;
 }
 
 .picSlideBox .prev:hover,
@@ -1301,7 +1296,9 @@ footer .info .info-nr p {
   background-color: #fbd34b;
 }
 
+
 /*详细信息介绍*/
+
 .detailInfo h3 {
   font-size: 16px;
   font-weight: 400;
@@ -1312,7 +1309,7 @@ footer .info .info-nr p {
   margin-bottom: 100px;
 }
 
-.detailInfo .detailInfoText > li {
+.detailInfo .detailInfoText> li {
   padding: 30px 5% 20px;
   margin-bottom: 10px;
   border-bottom: 1px solid #375b7f;
@@ -1320,7 +1317,7 @@ footer .info .info-nr p {
   color: #fff;
 }
 
-.detailInfo .detailInfoText > li span {
+.detailInfo .detailInfoText> li span {
   float: left;
   /*display: inline-block;*/
   width: 15%;
@@ -1330,7 +1327,7 @@ footer .info .info-nr p {
   color: #fbd34b;
 }
 
-.detailInfo .detailInfoText > li i {
+.detailInfo .detailInfoText> li i {
   float: right;
   width: 80%;
   font-style: normal;
