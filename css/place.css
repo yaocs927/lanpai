@@ -120,20 +120,22 @@
 
 .topBox .slogan .sloganPic {
   width: 34.5rem;
-  -webkit-animation: flyLeftAnimate 1s ease-in-out 1;
-  -moz-animation: flyLeftAnimate 1s ease-in-out 1;
-  -o-animation: flyLeftAnimate 1s ease-in-out 1;
-  animation: flyLeftAnimate 1s ease-in-out 1;
+  -webkit-animation: flyLeftAnimate .5s ease-in-out 1 forwards;
+  -moz-animation: flyLeftAnimate .5s ease-in-out 1 forwards;
+  -o-animation: flyLeftAnimate .5s ease-in-out 1 forwards;
+  animation: flyLeftAnimate .5s ease-in-out 1 forwards;
+  opacity: 0;
 }
 
 .topBox .slogan .slogan-nr {
   margin-top: 30%;
   font-size: 2.5rem;
   color: #fff;
-  -webkit-animation: flyLeftAnimate 1.2s ease-in-out 1;
-  -moz-animation: flyLeftAnimate 1.2s ease-in-out 1;
-  -o-animation: flyLeftAnimate 1.2s ease-in-out 1;
-  animation: flyLeftAnimate 1.2s ease-in-out 1;
+  -webkit-animation: flyLeftAnimate .8s ease-in-out 1 forwards;
+  -moz-animation: flyLeftAnimate .8s ease-in-out 1 forwards;
+  -o-animation: flyLeftAnimate .8s ease-in-out 1 forwards;
+  animation: flyLeftAnimate .8s ease-in-out 1 forwards;
+  opacity: 0;
 }
 
 .topBox .slogan .strip {
@@ -141,10 +143,11 @@
   height: 0.83rem;
   margin-top: 10%;
   background-color: #fbd34b;
-  -webkit-animation: flyLeftAnimate 1.4s ease-in-out 1;
-  -moz-animation: flyLeftAnimate 1.4s ease-in-out 1;
-  -o-animation: flyLeftAnimate 1.4s ease-in-out 1;
-  animation: flyLeftAnimate 1.4s ease-in-out 1;
+  -webkit-animation: flyLeftAnimate 1s ease-in-out 1 forwards;
+  -moz-animation: flyLeftAnimate 1s ease-in-out 1 forwards;
+  -o-animation: flyLeftAnimate 1s ease-in-out 1 forwards;
+  animation: flyLeftAnimate 1s ease-in-out 1 forwards;
+  opacity: 0;
 }
 
 @media only screen and (max-width: 1440px) {
@@ -179,10 +182,11 @@
   -moz-transition: all .3s ease-in-out;
   -o-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
-  -webkit-animation: flyRightAnimate 1s ease-in-out 1;
-  -moz-animation: flyRightAnimate 1s ease-in-out 1;
-  -o-animation: flyRightAnimate 1s ease-in-out 1;
-  animation: flyRightAnimate 1s ease-in-out 1;
+  -webkit-animation: flyRightAnimate .5s ease-in-out 1 forwards;
+  -moz-animation: flyRightAnimate .5s ease-in-out 1 forwards;
+  -o-animation: flyRightAnimate .5s ease-in-out 1 forwards;
+  animation: flyRightAnimate .5s ease-in-out 1 forwards;
+  opacity: 0;
 }
 
 .daily .dailyPic {
@@ -197,10 +201,11 @@
   -moz-transition: all .3s ease-in-out;
   -o-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
-  -webkit-animation: flyRightAnimate 1.1s ease-in-out 1;
-  -moz-animation: flyRightAnimate 1.1s ease-in-out 1;
-  -o-animation: flyRightAnimate 1.1s ease-in-out 1;
-  animation: flyRightAnimate 1.1s ease-in-out 1;
+  -webkit-animation: flyRightAnimate .6s ease-in-out 1 forwards;
+  -moz-animation: flyRightAnimate .6s ease-in-out 1 forwards;
+  -o-animation: flyRightAnimate .6s ease-in-out 1 forwards;
+  animation: flyRightAnimate .6s ease-in-out 1 forwards;
+  opacity: 0;
 }
 
 .daily .dailyPic ul {
@@ -263,10 +268,11 @@
   -moz-transition: all .3s ease-in-out;
   -o-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
-  -webkit-animation: flyRightAnimate 1.2s ease-in-out 1;
-  -moz-animation: flyRightAnimate 1.2s ease-in-out 1;
-  -o-animation: flyRightAnimate 1.2s ease-in-out 1;
-  animation: flyRightAnimate 1.2s ease-in-out 1;
+  -webkit-animation: flyRightAnimate .7s ease-in-out 1 forwards;
+  -moz-animation: flyRightAnimate .7s ease-in-out 1 forwards;
+  -o-animation: flyRightAnimate .7s ease-in-out 1 forwards;
+  animation: flyRightAnimate .7s ease-in-out 1 forwards;
+  opacity: 0;
 }
 
 .daily h1 {
@@ -306,31 +312,35 @@
 }
 
 .daily h1 {
-  -webkit-animation: flyRightAnimate 1.2s ease-in-out 1;
-  -moz-animation: flyRightAnimate 1.2s ease-in-out 1;
-  -o-animation: flyRightAnimate 1.2s ease-in-out 1;
-  animation: flyRightAnimate 1.2s ease-in-out 1;
+  -webkit-animation: flyRightAnimate .7s ease-in-out 1 forwards;
+  -moz-animation: flyRightAnimate .7s ease-in-out 1 forwards;
+  -o-animation: flyRightAnimate .7s ease-in-out 1 forwards;
+  animation: flyRightAnimate .7s ease-in-out 1 forwards;
+  opacity: 0;
 }
 
 .daily .dailyStrip {
-  -webkit-animation: flyRightAnimate 1.3s ease-in-out 1;
-  -moz-animation: flyRightAnimate 1.3s ease-in-out 1;
-  -o-animation: flyRightAnimate 1.3s ease-in-out 1;
-  animation: flyRightAnimate 1.3s ease-in-out 1;
+  -webkit-animation: flyRightAnimate .8s ease-in-out 1 forwards;
+  -moz-animation: flyRightAnimate .8s ease-in-out 1 forwards;
+  -o-animation: flyRightAnimate .8s ease-in-out 1 forwards;
+  animation: flyRightAnimate .8s ease-in-out 1 forwards;
+  opacity: 0;
 }
 
 .daily .dailyContent {
-  -webkit-animation: flyRightAnimate 1.4s ease-in-out 1;
-  -moz-animation: flyRightAnimate 1.4s ease-in-out 1;
-  -o-animation: flyRightAnimate 1.4s ease-in-out 1;
-  animation: flyRightAnimate 1.4s ease-in-out 1;
+  -webkit-animation: flyRightAnimate .9s ease-in-out 1 forwards;
+  -moz-animation: flyRightAnimate .9s ease-in-out 1 forwards;
+  -o-animation: flyRightAnimate .9s ease-in-out 1 forwards;
+  animation: flyRightAnimate .9s ease-in-out 1 forwards;
+  opacity: 0;
 }
 
 .daily .dailyDetailBtn {
-  -webkit-animation: flyRightAnimate 1.5s ease-in-out 1;
-  -moz-animation: flyRightAnimate 1.5s ease-in-out 1;
-  -o-animation: flyRightAnimate 1.5s ease-in-out 1;
-  animation: flyRightAnimate 1.5s ease-in-out 1;
+  -webkit-animation: flyRightAnimate 1s ease-in-out 1 forwards;
+  -moz-animation: flyRightAnimate 1s ease-in-out 1 forwards;
+  -o-animation: flyRightAnimate 1s ease-in-out 1 forwards;
+  animation: flyRightAnimate 1s ease-in-out 1 forwards;
+  opacity: 0;
 }
 
 .detailBtn {
@@ -542,11 +552,7 @@
   position: relative;
   float: left;
   width: 10%;
-  -webkit-transform: translateX(-500px);
-  -moz-transform: translateX(-500px);
-  -ms-transform: translateX(-500px);
-  -o-transform: translateX(-500px);
-  transform: translateX(-500px);
+  opacity: 0;
 }
 
 .typeList .typeList-title h2 {
@@ -589,11 +595,7 @@
 .typeList .colList {
   float: right;
   width: 90%;
-  -webkit-transform: translateX(2000px);
-  -moz-transform: translateX(2000px);
-  -ms-transform: translateX(2000px);
-  -o-transform: translateX(2000px);
-  transform: translateX(2000px);
+  opacity: 0;
 }
 
 .typeList .colList .left {
@@ -976,11 +978,11 @@ footer .info .info-nr p {
 
 @-webkit-keyframes flyLeftAnimate {
   0% {
-    -webkit-transform: translateX(-2000px);
-    -moz-transform: translateX(-2000px);
-    -ms-transform: translateX(-2000px);
-    -o-transform: translateX(-2000px);
-    transform: translateX(-2000px);
+    -webkit-transform: translateX(-200px);
+    -moz-transform: translateX(-200px);
+    -ms-transform: translateX(-200px);
+    -o-transform: translateX(-200px);
+    transform: translateX(-200px);
     opacity: 0;
   }
   100% {
@@ -995,11 +997,11 @@ footer .info .info-nr p {
 
 @-moz-keyframes flyLeftAnimate {
   0% {
-    -webkit-transform: translateX(-2000px);
-    -moz-transform: translateX(-2000px);
-    -ms-transform: translateX(-2000px);
-    -o-transform: translateX(-2000px);
-    transform: translateX(-2000px);
+    -webkit-transform: translateX(-200px);
+    -moz-transform: translateX(-200px);
+    -ms-transform: translateX(-200px);
+    -o-transform: translateX(-200px);
+    transform: translateX(-200px);
     opacity: 0;
   }
   100% {
@@ -1014,11 +1016,11 @@ footer .info .info-nr p {
 
 @-ms-keyframes flyLeftAnimate {
   0% {
-    -webkit-transform: translateX(-2000px);
-    -moz-transform: translateX(-2000px);
-    -ms-transform: translateX(-2000px);
-    -o-transform: translateX(-2000px);
-    transform: translateX(-2000px);
+    -webkit-transform: translateX(-200px);
+    -moz-transform: translateX(-200px);
+    -ms-transform: translateX(-200px);
+    -o-transform: translateX(-200px);
+    transform: translateX(-200px);
     opacity: 0;
   }
   100% {
@@ -1033,11 +1035,11 @@ footer .info .info-nr p {
 
 @-o-keyframes flyLeftAnimate {
   0% {
-    -webkit-transform: translateX(-2000px);
-    -moz-transform: translateX(-2000px);
-    -ms-transform: translateX(-2000px);
-    -o-transform: translateX(-2000px);
-    transform: translateX(-2000px);
+    -webkit-transform: translateX(-200px);
+    -moz-transform: translateX(-200px);
+    -ms-transform: translateX(-200px);
+    -o-transform: translateX(-200px);
+    transform: translateX(-200px);
     opacity: 0;
   }
   100% {
@@ -1052,11 +1054,11 @@ footer .info .info-nr p {
 
 @keyframes flyLeftAnimate {
   0% {
-    -webkit-transform: translateX(-2000px);
-    -moz-transform: translateX(-2000px);
-    -ms-transform: translateX(-2000px);
-    -o-transform: translateX(-2000px);
-    transform: translateX(-2000px);
+    -webkit-transform: translateX(-200px);
+    -moz-transform: translateX(-200px);
+    -ms-transform: translateX(-200px);
+    -o-transform: translateX(-200px);
+    transform: translateX(-200px);
     opacity: 0;
   }
   100% {
@@ -1074,11 +1076,11 @@ footer .info .info-nr p {
 
 @-webkit-keyframes flyRightAnimate {
   0% {
-    -webkit-transform: translateX(2000px);
-    -moz-transform: translateX(2000px);
-    -ms-transform: translateX(2000px);
-    -o-transform: translateX(2000px);
-    transform: translateX(2000px);
+    -webkit-transform: translateX(200px);
+    -moz-transform: translateX(200px);
+    -ms-transform: translateX(200px);
+    -o-transform: translateX(200px);
+    transform: translateX(200px);
     opacity: 0;
   }
   100% {
@@ -1093,11 +1095,11 @@ footer .info .info-nr p {
 
 @-moz-keyframes flyRightAnimate {
   0% {
-    -webkit-transform: translateX(2000px);
-    -moz-transform: translateX(2000px);
-    -ms-transform: translateX(2000px);
-    -o-transform: translateX(2000px);
-    transform: translateX(2000px);
+    -webkit-transform: translateX(200px);
+    -moz-transform: translateX(200px);
+    -ms-transform: translateX(200px);
+    -o-transform: translateX(200px);
+    transform: translateX(200px);
     opacity: 0;
   }
   100% {
@@ -1112,11 +1114,11 @@ footer .info .info-nr p {
 
 @-ms-keyframes flyRightAnimate {
   0% {
-    -webkit-transform: translateX(2000px);
-    -moz-transform: translateX(2000px);
-    -ms-transform: translateX(2000px);
-    -o-transform: translateX(2000px);
-    transform: translateX(2000px);
+    -webkit-transform: translateX(200px);
+    -moz-transform: translateX(200px);
+    -ms-transform: translateX(200px);
+    -o-transform: translateX(200px);
+    transform: translateX(200px);
     opacity: 0;
   }
   100% {
@@ -1131,11 +1133,11 @@ footer .info .info-nr p {
 
 @-o-keyframes flyRightAnimate {
   0% {
-    -webkit-transform: translateX(2000px);
-    -moz-transform: translateX(2000px);
-    -ms-transform: translateX(2000px);
-    -o-transform: translateX(2000px);
-    transform: translateX(2000px);
+    -webkit-transform: translateX(200px);
+    -moz-transform: translateX(200px);
+    -ms-transform: translateX(200px);
+    -o-transform: translateX(200px);
+    transform: translateX(200px);
     opacity: 0;
   }
   100% {
@@ -1150,11 +1152,11 @@ footer .info .info-nr p {
 
 @keyframes flyRightAnimate {
   0% {
-    -webkit-transform: translateX(2000px);
-    -moz-transform: translateX(2000px);
-    -ms-transform: translateX(2000px);
-    -o-transform: translateX(2000px);
-    transform: translateX(2000px);
+    -webkit-transform: translateX(200px);
+    -moz-transform: translateX(200px);
+    -ms-transform: translateX(200px);
+    -o-transform: translateX(200px);
+    transform: translateX(200px);
     opacity: 0;
   }
   100% {
@@ -1338,6 +1340,7 @@ footer .info .info-nr p {
 
 .closeBtn {
   position: relative;
+  top: 6px;
   width: 24px;
   height: 24px;
   cursor: pointer;
@@ -1605,10 +1608,10 @@ footer .info .info-nr p {
   z-index: 11;
   width: 34.4rem;
   opacity: 0;
-  -webkit-animation: scaleDown .5s ease-in-out .7s 1 forwards;
-  -moz-animation: scaleDown .5s ease-in-out .7s 1 forwards;
-  -o-animation: scaleDown .5s ease-in-out .7s 1 forwards;
-  animation: scaleDown .5s ease-in-out .7s 1 forwards;
+  -webkit-animation: scaleDown .5s ease-in-out .2s 1 forwards;
+  -moz-animation: scaleDown .5s ease-in-out .2s 1 forwards;
+  -o-animation: scaleDown .5s ease-in-out .2s 1 forwards;
+  animation: scaleDown .5s ease-in-out .2s 1 forwards;
 }
 
 .topBox .aboutTop-bigSlogan span {
@@ -1628,10 +1631,11 @@ footer .info .info-nr p {
   left: 5%;
   font-size: 2.5rem;
   color: #fff;
-  -webkit-animation: flyRightAnimate 1s ease-in-out 1;
-  -moz-animation: flyRightAnimate 1s ease-in-out 1;
-  -o-animation: flyRightAnimate 1s ease-in-out 1;
-  animation: flyRightAnimate 1s ease-in-out 1;
+  -webkit-animation: flyRightAnimate .7s ease-in-out 1 forwards;
+  -moz-animation: flyRightAnimate .7s ease-in-out 1 forwards;
+  -o-animation: flyRightAnimate .7s ease-in-out 1 forwards;
+  animation: flyRightAnimate .7s ease-in-out 1 forwards;
+  opacity: 0;
 }
 
 .topBox .aboutTop-rightSlogan {
@@ -1640,10 +1644,11 @@ footer .info .info-nr p {
   right: 5%;
   font-size: 2.5rem;
   color: #fff;
-  -webkit-animation: flyLeftAnimate 1s ease-in-out 1;
-  -moz-animation: flyLeftAnimate 1s ease-in-out 1;
-  -o-animation: flyLeftAnimate 1s ease-in-out 1;
-  animation: flyLeftAnimate 1s ease-in-out 1;
+  -webkit-animation: flyLeftAnimate .7s ease-in-out 1 forwards;
+  -moz-animation: flyLeftAnimate .7s ease-in-out 1 forwards;
+  -o-animation: flyLeftAnimate .7s ease-in-out 1 forwards;
+  animation: flyLeftAnimate .7s ease-in-out 1 forwards;
+  opacity: 0;
 }
 
 .topBox .aboutTop-bigSlogan img,
