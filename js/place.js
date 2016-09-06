@@ -65,7 +65,7 @@ $(document).ready(function () {
   // 设置分类标题高度 
   $('.typeList-title').height($('.colList .product').height());
 
-  // 页面滚动内容飞入
+
   $(window).scroll(function () {
     var windowHeight = $(this).height();
     var scrollHeight = $(this).scrollTop();
@@ -77,6 +77,7 @@ $(document).ready(function () {
       $('.stick .backtop').slideUp();
     }
 
+    // 页面滚动内容飞入
     function flyLeftAnimate(ele, hhh) {
       var eleHeight1 = $(ele).offset().top;
       if (eleHeight1 - scrollHeight < windowHeight - hhh) {
@@ -119,8 +120,8 @@ $(document).ready(function () {
 
 
 
-
-    // $('.detailCover').css('top', 0 - scrollHeight + 'px');
+    // 设置弹出框在当前窗口顶部开始
+    $('.detailCover').css('top', scrollHeight + 'px');
 
   })
 
@@ -151,14 +152,14 @@ $(document).ready(function () {
   // 详情弹出
   $('.detailBtn').each(function () {
     $(this).on('click', function () {
-      $('.detailCover').animate({ left: 0 }, 500);
+      $('.detailCover').stop().animate({ left: 0 }, 500).show();
       $('body').css('overflow-y', 'hidden');
     })
   })
 
   // 关闭按钮
   $('#closeBtn').on('click', function () {
-    $(this).parents('.detailCover').animate({ left: '100%' }, 500);
+    $(this).parents('.detailCover').stop().animate({ left: '100%' }, 500).hide(500);
     $('body').css('overflow-y', 'auto');
   })
 

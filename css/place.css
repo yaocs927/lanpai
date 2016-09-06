@@ -156,7 +156,7 @@
   opacity: 0;
 }
 
-@media only screen and (max-width: 1440px) {
+@media only screen and (max-width: 1441px) {
   .topBox .slogan .sloganPic {
     width: 24rem;
   }
@@ -166,6 +166,14 @@
   .topBox .slogan .strip {
     width: 12.5rem;
     height: 0.3rem;
+  }
+}
+
+@media only screen and (max-width: 1040px) {
+  .topBox .slogan .sloganPic,
+  .topBox .slogan .slogan-nr,
+  .topBox .slogan .strip {
+    display: none;
   }
 }
 
@@ -414,7 +422,7 @@
   width: 100px;
 }
 
-@media only screen and (max-width: 1440px) {
+@media only screen and (max-width: 1441px) {
   .daily {
     width: 56rem;
     height: 26rem;
@@ -448,6 +456,13 @@
   }
   .daily .daily-slideBtn .next {
     background-position: -6px 7px;
+  }
+}
+
+@media only screen and (max-width: 1040px) {
+  .daily {
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
@@ -595,7 +610,7 @@
   transition: all .3s ease-in-out;
 }
 
-@media only screen and (max-width: 1440px) {
+@media only screen and (max-width: 1441px) {
   .typeList {
     width: 90%;
   }
@@ -610,6 +625,12 @@
     width: 2rem;
     height: 0.17rem;
     margin-top: 0.33rem;
+  }
+}
+
+@media only screen and (max-width: 1040px) {
+  .typeList .typeList-title {
+    display: none;
   }
 }
 
@@ -669,7 +690,6 @@
 .typeList .colList .product .product-content h3 {
   margin: 5px 0 15px;
   font-size: 20px;
-  /*font-size: 14px;*/
   line-height: 3;
   color: #fff;
 }
@@ -697,9 +717,12 @@
   left: 60%;
 }
 
-@media only screen and (max-width: 1440px) {
+@media only screen and (max-width: 1441px) {
+  .typeList {
+    min-width: 85rem;
+  }
   .typeList .colList {
-    width: 100rem;
+    width: 90rem;
   }
   .typeList .colList .product {
     width: 42rem;
@@ -714,6 +737,41 @@
   }
   .typeList .colList .product .product-content h3 {
     font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 1040px) {
+  .typeList .colList {
+    float: none;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .typeList .colList .product {
+    width: 36rem;
+    height: 21rem;
+  }
+  .typeList .colList .product .product-content h3 {
+    margin-bottom: 10px;
+    line-height: 2;
+  }
+}
+
+@media only screen and (max-width: 769px) {
+  .typeList .colList {
+    width: 70rem;
+  }
+  .typeList .colList .left {
+    float: none;
+    margin-left: 0;
+  }
+  .typeList .colList .product {
+    width: 50rem;
+    height: 26rem;
+    /*margin: 0 auto;*/
+  }
+  .typeList .colList .product .product-content h3 {
+    margin-bottom: 15px;
+    line-height: 3;
   }
 }
 
@@ -1205,13 +1263,13 @@ footer .info .info-nr p {
 */
 
 .detailCover {
-  /*display: none;*/
-  position: fixed;
+  display: none;
+  position: absolute;
   top: 0;
   left: 100%;
   z-index: 9999;
   width: 100%;
-  height: auto;
+  height: 100%;
   overflow-y: scroll;
   padding-bottom: 100px;
   background-color: rgba(1, 8, 24, .8);
@@ -1232,7 +1290,7 @@ footer .info .info-nr p {
   margin: 0 auto;
 }
 
-@media only screen and (max-width: 1440px) {
+@media only screen and (max-width: 1441px) {
   .detailCover .detailContent .comWidth {
     width: 1100px;
   }
@@ -1710,7 +1768,7 @@ footer .info .info-nr p {
   transform: translateX(-50%);
 }
 
-@media only screen and (max-width: 1440px) {
+@media only screen and (max-width: 1441px) {
   .topBox .aboutTop-bigSlogan {
     width: 24.1rem;
   }
@@ -1900,7 +1958,7 @@ footer .info .info-nr p {
   color: #fff;
 }
 
-@media only screen and (max-width: 1440px) {
+@media only screen and (max-width: 1441px) {
   .about-container {
     width: 1000px;
   }
