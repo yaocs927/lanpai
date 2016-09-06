@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+/*CSS document*/
+
+body {
+  min-width: 1000px;
+  padding-top: 70px;
+  font-family: Arial, "Microsoft Yahei";
+}
+
+/*.lp-admin .navbar {
+  background-color: #3c8dbc;
+}
+
+.lp-admin .navbar li a,
+.lp-admin .navbar li a:hover,
+.lp-admin .navbar-brand,
+.lp-admin .navbar-brand:hover,
+.lp-admin .navbar p {
+  color: #fff;
+}
+
+.lp-admin .navbar li a:hover {
+  background-color: #357ca5;
+}*/

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <title>【蓝派】--后台管理</title>
+  <link href="../admin/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../admin/css/dashboard.css" rel="stylesheet">
+  <style>
+    .ml20 {
+      margin-left: 20px;
+    }
+    
+    .glpx-dropselect {
+      margin-bottom: 20px;
+    }
+    
+    .cover {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999999;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .5)
+    }
+  </style>
+  <!--<link href="../admin/css/admin-style.css" rel="stylesheet">-->
+  <!--[if lte IE 9]>
+    <script src="../js/html5shiv.min.js"></script>
+    <script src="../js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body class="lp-admin">
+  <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+        <a class="navbar-brand" href="../index.html">【蓝派】</a>
+      </div>
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <p class="navbar-text">后台管理系统</p>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="../index.html">网站首页</a></li>
+          <li><a href="">退出</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar" id="myTab">
+          <li class="active"><a href="#glpx">管理品项</a></li>
+          <li><a href="#fbpx">发布品项</a></li>
+          <li><a href="#xgpx">修改品项</a></li>
+        </ul>
+      </div>
+      <div id="myTabContent" class="tab-content">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade active in" id="glpx">
+          <h1 class="page-header">管理品项</h1>
+          <form class="form-inline glpx-dropselect form-horizontal">
+            <label for="">分类1:</label>
+            <select class="form-control">
+              <option>场地</option>
+              <option>餐饮</option>
+            </select>
+            <label for="" class="ml20">分类2:</label>
+            <select class="form-control">
+              <option>欧式风格</option>
+              <option>日式风格</option>
+              <option>日式风格</option>
+              <option>日式风格4</option>
+              <option>日式风格5</option>
+            </select>
+          </form>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>分类1</th>
+                <th>分类2</th>
+                <th>名称</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>场地</td>
+                <td>欧式风格</td>
+                <td>夏威夷轰趴别墅</td>
+                <td>
+                  <button type="button" class="btn btn-sm btn-warning delete-px" data-toggle="modal" data-target="#delete-px">删除</button>
+                  <button type="button" class="btn btn-sm btn-primary">修改</button>
+                </td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>场地</td>
+                <td>欧式风格</td>
+                <td>夏威夷轰趴别墅</td>
+                <td>
+                  <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#delete-px">删除</button>
+                  <button type="button" class="btn btn-sm btn-primary">修改</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <ul class="pagination pull-right">
+            <li><a href="#">&laquo;</a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li class="disabled"><a href="#">5</a></li>
+            <li><a href="#">&raquo;</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade" id="fbpx">
+          <h1 class="page-header">发布品项</h1>
+          <form class="form-inline glpx-dropselect form-horizontal">
+            <label for="">分类1:</label>
+            <select class="form-control">
+              <option>场地</option>
+              <option>餐饮</option>
+            </select>
+            <label for="" class="ml20">分类2:</label>
+            <select class="form-control">
+              <option>欧式风格</option>
+              <option>日式风格</option>
+              <option>日式风格</option>
+              <option>日式风格4</option>
+              <option>日式风格5</option>
+            </select>
+            <label for="" class="ml20">名称:</label>
+            <input type="text" class="form-control">
+          </form>
+
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade" id="xgpx">
+          <h1 class="page-header">修改品项</h1>
+
+          <h2 class="sub-header">Section title</h2>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="delete-px">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">删除确认</h4>
+        </div>
+        <div class="modal-body">
+          您确认删除该项吗？
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+          <button type="button" class="btn btn-primary">确认</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <script src="../js/jquery-2.0.0.min.js"></script>
+  <script src="../admin/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    $('#myTab a').click(function(e) {
+      e.preventDefault()
+      $(this).tab('show')
+    })
+
+    $('.delete-px').on('click', function() {
+
+    })
+  </script>
+</body>
+
+</html>
