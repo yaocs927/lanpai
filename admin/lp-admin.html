@@ -9,24 +9,9 @@
   <title>【蓝派】--后台管理</title>
   <link href="../admin/css/bootstrap.min.css" rel="stylesheet">
   <link href="../admin/css/dashboard.css" rel="stylesheet">
+  <link href="../admin/css/admin-style.css" rel="stylesheet">
   <style>
-    .ml20 {
-      margin-left: 20px;
-    }
-    
-    .glpx-dropselect {
-      margin-bottom: 20px;
-    }
-    
-    .cover {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 9999999;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, .5)
-    }
+
   </style>
   <!--<link href="../admin/css/admin-style.css" rel="stylesheet">-->
   <!--[if lte IE 9]>
@@ -36,6 +21,7 @@
 </head>
 
 <body class="lp-admin">
+  <!--顶部条-->
   <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -59,14 +45,17 @@
 
   <div class="container-fluid">
     <div class="row">
+      <!--左侧栏-->
       <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar" id="myTab">
-          <li class="active"><a href="#glpx">管理品项</a></li>
-          <li><a href="#fbpx">发布品项</a></li>
-          <li><a href="#xgpx">修改品项</a></li>
+          <li class="active"><a href="#glpx" class="myTab">管理品项</a></li>
+          <li><a href="#fbpx" class="myTab">发布品项</a></li>
+          <li><a href="#xgpx" class="myTab">修改品项</a></li>
         </ul>
       </div>
+      <!--右侧栏-->
       <div id="myTabContent" class="tab-content">
+        <!--管理品项-->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade active in" id="glpx">
           <h1 class="page-header">管理品项</h1>
           <form class="form-inline glpx-dropselect form-horizontal">
@@ -83,40 +72,35 @@
               <option>日式风格4</option>
               <option>日式风格5</option>
             </select>
+            <div class="myTab pull-right">
+              <a class="btn btn-primary myTab" href="#fbpx" role="button">发布新品项</a>
+            </div>
           </form>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>分类1</th>
-                <th>分类2</th>
-                <th>名称</th>
-                <th>操作</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>场地</td>
-                <td>欧式风格</td>
-                <td>夏威夷轰趴别墅</td>
-                <td>
-                  <button type="button" class="btn btn-sm btn-warning delete-px" data-toggle="modal" data-target="#delete-px">删除</button>
-                  <button type="button" class="btn btn-sm btn-primary">修改</button>
-                </td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>场地</td>
-                <td>欧式风格</td>
-                <td>夏威夷轰趴别墅</td>
-                <td>
-                  <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#delete-px">删除</button>
-                  <button type="button" class="btn btn-sm btn-primary">修改</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-responsive">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th class="col-md-1">#</th>
+                  <th class="col-md-1">分类1</th>
+                  <th class="col-md-2">分类2</th>
+                  <th class="col-md-4">名称</th>
+                  <th class="col-md-2">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>场地</td>
+                  <td>欧式风格</td>
+                  <td>夏威夷轰趴别墅</td>
+                  <td>
+                    <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#delete-px">删除</button>
+                    <button type="button" class="btn btn-sm btn-primary myTab" href="#xgpx">修改</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <ul class="pagination pull-right">
             <li><a href="#">&laquo;</a></li>
             <li class="active"><a href="#">1</a></li>
@@ -127,6 +111,7 @@
             <li><a href="#">&raquo;</a></li>
           </ul>
         </div>
+        <!--发布品项-->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade" id="fbpx">
           <h1 class="page-header">发布品项</h1>
           <form class="form-inline glpx-dropselect form-horizontal">
@@ -146,8 +131,72 @@
             <label for="" class="ml20">名称:</label>
             <input type="text" class="form-control">
           </form>
-
+          <form>
+            <legend>品项详情信息</legend>
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary" id="fbpx-info-add">新增</button>
+              <button type="button" class="btn btn-default">删除</button>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover" id="fbpx-info-list">
+                <thead>
+                  <tr>
+                    <th class="col-md-1">#</th>
+                    <th class="col-md-2">标题</th>
+                    <th class="col-md-6">内容</th>
+                    <th class="col-md-1">操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="col-md-1">
+                      <input type="checkbox" class="checkboxStyle">
+                    </td>
+                    <td class="col-md-2"><input type="text" class="form-control"></td>
+                    <td class="col-md-6"><input type="text" class="form-control"></td>
+                    <td class="col-md-1"><button type="button" class="btn btn-warning fbpx-info-delete">删除</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <legend class="mt20">品项相关图片</legend>
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary" id="fbpx-photo-add">新增</button>
+              <button type="button" class="btn btn-default">删除</button>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover" id="fbpx-photo-list">
+                <thead>
+                  <tr>
+                    <th class="col-md-1">#</th>
+                    <th class="col-md-6">图片</th>
+                    <th class="col-md-1">图片</th>
+                    <th class="col-md-1"></th>
+                    <th class="col-md-1">操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="col-md-1">
+                      <input type="checkbox" class="checkboxStyle">
+                    </td>
+                    <td class="col-md-6">
+                      <input type="text" class="form-control inputfile-0">
+                    </td>
+                    <td class="col-md-1">
+                      <label class="btn btn-primary" for="inputfile-0">选择文件</label>
+                    </td>
+                    <td class="col-md-1">
+                      <input type="file" id="inputfile-0" class="file" name="0">
+                    </td>
+                    <td class="col-md-1"><button type="button" class="btn btn-warning fbpx-photo-delete">删除</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </form>
         </div>
+        <!--修改品项-->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade" id="xgpx">
           <h1 class="page-header">修改品项</h1>
 
@@ -183,16 +232,7 @@
 
   <script src="../js/jquery-2.0.0.min.js"></script>
   <script src="../admin/js/bootstrap.min.js"></script>
-  <script type="text/javascript">
-    $('#myTab a').click(function(e) {
-      e.preventDefault()
-      $(this).tab('show')
-    })
-
-    $('.delete-px').on('click', function() {
-
-    })
-  </script>
+  <script src="../admin/js/admin.js"></script>
 </body>
 
 </html>
