@@ -23,6 +23,10 @@ legend {
   padding-bottom: 90px;
 }
 
+.fbpx-confirm {
+  margin-top: 20px;
+}
+
 /*多选框样式*/
 
 input[type="checkbox"].checkboxStyle  {
