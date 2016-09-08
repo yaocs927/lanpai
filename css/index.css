@@ -51,12 +51,14 @@
   top: 50%;
   left: 50%;
   z-index: 5;
+  width: 80%;
   text-align: center;
   transform: translate(-50%, -50%);
 }
 
 .fullpage-ad .ad-content img.num1 {
-  width: 100rem;
+  width: 90%;
+  max-width: 100rem;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
@@ -69,7 +71,8 @@
 }
 
 .fullpage-ad .ad-content img.num2 {
-  width: 54.5rem;
+  width: 70%;
+  max-width: 54.5rem;
   margin-top: 6rem;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
@@ -84,8 +87,9 @@
 
 .fullpage-ad .ad-content span {
   display: block;
-  width: 18rem;
-  height: 0.5rem;
+  width: 40%;
+  max-width: 18rem;
+  height: 0.2rem;
   margin: 10.5rem auto 0;
   background-color: #fbd34b;
   -webkit-transition: all .2s ease-in-out;
@@ -97,20 +101,6 @@
   -o-animation: flyDown 1s ease-in-out .2s 1 forwards;
   animation: flyDown 1s ease-in-out .2s 1 forwards;
   opacity: 0;
-}
-
-@media only screen and (max-width: 1440px) {
-  .fullpage-ad .ad-content img.num1 {
-    width: 70rem;
-  }
-  .fullpage-ad .ad-content img.num2 {
-    width: 38rem;
-    margin-top: 4rem;
-  }
-  .fullpage-ad .ad-content span {
-    height: 0.3rem;
-    margin-top: 7rem;
-  }
 }
 
 .fullpage-ad .slideBtn {
@@ -179,6 +169,24 @@
 
 .fullpage-ad .slidePoint li.active {
   background-color: #fbd34b;
+}
+
+
+/*首页适配*/
+
+@media only screen and (max-width: 480px) {
+  .fullpage-ad .ad-content {
+    width: 93%;
+  }
+  .fullpage-ad .ad-content img.num1 {
+    width: 100%;
+  }
+  .fullpage-ad .ad-content img.num2 {
+    width: 80%;
+  }
+  .fullpage-ad .slideBtn {
+    display: none;
+  }
 }
 
 
@@ -340,7 +348,9 @@
   height: 300px;
 }
 
+
 /*换一换按钮*/
+
 .changeList {
   position: absolute;
   left: 50%;
@@ -393,14 +403,14 @@ header .logo {
   transform: translateY(-20%);
 }
 
-header nav {
+header nav.defaultView {
   position: fixed;
   top: 5%;
   right: 5%;
   z-index: 999;
 }
 
-header nav a {
+header nav.defaultView a {
   display: block;
   float: left;
   margin: 0 .83rem;
@@ -414,11 +424,11 @@ header nav a {
   transition: all .3s ease-in-out;
 }
 
-header nav a:hover {
+header nav.defaultView a:hover {
   color: #fbd34b;
 }
 
-header nav a:after {
+header nav.defaultView a:after {
   z-index: 999;
   content: "";
   display: block;
@@ -432,8 +442,8 @@ header nav a:after {
   transition: all .3s ease-in-out;
 }
 
-header nav a:hover:after,
-header nav a.active:after {
+header nav.defaultView a:hover:after,
+header nav.defaultView a.active:after {
   z-index: 999;
   content: "";
   display: block;
@@ -443,16 +453,91 @@ header nav a.active:after {
   background-color: #fbd34b;
 }
 
-header nav a.active {
+header nav.defaultView a.active {
   color: #fbd34b;
 }
 
-header nav span {
+header nav.defaultView span {
   display: inline-block;
   margin-left: 1.66rem;
   font-size: 18px;
   line-height: 30px;
   color: #fff;
+}
+
+header .responsiveNav {
+  display: none;
+  position: fixed;
+  top: 5%;
+  right: 5%;
+  z-index: 999;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  /*background-color: red;*/
+}
+
+header .responsiveNav-list {
+  /*display: none;*/
+  position: fixed;
+  left: -40rem;
+  top: 0;
+  z-index: 999;
+  width: 60%;
+  background-color: rgba(0, 0, 0, .8)
+}
+
+header .responsiveNav-list ul {
+  margin-top: 40px;
+}
+
+header .responsiveNav-list ul li {
+  padding: 3% 5%;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+header .responsiveNav-list ul li a {
+  /*line-height: 30px;*/
+  font-size: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+header .responsiveNav-list ul li a.active {
+  color: #fbd34b;
+}
+
+header .responsiveNav-list ul li img {
+  width: 100%;
+}
+
+header .responsiveNav span {
+  display: block;
+  width: 20px;
+  height: 3px;
+  margin-bottom: 5px;
+  background-color: #fbd34b;
+}
+
+
+/*首页头部适配*/
+
+@media only screen and (max-width: 480px) {
+  header .logo {
+    width: 3rem;
+  }
+  header .responsiveNav {
+    display: block;
+  }
+  header nav.defaultView {
+    display: none;
+  }
 }
 
 
@@ -493,6 +578,12 @@ footer p {
   font-family: Arial, "宋体";
   font-size: 1rem;
   color: #d0dae4;
+}
+
+@media only screen and (max-width: 480px) {
+  footer nav {
+    display: none;
+  }
 }
 
 
@@ -678,6 +769,12 @@ footer p {
     -o-transform: translateX(0);
     transform: translateX(0);
     opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .stick,.erweima {
+    display: none;
   }
 }
 

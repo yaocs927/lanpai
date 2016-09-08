@@ -1,7 +1,7 @@
 $(document).ready(function () {
-  // =======
+  // =============
   // 首页轮播
-  // =======
+  // =============
 
   var curIndex = 1;
   var timer;
@@ -57,7 +57,10 @@ $(document).ready(function () {
     $('#slidePoint li').eq(curIndex - 1).addClass('active').siblings().removeClass('active');
   }
 
+  // ============================
   // 显示二维码
+  // ============================
+
   var stickH = $('.stick').outerHeight();
   var erweimaH = $('.erweima').outerHeight();
   var erweimaH1 = erweimaH / 2 - stickH / 2;
@@ -69,6 +72,10 @@ $(document).ready(function () {
   })
 
 
+  // =================
+  // 照片墙-弹出层
+  // =================
+
   // 相册页面
   $('.photoList li').hover(function () {
     $(this).find('span').stop().fadeIn(300);
@@ -76,10 +83,6 @@ $(document).ready(function () {
     ;
     $(this).find('span').stop().fadeOut(300);
   })
-
-  // =================
-  // 弹出层
-  // =================
 
   // 弹出
   $('.viewPhotos').each(function () {
@@ -120,6 +123,21 @@ $(document).ready(function () {
     }
     $('.curNum').text(dtIndex);
     $('.picSlideBig li').eq(dtIndex).fadeIn().siblings().fadeOut();
+  })
+
+
+  // =================
+  // 响应菜单弹出
+  // =================
+  var height = $(window).height();
+  $('.responsiveNav-list').css('height', height);
+  $('.responsiveNav').on('tap', function () {
+    if ($('.responsiveNav-list').css('left') != '0') {
+      $('.responsiveNav-list').animate({ left: 0 }, 500);
+    } else if ($('.responsiveNav-list').css('left') == '0') {
+      debugger;
+      $('.responsiveNav-list').animate({ left: '-40rem' }, 500);
+    }
   })
 
 })
