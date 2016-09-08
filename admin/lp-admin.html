@@ -35,8 +35,8 @@
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <p class="navbar-text">后台管理系统</p>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="../index.html">网站首页</a></li>
-          <li><a href="">退出</a></li>
+          <li><a href="../index.html"><span class="glyphicon glyphicon-globe"></span> 网站首页</a></li>
+          <li><a href=""><span class="glyphicon glyphicon-off"></span> 退出</a></li>
         </ul>
       </div>
     </div>
@@ -48,9 +48,9 @@
       <!--左侧栏-->
       <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar" id="myTab">
-          <li class="active"><a href="#glpx" class="myTab">管理品项</a></li>
-          <li><a href="#fbpx" class="myTab">发布品项</a></li>
-          <li><a href="#xgpx" class="myTab">修改品项</a></li>
+          <li class="active"><a href="#glpx" class="myTab"><span class="glyphicon glyphicon-th-large"></span> 管理品项</a></li>
+          <li><a href="#fbpx" class="myTab"><span class="glyphicon glyphicon-saved"></span> 发布品项</a></li>
+          <li><a href="#xgpx" class="myTab"><span class="glyphicon glyphicon-edit"></span> 修改品项</a></li>
         </ul>
       </div>
       <!--右侧栏-->
@@ -73,7 +73,7 @@
               <option>日式风格5</option>
             </select>
             <div class="myTab pull-right">
-              <a class="btn btn-primary myTab" href="#fbpx" role="button">发布新品项</a>
+              <a class="btn btn-primary myTab" href="#fbpx" role="button"><span class="glyphicon glyphicon-saved"></span> 发布新品项</a>
             </div>
           </form>
           <div class="table-responsive">
@@ -134,8 +134,8 @@
           <form>
             <legend>品项详情信息</legend>
             <div class="btn-group">
-              <button type="button" class="btn btn-primary" id="fbpx-info-add">新增</button>
-              <button type="button" class="btn btn-default">删除</button>
+              <button type="button" class="btn btn-primary btn-sm" id="fbpx-info-add"><span class="glyphicon glyphicon-plus"></span> 新增一条</button>
+              <button type="button" class="btn btn-default btn-sm" id="fbpx-info-delete-all"><span class="glyphicon glyphicon-minus"></span> 删除选中</button>
             </div>
             <div class="table-responsive">
               <table class="table table-hover" id="fbpx-info-list">
@@ -150,7 +150,7 @@
                 <tbody>
                   <tr>
                     <td class="col-md-1">
-                      <input type="checkbox" class="checkboxStyle">
+                      <input type="checkbox" class="checkboxStyle" name="fbpx-info-list">
                     </td>
                     <td class="col-md-2"><input type="text" class="form-control"></td>
                     <td class="col-md-6"><input type="text" class="form-control"></td>
@@ -161,8 +161,8 @@
             </div>
             <legend class="mt20">品项相关图片</legend>
             <div class="btn-group">
-              <button type="button" class="btn btn-primary" id="fbpx-photo-add">新增</button>
-              <button type="button" class="btn btn-default">删除</button>
+              <button type="button" class="btn btn-primary btn-sm" id="fbpx-photo-add"><span class="glyphicon glyphicon-plus"></span> 新增一条</button>
+              <button type="button" class="btn btn-default btn-sm" id="fbpx-photo-delete-all"><span class="glyphicon glyphicon-minus"></span> 删除选中</button>
             </div>
             <div class="table-responsive">
               <table class="table table-hover" id="fbpx-photo-list">
@@ -178,31 +178,110 @@
                 <tbody>
                   <tr>
                     <td class="col-md-1">
-                      <input type="checkbox" class="checkboxStyle">
+                      <input type="checkbox" class="checkboxStyle" name="fbpx-photo-list">
                     </td>
                     <td class="col-md-6">
-                      <input type="text" class="form-control inputfile-0">
+                      <input type="text" class="form-control fbpx-inputfile-0">
                     </td>
                     <td class="col-md-1">
-                      <label class="btn btn-primary" for="inputfile-0">选择文件</label>
+                      <label class="btn btn-primary" for="fbpx-inputfile-0">选择文件</label>
                     </td>
                     <td class="col-md-1">
-                      <input type="file" id="inputfile-0" class="file" name="0">
+                      <input type="file" id="fbpx-inputfile-0" class="file" name="0">
                     </td>
                     <td class="col-md-1"><button type="button" class="btn btn-warning fbpx-photo-delete">删除</button></td>
                   </tr>
                 </tbody>
               </table>
-            </div> 
-            <button type="button" class="btn btn-block btn-lg btn-success fbpx-confirm">确认提交品项</button>
+            </div>
+            <button type="button" class="btn btn-block btn-lg btn-success fbpx-confirm" data-toggle="modal" data-target="#fbpx-success"><span class="glyphicon glyphicon-ok"></span> 确认提交品项</button>
           </form>
         </div>
         <!--修改品项-->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade" id="xgpx">
           <h1 class="page-header">修改品项</h1>
-
-          <h2 class="sub-header">Section title</h2>
-
+          <form class="form-inline xgpx-dropselect form-horizontal">
+            <label for="">分类1:</label>
+            <select class="form-control">
+              <option>场地</option>
+              <option>餐饮</option>
+            </select>
+            <label for="" class="ml20">分类2:</label>
+            <select class="form-control">
+              <option>欧式风格</option>
+              <option>日式风格</option>
+              <option>日式风格</option>
+              <option>日式风格4</option>
+              <option>日式风格5</option>
+            </select>
+            <label for="" class="ml20">名称:</label>
+            <input type="text" class="form-control">
+          </form>
+          <form>
+            <legend>品项详情信息</legend>
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary btn-sm" id="xgpx-info-add"><span class="glyphicon glyphicon-plus"></span> 新增一条</button>
+              <button type="button" class="btn btn-default btn-sm" id="xgpx-info-delete-all"><span class="glyphicon glyphicon-minus"></span> 删除选中</button>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover" id="xgpx-info-list">
+                <thead>
+                  <tr>
+                    <th class="col-md-1">#</th>
+                    <th class="col-md-2">标题</th>
+                    <th class="col-md-6">内容</th>
+                    <th class="col-md-1">操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="col-md-1">
+                      <input type="checkbox" class="checkboxStyle" name="xgpx-info-list">
+                    </td>
+                    <td class="col-md-2"><input type="text" class="form-control"></td>
+                    <td class="col-md-6"><input type="text" class="form-control"></td>
+                    <td class="col-md-1"><button type="button" class="btn btn-warning xgpx-info-delete">删除</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <legend class="mt20">品项相关图片</legend>
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary btn-sm" id="xgpx-photo-add"><span class="glyphicon glyphicon-plus"></span> 新增一条</button>
+              <button type="button" class="btn btn-default btn-sm" id="xgpx-photo-delete-all"><span class="glyphicon glyphicon-minus"></span> 删除选中</button>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover" id="xgpx-photo-list">
+                <thead>
+                  <tr>
+                    <th class="col-md-1">#</th>
+                    <th class="col-md-6">图片</th>
+                    <th class="col-md-1">图片</th>
+                    <th class="col-md-1"></th>
+                    <th class="col-md-1">操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="col-md-1">
+                      <input type="checkbox" class="checkboxStyle" name="xgpx-photo-list">
+                    </td>
+                    <td class="col-md-6">
+                      <input type="text" class="form-control xgpx-inputfile-0">
+                    </td>
+                    <td class="col-md-1">
+                      <label class="btn btn-primary" for="xgpx-inputfile-0">选择文件</label>
+                    </td>
+                    <td class="col-md-1">
+                      <input type="file" id="xgpx-inputfile-0" class="file" name="0">
+                    </td>
+                    <td class="col-md-1"><button type="button" class="btn btn-warning xgpx-photo-delete">删除</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <button type="button" class="btn btn-block btn-lg btn-success xgpx-confirm" data-toggle="modal" data-target="#fbpx-success"><span class="glyphicon glyphicon-ok"></span> 确认修改品项</button>
+          </form>
         </div>
       </div>
     </div>
@@ -214,13 +293,31 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">删除确认</h4>
+          <h4 class="modal-title text-danger"><span class="glyphicon glyphicon-info-sign"></span> 删除确认</h4>
         </div>
         <div class="modal-body">
           您确认删除该项吗？
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+          <button type="button" class="btn btn-primary">确认</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="fbpx-success">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title text-success"><span class="glyphicon glyphicon-ok"></span> 成功</h4>
+        </div>
+        <div class="modal-body">
+          新品项已成功发布
+        </div>
+        <div class="modal-footer">
+          <!--<button type="button" class="btn btn-default" data-dismiss="modal">返回</button>-->
           <button type="button" class="btn btn-primary">确认</button>
         </div>
       </div>

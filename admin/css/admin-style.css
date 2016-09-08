@@ -23,8 +23,9 @@ legend {
   padding-bottom: 90px;
 }
 
-.fbpx-confirm {
-  margin-top: 20px;
+.fbpx-confirm,
+.xgpx-confirm {
+  margin-top: 40px;
 }
 
 /*多选框样式*/
