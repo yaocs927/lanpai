@@ -62,10 +62,9 @@ $(document).ready(function () {
     }
   })
 
-  // 设置分类标题高度 
-  $('.typeList-title').height($('.colList .product').height());
 
 
+  // 滚动事件
   $(window).scroll(function () {
     var windowHeight = $(this).height();
     var scrollHeight = $(this).scrollTop();
@@ -84,7 +83,6 @@ $(document).ready(function () {
         $(ele).css({
           '-webkit-animation': 'flyLeftAnimate .5s ease-in-out 1 forwards',
           '-moz-animation': 'flyLeftAnimate .5s ease-in-out 1 forwards',
-          '-o-animation': 'flyLeftAnimate .5s ease-in-out 1 forwards',
           'animation': 'flyLeftAnimate .5s ease-in-out 1 forwards'
         })
       }
@@ -96,7 +94,6 @@ $(document).ready(function () {
         $(ele).css({
           '-webkit-animation': 'flyRightAnimate .5s ease-in-out 1 forwards',
           '-moz-animation': 'flyRightAnimate .5s ease-in-out 1 forwards',
-          '-o-animation': 'flyRightAnimate .5s ease-in-out 1 forwards',
           'animation': 'flyRightAnimate .5s ease-in-out 1 forwards'
         })
       }
@@ -119,18 +116,17 @@ $(document).ready(function () {
     })
 
 
-
-    // 设置弹出框在当前窗口顶部开始
+    // 设置详情弹出框在当前位置在窗口顶部
     $('.detailCover').css('top', scrollHeight + 'px');
 
   })
 
 
-  // =================
   // 回到顶部
-  // =================
   $('.stick .backtop').on('click', function () {
-    $('body').animate({ scrollTop: 0 }, 300);
+    $('body').animate({
+      scrollTop: 0
+    }, 300);
     return false;
   })
 
@@ -152,14 +148,18 @@ $(document).ready(function () {
   // 详情弹出
   $('.detailBtn').each(function () {
     $(this).on('click', function () {
-      $('.detailCover').stop().animate({ left: 0 }, 500).show();
+      $('.detailCover').stop().animate({
+        left: 0
+      }, 500).show();
       $('body').css('overflow-y', 'hidden');
     })
   })
 
   // 关闭按钮
   $('#closeBtn').on('click', function () {
-    $(this).parents('.detailCover').stop().animate({ left: '100%' }, 500).hide(500);
+    $(this).parents('.detailCover').stop().animate({
+      left: '100%'
+    }, 500).hide(500);
     $('body').css('overflow-y', 'auto');
   })
 
@@ -179,7 +179,9 @@ $(document).ready(function () {
       dtIndex = 1;
     }
     $('.curNum').text(dtIndex + 1);
-    $('.picSlideBig').stop().animate({ 'left': -dtIndex * 1100 + 'px' }, 300);
+    $('.picSlideBig').stop().animate({
+      'left': -dtIndex * 1100 + 'px'
+    }, 300);
     if (dtIndex == dtImgSize - 1) {
       $('.curNum').text('1');
     }
@@ -192,7 +194,45 @@ $(document).ready(function () {
       dtIndex = dtImgSize - 2;
     }
     $('.curNum').text(dtIndex + 1);
-    $('.picSlideBig').stop().animate({ 'left': -dtIndex * 1100 + 'px' }, 300);
+    $('.picSlideBig').stop().animate({
+      'left': -dtIndex * 1100 + 'px'
+    }, 300);
   })
+
+
+  // =================
+  // 页面数据获取部分
+  // =================
+  // var curID = [];
+  $.ajax({
+    type: 'GET',
+    url: '../js/data/allTitle.json',
+    data: 'id=' + 1,
+    dataType: 'JSON',
+    success: function (data) {
+      var title = data.data.class;
+      $.each(title, function (i, cur) {
+        $('#placeList').append('<section class="typeList clearfix"><div class="typeList-title flyLeftAnimate" id="' + cur.id + '"><h2>' + cur.name + '</h2><span><i></i><i></i><i></i></span></div><div class="colList clearfix flyRightAnimate"></div></section>')
+      })
+    }
+  });
+
+  $.ajax({
+    type: "GET",
+    url: "../js/data/place-list.json",
+    dataType: "JSON",
+    success: function (data) {
+      var item = data.data.item;
+      $.each(item, function (i, cur) {
+        var curId = cur.styleId;
+        $('#' + curId).siblings('.colList').append('<div class="product left"><div class="productPic"><img src="' + cur.cover + '" alt="123"></div><div class="product-content-bg"><div class="product-content"><h3>' + cur.title + '</h3><p class="introduce">' + cur.brief + '</p><span class="productStrip"></span></div></div><div class="detailBtn productBtn">VIEW</div></div>')
+        // 设置分类标题高度
+        $('.typeList-title').height($('.colList .product').height());
+      })
+    }
+  });
+
+   
+  
 
 })

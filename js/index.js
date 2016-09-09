@@ -87,14 +87,18 @@ $(document).ready(function () {
   // 弹出
   $('.viewPhotos').each(function () {
     $(this).on('click', function () {
-      $('.detailCover').animate({ left: 0 }, 500);
+      $('.detailCover').animate({
+        left: 0
+      }, 500);
       $('body').css('overflow-y', 'hidden');
     })
   })
 
   // 关闭按钮
   $('#closeBtn').on('click', function () {
-    $(this).parents('.detailCover').animate({ left: '100%' }, 500);
+    $(this).parents('.detailCover').animate({
+      left: '100%'
+    }, 500);
     $('body').css('overflow-y', 'auto');
   })
 
@@ -133,14 +137,18 @@ $(document).ready(function () {
   $('.responsiveNav-list').css('height', height);
   var responsiveNav = document.getElementById('responsiveNav');
   responsiveNav.ontouchstart = function () {
-  // $('.responsiveNav').on('click', function () {
+    // $('.responsiveNav').on('click', function () {
     if ($('.responsiveNav-list').css('left') != '0px') {
-      $('.responsiveNav-list').animate({ left: 0 }, 500);
+      $('.responsiveNav-list').animate({
+        left: 0
+      }, 500);
       $('#responsiveNav .line-1').removeClass('hamburgerAa').addClass('hamburgerA');
       $('#responsiveNav .line-2').removeClass('hamburgerBb').addClass('hamburgerB');
       $('#responsiveNav .line-3').removeClass('hamburgerCc').addClass('hamburgerC');
     } else {
-      $('.responsiveNav-list').animate({ left: '-40rem' }, 500);
+      $('.responsiveNav-list').animate({
+        left: '-40rem'
+      }, 500);
       $('#responsiveNav .line-1').removeClass('hamburgerA').addClass('hamburgerAa');
       $('#responsiveNav .line-2').removeClass('hamburgerB').addClass('hamburgerBb');
       $('#responsiveNav .line-3').removeClass('hamburgerC').addClass('hamburgerCc');
