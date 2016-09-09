@@ -131,13 +131,20 @@ $(document).ready(function () {
   // =================
   var height = $(window).height();
   $('.responsiveNav-list').css('height', height);
-  $('.responsiveNav').on('tap', function () {
-    if ($('.responsiveNav-list').css('left') != '0') {
+  var responsiveNav = document.getElementById('responsiveNav');
+  responsiveNav.ontouchstart = function () {
+  // $('.responsiveNav').on('click', function () {
+    if ($('.responsiveNav-list').css('left') != '0px') {
       $('.responsiveNav-list').animate({ left: 0 }, 500);
-    } else if ($('.responsiveNav-list').css('left') == '0') {
-      debugger;
+      $('#responsiveNav .line-1').removeClass('hamburgerAa').addClass('hamburgerA');
+      $('#responsiveNav .line-2').removeClass('hamburgerBb').addClass('hamburgerB');
+      $('#responsiveNav .line-3').removeClass('hamburgerCc').addClass('hamburgerC');
+    } else {
       $('.responsiveNav-list').animate({ left: '-40rem' }, 500);
+      $('#responsiveNav .line-1').removeClass('hamburgerA').addClass('hamburgerAa');
+      $('#responsiveNav .line-2').removeClass('hamburgerB').addClass('hamburgerBb');
+      $('#responsiveNav .line-3').removeClass('hamburgerC').addClass('hamburgerCc');
     }
-  })
+  }
 
 })
