@@ -155,6 +155,15 @@ $(document).ready(function() {
     })
   })
 
+  $('.detailBtnTouch').each(function() {
+    $(this).on('click', function() {
+      $('.detailCover').stop().animate({
+        left: 0
+      }, 500).show();
+      $('body').css('overflow-y', 'hidden');
+    })
+  })
+
   // 关闭按钮
   $('#closeBtn').on('click', function() {
     $(this).parents('.detailCover').stop().animate({
@@ -251,7 +260,7 @@ $(document).ready(function() {
       var item = data.data.item;
       $.each(item, function(i, cur) {
         var curId = cur.styleId;
-        $('#' + curId).siblings('.colList').append('<div class="product left"><div class="productPic"><img src="' + cur.cover + '" alt="123"></div><div class="product-content-bg"><div class="product-content"><h3>' + cur.title + '</h3><p class="introduce">' + cur.brief + '</p><span class="productStrip"></span></div></div><div class="detailBtn productBtn">VIEW</div></div>')
+        $('#' + curId).siblings('.colList').append('<div class="product left"><div class="productPic"><img src="' + cur.cover + '" alt="123"></div><div class="productPic-info detailBtnTouch">' + cur.title + '</div><div class="product-content-bg"><div class="product-content"><h3>' + cur.title + '</h3><p class="introduce">' + cur.brief + '</p><span class="productStrip"></span></div></div><div class="detailBtn productBtn">VIEW</div></div>')
           // 设置分类标题高度
         $('.typeList-title').height($('.colList .product').height());
       })

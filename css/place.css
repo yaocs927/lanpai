@@ -25,7 +25,7 @@
 
 /*餐饮首屏图*/
 
-.foodeTop {
+.foodTop {
   background: url(../img/index-bg-3.jpg) no-repeat center;
   background-size: cover;
 }
@@ -122,7 +122,7 @@
   position: fixed;
   top: 3%;
   right: 5%;
-  z-index: 99999;
+  z-index: 999999;
   width: 40px;
   height: 35px;
   padding-top: 5px;
@@ -592,7 +592,7 @@
   position: fixed;
   left: -40rem;
   top: 0;
-  z-index: 9999;
+  z-index: 999999;
   width: 60%;
   background-color: rgba(0, 0, 0, .9);
 }
@@ -673,6 +673,9 @@
   opacity: 0;
 }
 
+
+/*首页头部适配*/
+
 @media only screen and (max-width: 1441px) {
   .topBox .slogan .sloganPic {
     width: 24rem;
@@ -694,10 +697,7 @@
   }
 }
 
-
-/*首页头部适配*/
-
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: 490px) {
   .topBox header .responsiveNav-list {
     display: none;
   }
@@ -726,8 +726,17 @@
   height: 37rem;
 }
 
-.daily .daily-slogan {
+.daily .daily-left {
+  position: relative;
+  float: left;
+  width: 65%;
+  height: 37rem;
+}
+
+.daily .daily-left .daily-slogan {
   position: absolute;
+  left: 0;
+  top: 0;
   z-index: 10;
   width: 15.1rem;
   -webkit-transition: all .3s ease-in-out;
@@ -739,7 +748,7 @@
   opacity: 0;
 }
 
-.daily .dailyPic {
+.daily .daily-left .dailyPic {
   position: absolute;
   top: 10%;
   left: 5%;
@@ -756,22 +765,22 @@
   opacity: 0;
 }
 
-.daily .dailyPic ul {
+.daily .daily-left .dailyPic ul {
   position: absolute;
   width: 200rem;
 }
 
-.daily .dailyPic ul li {
+.daily .daily-left .dailyPic ul li {
   float: left;
   width: 45.6rem;
   height: 28.25rem;
 }
 
-.daily .dailyPic ul li img {
+.daily .daily-left .dailyPic ul li img {
   width: 45.6rem;
 }
 
-.daily .daily-slideBtn {
+.daily .daily-left .daily-slideBtn {
   position: absolute;
   z-index: 8;
   top: 28.25rem;
@@ -779,7 +788,7 @@
   font-size: 0;
 }
 
-.daily .daily-slideBtn .daily-slideBtn-style {
+.daily .daily-left .daily-slideBtn .daily-slideBtn-style {
   z-index: 99;
   display: inline-block;
   width: 2.83rem;
@@ -791,19 +800,19 @@
   cursor: pointer;
 }
 
-.daily .daily-slideBtn .prev {
+.daily .daily-left .daily-slideBtn .prev {
   background-position: 10px 5px;
 }
 
-.daily .daily-slideBtn .next {
+.daily .daily-left .daily-slideBtn .next {
   background-position: -25px 5px;
 }
 
-.daily .daily-slideBtn .active {
+.daily .daily-left .daily-slideBtn .active {
   background-color: #fbd34b;
 }
 
-.daily .daily-bg {
+.daily .daily-left .daily-bg {
   position: absolute;
   bottom: 0;
   left: 3%;
@@ -820,28 +829,35 @@
   opacity: 0;
 }
 
-.daily h1 {
+.daily .daily-right {
+  position: relative;
+  float: right;
+  width: 35%;
+  height: 37rem;
+}
+
+.daily .daily-right h1 {
   position: absolute;
   top: 8%;
-  left: 65%;
+  left: 0;
   font-size: 16px;
   font-weight: 400;
   color: #fff;
 }
 
-.daily .dailyStrip {
+.daily .daily-right .dailyStrip {
   position: absolute;
   top: 30%;
-  left: 65%;
+  left: 0;
   width: 20px;
   height: 4px;
   background-color: #fbd34b;
 }
 
-.daily .dailyContent {
+.daily .daily-right .dailyContent {
   position: absolute;
   top: 38%;
-  left: 65%;
+  left: 0;
   height: 10rem;
   font-size: 14px;
   line-height: 1.2;
@@ -850,34 +866,34 @@
   text-align: justify;
 }
 
-.daily .dailyDetailBtn {
+.daily .daily-right .dailyDetailBtn {
   position: absolute;
   top: 80%;
-  left: 65%;
+  left: 0;
 }
 
-.daily h1 {
+.daily .daily-right h1 {
   -webkit-animation: flyRightAnimate .7s ease-in-out 1 forwards;
   -moz-animation: flyRightAnimate .7s ease-in-out 1 forwards;
   animation: flyRightAnimate .7s ease-in-out 1 forwards;
   opacity: 0;
 }
 
-.daily .dailyStrip {
+.daily .daily-right .dailyStrip {
   -webkit-animation: flyRightAnimate .8s ease-in-out 1 forwards;
   -moz-animation: flyRightAnimate .8s ease-in-out 1 forwards;
   animation: flyRightAnimate .8s ease-in-out 1 forwards;
   opacity: 0;
 }
 
-.daily .dailyContent {
+.daily .daily-right .dailyContent {
   -webkit-animation: flyRightAnimate .9s ease-in-out 1 forwards;
   -moz-animation: flyRightAnimate .9s ease-in-out 1 forwards;
   animation: flyRightAnimate .9s ease-in-out 1 forwards;
   opacity: 0;
 }
 
-.daily .dailyDetailBtn {
+.daily .daily-right .dailyDetailBtn {
   -webkit-animation: flyRightAnimate 1s ease-in-out 1 forwards;
   -moz-animation: flyRightAnimate 1s ease-in-out 1 forwards;
   animation: flyRightAnimate 1s ease-in-out 1 forwards;
@@ -946,39 +962,48 @@
   width: 100px;
 }
 
+.daily .daily-left .dailyPic .dailySlidePic-info {
+  display: none;
+}
+
 @media only screen and (max-width: 1441px) {
   .daily {
     width: 56rem;
     height: 26rem;
   }
-  .daily .daily-slogan {
+  .daily .daily-left,
+  .daily .daily-right {
+    height: 26rem;
+  }
+  .daily .daily-left .daily-slogan {
     width: 10.5rem;
   }
-  .daily .dailyPic {
+  .daily .daily-left .dailyPic {
     width: 31.92rem;
     height: 21.78rem;
   }
-  .daily .dailyPic ul li,
-  .daily .dailyPic ul li img,
-  .daily .daily-bg {
+  .daily .daily-left .dailyPic ul li,
+  .daily .daily-left .dailyPic ul li img,
+  .daily .daily-left .daily-bg {
     width: 31.92rem;
     height: 19.8rem;
   }
-  .daily .dailyPic ul {
-    width: 130rem;
+  .daily .daily-left .dailyPic ul {
+    width: 180rem;
+    height: 19.8rem;
   }
-  .daily .daily-slideBtn {
+  .daily .daily-left .daily-slideBtn {
     top: 19.8rem;
   }
-  .daily .daily-slideBtn .daily-slideBtn-style {
+  .daily .daily-left .daily-slideBtn .daily-slideBtn-style {
     width: 1.98rem;
     height: 1.98rem;
     background-size: 90%;
   }
-  .daily .daily-slideBtn .prev {
+  .daily .daily-left .daily-slideBtn .prev {
     background-position: 10px 7px;
   }
-  .daily .daily-slideBtn .next {
+  .daily .daily-left .daily-slideBtn .next {
     background-position: -6px 7px;
   }
 }
@@ -986,7 +1011,106 @@
 @media only screen and (max-width: 1040px) {
   .daily {
     left: 50%;
+    right: 0;
+    -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
+  }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 769px) {
+  .daily {
+    width: 90%;
+    height: 26rem;
+  }
+  .daily .daily-left {
+    float: none;
+    height: 26rem;
+    margin: 0 auto;
+  }
+  .daily .daily-right {
+    display: none;
+  }
+  .daily .daily-left .dailyPic .dailySlidePic-info {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 1.98rem;
+    z-index: 8888;
+    width: 31.92rem;
+    height: 40px;
+    background-color: rgba(0, 0, 0, .8);
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .daily {
+    width: 90%;
+    max-width: 36rem;
+    height: 26rem;
+  }
+  .daily .daily-left {
+    float: none;
+    height: 26rem;
+    width: 95%;
+    margin: 0 auto;
+  }
+  .daily .daily-right {
+    display: none;
+  }
+  .daily .daily-left .dailyPic {
+    width: 26.6rem;
+    height: 21.78rem;
+  }
+  .daily .daily-left .dailyPic ul li,
+  .daily .daily-left .dailyPic ul li img,
+  .daily .daily-left .daily-bg {
+    width: 26.6rem;
+    height: 19.8rem;
+  }
+  .daily .daily-left .dailyPic ul {
+    width: 180rem;
+    height: 19.8rem;
+  }
+  .daily .daily-left .dailyPic .dailySlidePic-info {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 1.98rem;
+    z-index: 8888;
+    width: 26.6rem;
+    height: 40px;
+    background-color: rgba(0, 0, 0, .8);
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+  .daily .daily-left .dailyPic {
+    width: 22rem;
+    height: 20.78rem;
+  }
+  .daily .daily-left .dailyPic ul li,
+  .daily .daily-left .dailyPic ul li img,
+  .daily .daily-left .daily-bg {
+    width: 22rem;
+    height: 18.8rem;
+  }
+  .daily .daily-left .dailyPic ul {
+    width: 180rem;
+    height: 18.8rem;
+  }
+  .daily .daily-left .dailyPic .dailySlidePic-info {
+    width: 22rem;
+  }
+  .daily .daily-left .daily-slideBtn {
+    top: 18.8rem;
   }
 }
 
@@ -1081,7 +1205,8 @@
 .typeList .typeList-title {
   position: relative;
   float: left;
-  width: 12rem;
+  /*width: 5%;*/
+  max-width: 12rem;
   -webkit-transition: all .3s ease-in-out;
   -moz-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;
@@ -1120,9 +1245,6 @@
   .typeList {
     width: 90%;
   }
-  .typeList .typeList-title {
-    width: 5rem;
-  }
   .typeList .typeList-title h2 {
     width: 2rem;
     font-size: 2rem;
@@ -1134,7 +1256,7 @@
   }
 }
 
-@media only screen and (max-width: 1040px) {
+@media only screen and (max-width: 1200px) {
   .typeList .typeList-title {
     display: none;
   }
@@ -1223,16 +1345,25 @@
   left: 60%;
 }
 
+.typeList .colList .product .productPic-info {
+  display: none;
+}
+
 @media only screen and (max-width: 1441px) {
   .typeList {
     min-width: 85rem;
   }
   .typeList .colList {
-    width: 90rem;
+    width: 90%;
+    min-width: 86rem;
+    margin: 0 auto;
   }
   .typeList .colList .product {
     width: 42rem;
     height: 23.3rem;
+  }
+  .typeList .colList .left {
+    margin-left: 1rem;
   }
   .typeList .colList .product .productPic {
     width: 55.5%;
@@ -1242,29 +1373,22 @@
     width: 100%;
   }
   .typeList .colList .product .product-content h3 {
+    margin-bottom: 10px;
+    line-height: 2;
     font-size: 14px;
   }
 }
 
-@media only screen and (max-width: 1040px) {
-  .typeList .colList {
-    float: none;
-    width: 90%;
-    margin: 0 auto;
-  }
-  .typeList .colList .product {
-    width: 36rem;
-    height: 21rem;
-  }
-  .typeList .colList .product .product-content h3 {
-    margin-bottom: 10px;
-    line-height: 2;
-  }
-}
-
 @media only screen and (max-width: 769px) {
+  .typeList {
+    min-width: 1rem;
+  }
   .typeList .colList {
-    width: 70rem;
+    /*width: 70rem;*/
+    margin: 0 auto;
+    width: 100%;
+    min-width: 1rem;
+    float: none;
   }
   .typeList .colList .left {
     float: none;
@@ -1273,11 +1397,58 @@
   .typeList .colList .product {
     width: 50rem;
     height: 26rem;
-    /*margin: 0 auto;*/
   }
   .typeList .colList .product .product-content h3 {
     margin-bottom: 15px;
     line-height: 3;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .typeList .colList .product {
+    width: 100%;
+    height: 20rem;
+  }
+  .typeList .colList .product .product-content-bg,
+  .typeList .colList .product .productBtn {
+    display: none;
+  }
+  .typeList .colList .product .productPic-info {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background-color: rgba(0, 0, 0, .8);
+    font-size: 16px;
+    line-height: 40px;
+    color: #fff;
+    text-align: center;
+  }
+  .typeList .colList .product .productPic {
+    width: 100%;
+    height: 20rem;
+  }
+  .typeList .colList .product img {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+  .typeList .colList .product {
+    width: 100%;
+    height: 20rem;
+  }
+  .typeList .colList .product .productPic {
+    width: 100%;
+    height: 20rem;
+  }
+  .typeList .colList .product .productPic-info {
+    width: 100%;
+  }
+  .typeList .colList .product img {
+    width: 100%;
   }
 }
 
@@ -1357,6 +1528,16 @@ footer .info .info-nr p {
   font-size: 1rem;
   line-height: 5rem;
   color: #d0dae4;
+}
+
+@media only screen and (max-width: 480px) {
+  footer .info .info-nr nav {
+    float: none;
+    text-align: center;
+  }
+  footer .info .info-nr p {
+    display: none;
+  }
 }
 
 
@@ -1694,7 +1875,7 @@ footer .info .info-nr p {
   position: absolute;
   top: 0;
   left: 100%;
-  z-index: 9999;
+  z-index: 99999999;
   width: 100%;
   height: 100%;
   overflow-y: scroll;
