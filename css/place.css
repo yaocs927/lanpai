@@ -1894,13 +1894,14 @@ footer .info .info-nr p {
 }
 
 .detailCover .detailContent .comWidth {
-  width: 1400px;
+  width: 93%;
+  /*width: 1400px;*/
   margin: 0 auto;
 }
 
 @media only screen and (max-width: 1441px) {
   .detailCover .detailContent .comWidth {
-    width: 1100px;
+    /*width: 1100px;*/
   }
 }
 
@@ -1934,20 +1935,19 @@ footer .info .info-nr p {
   top: 0;
   left: 0;
   width: 20000px;
-  height: 470px;
+  height: auto;
   margin-bottom: 20px;
 }
 
 .picSlideBox .picSlideBig li {
   float: left;
-  width: 1100px;
-  height: 470px;
+  height: auto;
   overflow: hidden;
 }
 
 .picSlideBox .picSlideBig li img {
-  width: auto;
-  height: 470px;
+  width: 100%;
+  height: auto;
 }
 
 .picSlideBox .picSlideSmallBox {
@@ -2486,7 +2486,7 @@ footer .info .info-nr p {
 
 .about-container .friends ul li {
   float: left;
-  margin: 10px;
+  margin: 30px;
 }
 
 @media only screen and (max-width: 1441px) {
@@ -2515,6 +2515,9 @@ footer .info .info-nr p {
   }
   .about-container .contactus .contactus-info {
     height: 25rem;
+  }
+  .about-container .friends ul li {
+    margin: 10px;
   }
 }
 
