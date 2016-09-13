@@ -73,8 +73,14 @@ $(document).ready(function () {
 
 
   // =================
-  // 照片墙-弹出层
+  // 照片墙
   // =================
+
+  var windowWidth = $(window).width();
+  var eleWidth = $('.photoList .viewPhotos').outerWidth(true);
+  var numaaa = parseInt(windowWidth / eleWidth);
+  $('.photoList').width(numaaa * eleWidth + 'px');
+  console.log(numaaa);
 
   // 相册页面
   $('.photoList li').hover(function () {
@@ -89,7 +95,7 @@ $(document).ready(function () {
     $(this).on('click', function () {
       $('.detailCover').animate({
         left: 0
-      }, 500);
+      }, 500).show();
       $('body').css('overflow-y', 'hidden');
     })
   })
@@ -98,7 +104,7 @@ $(document).ready(function () {
   $('#closeBtn').on('click', function () {
     $(this).parents('.detailCover').animate({
       left: '100%'
-    }, 500);
+    }, 500).hide();
     $('body').css('overflow-y', 'auto');
   })
 

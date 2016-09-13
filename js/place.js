@@ -261,10 +261,7 @@ $(document).ready(function () {
           }, 500).show();
           $('body').css('overflow-y', 'hidden');
           widthaaa = $('.picSlideBox').width();
-          heightaaa = $('.picSlideBig li').height();
-          console.log(heightaaa)
           $('.picSlideBig li').css('width', widthaaa + 'px');
-          // $('.picSlideBox').css('height', heightaaa + 'px');
         })
       })
 
@@ -274,6 +271,8 @@ $(document).ready(function () {
             left: 0
           }, 500).show();
           $('body').css('overflow-y', 'hidden');
+          widthaaa = $('.picSlideBox').width();
+          $('.picSlideBig li').css('width', widthaaa + 'px');
         })
       })
       
