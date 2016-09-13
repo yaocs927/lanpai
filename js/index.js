@@ -95,7 +95,7 @@ $(document).ready(function () {
     $(this).on('click', function () {
       $('.detailCover').animate({
         left: 0
-      }, 500).show();
+      }, 400).show();
       $('body').css('overflow-y', 'hidden');
     })
   })
@@ -104,10 +104,12 @@ $(document).ready(function () {
   $('#closeBtn').on('click', function () {
     $(this).parents('.detailCover').animate({
       left: '100%'
-    }, 500).hide();
+    }, 300).hide(300);
     $('body').css('overflow-y', 'auto');
   })
 
+  // 设置宽度
+  $('.picSlideBox .picSlideBig li').css('width', .9 * windowWidth + 'px');
   // 轮播
   var dtIndex = 0;
   var dtImgSize = $('.picSlideBig li').size();

@@ -152,7 +152,7 @@ $(document).ready(function () {
   $('#closeBtn').on('click', function () {
     $(this).parents('.detailCover').stop().animate({
       left: '100%'
-    }, 500).hide(500);
+    }, 300).hide(300);
     $('body').css('overflow-y', 'auto');
   })
 
@@ -258,7 +258,7 @@ $(document).ready(function () {
         $(this).on('click', function () {
           $('.detailCover').stop().animate({
             left: 0
-          }, 500).show();
+          }, 400).show();
           $('body').css('overflow-y', 'hidden');
           widthaaa = $('.picSlideBox').width();
           $('.picSlideBig li').css('width', widthaaa + 'px');
@@ -269,7 +269,7 @@ $(document).ready(function () {
         $(this).on('click', function () {
           $('.detailCover').stop().animate({
             left: 0
-          }, 500).show();
+          }, 400).show();
           $('body').css('overflow-y', 'hidden');
           widthaaa = $('.picSlideBox').width();
           $('.picSlideBig li').css('width', widthaaa + 'px');
