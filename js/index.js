@@ -77,27 +77,23 @@ $(document).ready(function () {
   // =================
 
   var windowWidth = $(window).width();
-  var eleWidth = $('.photoList .viewPhotos').outerWidth(true);
-  var numaaa = parseInt(windowWidth / eleWidth);
-  $('.photoList').width(numaaa * eleWidth + 'px');
-  console.log(numaaa);
 
-  // 相册页面
-  $('.photoList li').hover(function () {
-    $(this).find('span').stop().fadeIn(300);
-  }, function () {
-    ;
-    $(this).find('span').stop().fadeOut(300);
-  })
 
   // 弹出
-  $('.viewPhotos').each(function () {
-    $(this).on('click', function () {
-      $('.detailCover').animate({
-        left: 0
-      }, 400).show();
-      $('body').css('overflow-y', 'hidden');
-    })
+  // $('.viewPhotos').each(function () {
+  //   $(this).on('click', function () {
+  //     $('.detailCover').animate({
+  //       left: 0
+  //     }, 400).show();
+  //     $('body').css('overflow-y', 'hidden');
+  //   })
+  // })
+
+  $('.photoList ul').on('click', '.viewPhotos', function () {
+    $('.detailCover').animate({
+      left: 0
+    }, 400).show();
+    $('body').css('overflow-y', 'hidden');
   })
 
   // 关闭按钮
@@ -108,7 +104,7 @@ $(document).ready(function () {
     $('body').css('overflow-y', 'auto');
   })
 
-  // 设置宽度
+  // 设置宽度弹出层照片宽度
   $('.picSlideBox .picSlideBig li').css('width', .9 * windowWidth + 'px');
   // 轮播
   var dtIndex = 0;
@@ -163,4 +159,40 @@ $(document).ready(function () {
     }
   }
 
+  // =================
+  // 页面数据获取部分
+  // =================  
+
+  // 照片墙
+  function photoAjax() {
+    $.ajax({
+      type: 'GET',
+      url: 'http://www.lanpartyclub.com/lanpartyclub/photowall/get/random',
+      dataType: 'JSONP',
+      jsonp: 'callback',
+      success: function (data) {
+        var photos = data.data.photo;
+        var numZ = 0;
+        $.each(photos, function (i, cur) {
+          numZ++;
+          $('.photoList ul').append('<li class="viewPhotos ani-' + numZ + '"><i class="photostyle"><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="' + cur.id + '"></i><i class="line topLine"></i><i class="line rightLine"></i><i class="line bottomLine"></i><i class="line leftLine"></i><span class="teamName">某团队活动<em>观看相册</em></span></li>')
+        });
+        // 相册页面
+        $('.photoList li').hover(function () {
+          $(this).find('span').stop().fadeIn(300);
+        }, function () {
+          $(this).find('span').stop().fadeOut(300);
+        })
+        var eleWidth = $('.photoList .viewPhotos').outerWidth(true);
+        var numaaa = parseInt(windowWidth / eleWidth);
+        $('.photoList').width(numaaa * eleWidth + 'px');
+      }
+    })
+  }
+  photoAjax();
+
+  $('#changePhoto').on('click', function () {
+    $('.photoList ul').children().remove();
+    photoAjax();
+  });
 })

@@ -158,8 +158,8 @@ $(document).ready(function () {
 
 
   // 设置图片宽度
-  
-  
+
+
   // 详情轮播
   var dtIndex = 0;
   $('.picSlideSmall li').eq(0).addClass('active').siblings().removeClass('active');
@@ -226,14 +226,16 @@ $(document).ready(function () {
   // =================
   // 页面数据获取部分
   // =================
+
+  // 场地列表
   // var curID = [];
   var widthaaa;
   var heightaaa;
   $.ajax({
     type: 'GET',
-    url: '../js/data/allTitle.json',
-    data: 'id=' + 1,
-    dataType: 'JSON',
+    url: 'http://www.lanpartyclub.com/lanpartyclub/class/get/child?id=1',
+    dataType: 'JSONP',
+    jsonp: "callback",
     success: function (data) {
       var title = data.data.class;
       $.each(title, function (i, cur) {
@@ -243,9 +245,10 @@ $(document).ready(function () {
   });
 
   $.ajax({
-    type: "GET",
-    url: "../js/data/place-list.json",
-    dataType: "JSON",
+    type: 'GET',
+    url: 'http://www.lanpartyclub.com/lanpartyclub/item/get/class?id=1',
+    dataType: 'JSONP',
+    jsonp: 'callback',
     success: function (data) {
       var item = data.data.item;
       $.each(item, function (i, cur) {
@@ -275,11 +278,16 @@ $(document).ready(function () {
           $('.picSlideBig li').css('width', widthaaa + 'px');
         })
       })
-      
+
+    },
+
+    error: function () {
+      alert('fail');
     }
   });
 
 
+  //餐饮列表
 
 
 })
