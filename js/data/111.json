@@ -2,41 +2,12 @@
   "status": 200,
   "message": "Success: 成功",
   "data": {
-    "photowall": {
-      "name": "照片墙"
-    },
-    "photo": [
-      {
-        "id": 1,
-        "url": "default1.jpg"
-      },
-      {
-        "id": 2,
-        "url": "default2.jpg"
-      },
+    "item": [
       {
         "id": 4,
-        "url": "default4.jpg"
-      },
-      {
-        "id": 5,
-        "url": "default5.jpg"
-      },
-      {
-        "id": 6,
-        "url": "default6.jpg"
-      },
-      {
-        "id": 7,
-        "url": "default7.jpg"
-      },
-      {
-        "id": 8,
-        "url": "default8.jpg"
-      },
-      {
-        "id": 9,
-        "url": "default9.jpg"
+        "title": "删除场馆",
+        "brief": "删除场馆简介",
+        "cover": "default.jpg"
       }
     ]
   }

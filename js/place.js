@@ -146,7 +146,24 @@ $(document).ready(function () {
   // =================
 
   // 详情弹出
+  $('#placeAll').on('click', '.detailBtn', function () {
+    // $('.detailBtn').on('click', function () {
+    $('.detailCover').stop().animate({
+      left: 0
+    }, 400).show();
+    $('body').css('overflow-y', 'hidden');
+  })
 
+  $('.detailBtnTouch').on('click', function () {
+    $('.detailCover').stop().animate({
+      left: 0
+    }, 400).show();
+    $('body').css('overflow-y', 'hidden');
+  })
+
+  // 设置图片宽度
+  var widthaaa = $('.picSlideBox').width();
+  $('.picSlideBig li').css('width', widthaaa + 'px');
 
   // 关闭按钮
   $('#closeBtn').on('click', function () {
@@ -155,10 +172,6 @@ $(document).ready(function () {
     }, 300).hide(300);
     $('body').css('overflow-y', 'auto');
   })
-
-
-  // 设置图片宽度
-
 
   // 详情轮播
   var dtIndex = 0;
@@ -227,10 +240,8 @@ $(document).ready(function () {
   // 页面数据获取部分
   // =================
 
-  // 场地列表
-  // var curID = [];
-  var widthaaa;
-  var heightaaa;
+  var thisClassIdNum;
+  // 场地风格列表
   $.ajax({
     type: 'GET',
     url: 'http://www.lanpartyclub.com/lanpartyclub/class/get/child?id=1',
@@ -239,55 +250,80 @@ $(document).ready(function () {
     success: function (data) {
       var title = data.data.class;
       $.each(title, function (i, cur) {
-        $('#placeList').append('<section class="typeList clearfix"><div class="typeList-title flyLeftAnimate" id="' + cur.id + '"><h2>' + cur.name + '</h2><span><i></i><i></i><i></i></span></div><div class="colList clearfix flyRightAnimate"></div></section>')
-      })
+        thisClassIdNum = cur.id;
+        $('#placeList').append('<section class="typeList clearfix" id="placeStyle-' + thisClassIdNum + '"><div class="typeList-title flyLeftAnimate"><h2>' + cur.name + '</h2><span><i></i><i></i><i></i></span></div><div class="colList clearfix flyRightAnimate"></div></section>')
+        placeLists(thisClassIdNum);
+      });
     }
   });
 
+  //餐饮风格列表
   $.ajax({
     type: 'GET',
-    url: 'http://www.lanpartyclub.com/lanpartyclub/item/get/class?id=1',
+    url: 'http://www.lanpartyclub.com/lanpartyclub/class/get/child?id=2',
     dataType: 'JSONP',
     jsonp: 'callback',
     success: function (data) {
-      var item = data.data.item;
-      $.each(item, function (i, cur) {
-        var curId = cur.styleId;
-        $('#' + curId).siblings('.colList').append('<div class="product left"><div class="productPic"><img src="' + cur.cover + '" alt="123"></div><div class="productPic-info detailBtnTouch">' + cur.title + '</div><div class="product-content-bg"><div class="product-content"><h3>' + cur.title + '</h3><p class="introduce">' + cur.brief + '</p><span class="productStrip"></span></div></div><div class="detailBtn productBtn">VIEW</div></div>')
-        // 设置分类标题高度
-        $('.typeList-title').height($('.colList .product').height());
-      })
-      $('.detailBtn').each(function () {
-        $(this).on('click', function () {
-          $('.detailCover').stop().animate({
-            left: 0
-          }, 400).show();
-          $('body').css('overflow-y', 'hidden');
-          widthaaa = $('.picSlideBox').width();
-          $('.picSlideBig li').css('width', widthaaa + 'px');
+      var title = data.data.class;
+      $.each(title, function (i, cur) {
+        thisClassIdNum = cur.id;
+        $('#foodList').append('<section class="typeList clearfix" id="foodStyle-' + thisClassIdNum + '"><div class="typeList-title flyLeftAnimate"><h2>' + cur.name + '</h2><span><i></i><i></i><i></i></span></div><div class="colList clearfix flyRightAnimate"></div></section>')
+        foodLists(thisClassIdNum);
+      });
+    }
+  })
+})
+
+
+
+/*
+ *
+ *
+ *需调用函数部分
+ */
+
+// 场地列表
+function placeLists(classId) {
+  $.ajax({
+    type: 'GET',
+    url: 'http://www.lanpartyclub.com/lanpartyclub/item/get/class?id=' + classId,
+    dataType: 'JSONP',
+    jsonp: 'callback',
+    success: function (data) {
+      if (data.status == 200) {
+        var items = data.data.item;
+        $.each(items, function (i, cur) {
+          console.log(items)
+          $('#placeStyle-' + classId).find('.typeList-title').siblings('.colList').append('<div class="product left"><div class="productPic"><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.cover + '" alt="123"></div><div class="productPic-info detailBtnTouch">' + cur.title + '</div><div class="product-content-bg"><div class="product-content"><h3>' + cur.title + '</h3><p class="introduce">' + cur.brief + '</p><span class="productStrip"></span></div></div><div class="detailBtn productBtn">VIEW</div></div>')
+          // 设置分类标题高度
+          $('.typeList-title').height($('.colList .product').height());
         })
-      })
-
-      $('.detailBtnTouch').each(function () {
-        $(this).on('click', function () {
-          $('.detailCover').stop().animate({
-            left: 0
-          }, 400).show();
-          $('body').css('overflow-y', 'hidden');
-          widthaaa = $('.picSlideBox').width();
-          $('.picSlideBig li').css('width', widthaaa + 'px');
-        })
-      })
-
-    },
-
-    error: function () {
-      alert('fail');
+      } else if (data.status == 402) {
+        $('#placeStyle-' + classId).remove();
+      }
     }
   });
+}
 
-
-  //餐饮列表
-
-
-})
+// 餐饮列表
+function foodLists(classId) {
+  $.ajax({
+    type: 'GET',
+    url: 'http://www.lanpartyclub.com/lanpartyclub/item/get/class?id=' + classId,
+    dataType: 'JSONP',
+    jsonp: 'callback',
+    success: function (data) {
+      if (data.status == 200) {
+        var items = data.data.item;
+        $.each(items, function (i, cur) {
+          console.log(items)
+          $('#foodStyle-' + classId).find('.typeList-title').siblings('.colList').append('<div class="product left"><div class="productPic"><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.cover + '" alt="123"></div><div class="productPic-info detailBtnTouch">' + cur.title + '</div><div class="product-content-bg"><div class="product-content"><h3>' + cur.title + '</h3><p class="introduce">' + cur.brief + '</p><span class="productStrip"></span></div></div><div class="detailBtn productBtn">VIEW</div></div>')
+          // 设置分类标题高度
+          $('.typeList-title').height($('.colList .product').height());
+        })
+      } else if (data.status == 402) {
+        $('#foodStyle-' + classId).remove();
+      }
+    }
+  });
+}
