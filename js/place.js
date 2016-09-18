@@ -63,7 +63,6 @@ $(document).ready(function () {
   })
 
 
-
   // 滚动事件
   $(window).scroll(function () {
     var windowHeight = $(this).height();
@@ -145,28 +144,50 @@ $(document).ready(function () {
   // 详情部分
   // =================
 
-  // 详情弹出
-  $('#placeAll').on('click', '.detailBtn', function () {
-    // $('.detailBtn').on('click', function () {
+  var widthaaa;
+  // 每日推荐详情弹出
+  $('.daily').on('click', '.detailBtn', function () {
+    var itemNum = $(this).attr('id').split('-');
+    var itemIdNum = itemNum[1];
     $('.detailCover').stop().animate({
       left: 0
     }, 400).show();
     $('body').css('overflow-y', 'hidden');
+    $('#itemDetail').children().remove();
+    itemDetails(itemIdNum);
+    widthaaa = $('.picSlideBox').outerWidth();
   })
 
-  $('.detailBtnTouch').on('click', function () {
+  // 品项列表详情弹出
+  $('.container').on('click', '.detailBtn', function () {
+    var itemNum = $(this).parent('.product').attr('id').split('-');
+    var itemIdNum = itemNum[1];
     $('.detailCover').stop().animate({
       left: 0
     }, 400).show();
     $('body').css('overflow-y', 'hidden');
+    $('#itemDetail').children().remove();
+    itemDetails(itemIdNum);
+    widthaaa = $('.picSlideBox').outerWidth();
+  })
+
+  $('#allItems').on('click', '.detailBtnTouch', function () {
+    var itemNum = $(this).attr('id').split('-');
+    var itemIdNum = itemNum[1];
+    $('.detailCover').stop().animate({
+      left: 0
+    }, 400).show();
+    $('body').css('overflow-y', 'hidden');
+    $('#itemDetail').children().remove();
+    itemDetails(itemIdNum);
+    widthaaa = $('.picSlideBox').outerWidth();
   })
 
   // 设置图片宽度
-  var widthaaa = $('.picSlideBox').width();
   $('.picSlideBig li').css('width', widthaaa + 'px');
 
   // 关闭按钮
-  $('#closeBtn').on('click', function () {
+  $('.detailCover').on('click', '#closeBtn', function () {
     $(this).parents('.detailCover').stop().animate({
       left: '100%'
     }, 300).hide(300);
@@ -240,7 +261,41 @@ $(document).ready(function () {
   // 页面数据获取部分
   // =================
 
-  var thisClassIdNum;
+  // 场地每日推荐
+  $.ajax({
+    type: 'GET',
+    url: 'http://www.lanpartyclub.com/lanpartyclub/item/get/class/random?id=1',
+    dataType: 'JSONP',
+    jsonp: 'callback',
+    success: function (data) {
+      var dailyitem = data.data.item;
+      var dailyPhoto = data.data.photo;
+      $.each(dailyPhoto, function (i, cur) {
+        $('#placeDaily').find('#dailySlidePic').append('<li><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="图片"></li>');
+      })
+      $('#placeDaily').find('.dailySlidePic-info').attr('id', 'dailyItem-' + dailyitem.id + '').text(dailyitem.title);
+      $('#placeDaily').find('.daily-right').append('<h1>' + dailyitem.title + '<br>别墅轰趴馆</h1><div class="dailyStrip"></div><p class="dailyContent introduce">别墅介绍：' + dailyitem.brief + '</p><div class="detailBtn dailyDetailBtn" id="dailyItem-' + dailyitem.id + '">VIEW</div>')
+    }
+  })
+
+  // 餐饮每日推荐
+  $.ajax({
+    type: 'GET',
+    url: 'http://www.lanpartyclub.com/lanpartyclub/item/get/class/random?id=2',
+    dataType: 'JSONP',
+    jsonp: 'callback',
+    success: function (data) {
+      var dailyitem = data.data.item;
+      var dailyPhoto = data.data.photo;
+      $.each(dailyPhoto, function (i, cur) {
+        $('#foodDaily').find('#dailySlidePic').append('<li><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="图片"></li>');
+      })
+      $('#foodDaily').find('.dailySlidePic-info').attr('id', 'dailyItem-' + dailyitem.id + '').text(dailyitem.title);
+      $('#foodDaily').find('.daily-right').append('<h1>' + dailyitem.title + '<br>别墅轰趴馆</h1><div class="dailyStrip"></div><p class="dailyContent introduce">别墅介绍：' + dailyitem.brief + '</p><div class="detailBtn dailyDetailBtn" id="dailyItem-' + dailyitem.id + '">VIEW</div>')
+    }
+  })
+
+
   // 场地风格列表
   $.ajax({
     type: 'GET',
@@ -248,32 +303,31 @@ $(document).ready(function () {
     dataType: 'JSONP',
     jsonp: "callback",
     success: function (data) {
-      var title = data.data.class;
-      $.each(title, function (i, cur) {
-        thisClassIdNum = cur.id;
-        $('#placeList').append('<section class="typeList clearfix" id="placeStyle-' + thisClassIdNum + '"><div class="typeList-title flyLeftAnimate"><h2>' + cur.name + '</h2><span><i></i><i></i><i></i></span></div><div class="colList clearfix flyRightAnimate"></div></section>')
-        placeLists(thisClassIdNum);
+      var classTitle = data.data.class;
+      $.each(classTitle, function (i, cur) {
+        var thisClassIdNum = cur.id;
+        $('#placeList').append('<section class="typeList clearfix" id="itemStyle-' + thisClassIdNum + '"><div class="typeList-title flyLeftAnimate"><h2>' + cur.name + '</h2><span><i></i><i></i><i></i></span></div><div class="colList clearfix flyRightAnimate"></div></section>')
+        itemLists(thisClassIdNum);
       });
     }
   });
 
-  //餐饮风格列表
+  // 餐饮风格列表
   $.ajax({
     type: 'GET',
     url: 'http://www.lanpartyclub.com/lanpartyclub/class/get/child?id=2',
     dataType: 'JSONP',
     jsonp: 'callback',
     success: function (data) {
-      var title = data.data.class;
-      $.each(title, function (i, cur) {
-        thisClassIdNum = cur.id;
-        $('#foodList').append('<section class="typeList clearfix" id="foodStyle-' + thisClassIdNum + '"><div class="typeList-title flyLeftAnimate"><h2>' + cur.name + '</h2><span><i></i><i></i><i></i></span></div><div class="colList clearfix flyRightAnimate"></div></section>')
-        foodLists(thisClassIdNum);
+      var classTitle = data.data.class;
+      $.each(classTitle, function (i, cur) {
+        var thisClassIdNum = cur.id;
+        $('#foodList').append('<section class="typeList clearfix" id="itemStyle-' + thisClassIdNum + '"><div class="typeList-title flyLeftAnimate"><h2>' + cur.name + '</h2><span><i></i><i></i><i></i></span></div><div class="colList clearfix flyRightAnimate"></div></section>')
+        itemLists(thisClassIdNum);
       });
     }
-  })
+  });
 })
-
 
 
 /*
@@ -282,8 +336,8 @@ $(document).ready(function () {
  *需调用函数部分
  */
 
-// 场地列表
-function placeLists(classId) {
+// 品项列表
+function itemLists(classId) {
   $.ajax({
     type: 'GET',
     url: 'http://www.lanpartyclub.com/lanpartyclub/item/get/class?id=' + classId,
@@ -293,36 +347,38 @@ function placeLists(classId) {
       if (data.status == 200) {
         var items = data.data.item;
         $.each(items, function (i, cur) {
-          console.log(items)
-          $('#placeStyle-' + classId).find('.typeList-title').siblings('.colList').append('<div class="product left"><div class="productPic"><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.cover + '" alt="123"></div><div class="productPic-info detailBtnTouch">' + cur.title + '</div><div class="product-content-bg"><div class="product-content"><h3>' + cur.title + '</h3><p class="introduce">' + cur.brief + '</p><span class="productStrip"></span></div></div><div class="detailBtn productBtn">VIEW</div></div>')
+          $('#itemStyle-' + classId).find('.typeList-title').siblings('.colList').append('<div class="product left" id="item-' + cur.id + '"><div class="productPic"><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.cover + '" alt="图片"></div><div class="productPic-info detailBtnTouch" id="sitem-' + cur.id + '">' + cur.title + '</div><div class="product-content-bg"><div class="product-content"><h3>' + cur.title + '</h3><p class="introduce">' + cur.brief + '</p><span class="productStrip"></span></div></div><div class="detailBtn productBtn">VIEW</div></div>')
           // 设置分类标题高度
           $('.typeList-title').height($('.colList .product').height());
         })
-      } else if (data.status == 402) {
-        $('#placeStyle-' + classId).remove();
+      } else {
+        $('#itemStyle-' + classId).remove();
       }
     }
   });
 }
 
-// 餐饮列表
-function foodLists(classId) {
+// 弹出详情
+function itemDetails(itemId) {
   $.ajax({
     type: 'GET',
-    url: 'http://www.lanpartyclub.com/lanpartyclub/item/get/class?id=' + classId,
+    url: 'http://www.lanpartyclub.com/lanpartyclub/item/get?id=' + itemId,
     dataType: 'JSONP',
     jsonp: 'callback',
     success: function (data) {
       if (data.status == 200) {
-        var items = data.data.item;
-        $.each(items, function (i, cur) {
-          console.log(items)
-          $('#foodStyle-' + classId).find('.typeList-title').siblings('.colList').append('<div class="product left"><div class="productPic"><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.cover + '" alt="123"></div><div class="productPic-info detailBtnTouch">' + cur.title + '</div><div class="product-content-bg"><div class="product-content"><h3>' + cur.title + '</h3><p class="introduce">' + cur.brief + '</p><span class="productStrip"></span></div></div><div class="detailBtn productBtn">VIEW</div></div>')
-          // 设置分类标题高度
-          $('.typeList-title').height($('.colList .product').height());
-        })
-      } else if (data.status == 402) {
-        $('#foodStyle-' + classId).remove();
+        var item = data.data.item;
+        var photo = data.data.photo;
+        var detail = data.data.detail;
+        $('#itemDetail').append('<h2 id="detailTitle-' + itemId + '">' + item.title + '<span class="closeBtn closeBtnAnimate" id="closeBtn"><i></i><i></i></span></h2><div class="detailPic picSlideBox clearfix"><ul class="picSlideBig"></ul><div class="picSlideSmallBox"><span class="curNum"></span>/<span class="totalNum"></span></div><span class="picSlideBtn prev" id="picSlideBtnPrev"></span><span class="picSlideBtn next" id="picSlideBtnNext"></span></div><div class="detailInfo"><h3>详细信息</h3><ul class="detailInfoText"></ul></div>');
+        $.each(photo, function (i, cur) {
+          $('.picSlideBig').append('<li><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="详情照片"></li>')
+        });
+        $.each(detail, function (j, ocur) {
+          $('.detailInfoText').append('<li class="clearfix"><span>' + ocur.name + '</span><i>' + ocur.content + '</i></li>')
+        });
+      } else {
+        alert('暂无详情！');
       }
     }
   });

@@ -15,7 +15,7 @@
   <![endif]-->
 </head>
 
-<body>
+<body id="allItems">
   <!--首屏-->
   <div class="topBox foodTop">
     <header>
@@ -52,17 +52,13 @@
       <p class="slogan-nr">别墅轰趴馆</p>
       <div class="strip"></div>
     </aside>
-    <article class="daily">
+    <article class="daily" id="foodDaily">
       <div class="daily-left">
         <img src="img/daily-slogan.png" alt="123" class="daily-slogan">
         <div class="dailyPic">
           <ul id="dailySlidePic">
-            <li><img src="img/daily-img-1.jpg" alt="123"></li>
-            <li><img src="img/daily-img-2.jpg" alt="123"></li>
-            <li><img src="img/daily-img-3.jpg" alt="123"></li>
           </ul>
           <div class="dailySlidePic-info detailBtnTouch">
-            夏威夷别墅轰趴馆
           </div>
           <div class="daily-slideBtn">
             <span class="daily-slideBtn-style prev"></span>
@@ -72,10 +68,6 @@
         <div class="daily-bg"></div>
       </div>
       <div class="daily-right">
-        <h1>夏威夷<br>别墅轰趴馆</h1>
-        <div class="dailyStrip"></div>
-        <p class="dailyContent introduce">本别墅适合做：Team Building、私人派对、同学聚会、开学/毕业聚会、好友聚会、公司聚会、草坪婚礼、公司尾牙、草坪酒会、行业交流、高端派对、商务宴请、（微）电影拍摄、节日派对、主题派对、动漫Cosplay、求婚求爱、会议会晤、社团活动、旅游度假、音乐酒会、拓展/破冰游戏等。</p>
-        <div class="detailBtn dailyDetailBtn">VIEW</div>
       </div>
     </article>
     <div class="scrolldown">滑动更多内容</div>
@@ -83,48 +75,8 @@
   <!--主要内容-->
   <div class="container" id="foodList">
     <!--分类-->
-        
+
     <!--<div class="seeMore">查看更多</div>-->
-  </div>
-  <!--弹出详情-->
-  <div class="detailCover">
-    <section class="detailContent">
-      <div class="comWidth">
-        <h2>夏威夷别墅轰趴馆<span class="closeBtn closeBtnAnimate" id="closeBtn"><i></i><i></i></span></h2>
-        <div class="detailPic picSlideBox clearfix">
-          <ul class="picSlideBig">
-            <li><img src="img/details/place-details-1.jpg" alt="123"></li>
-            <li><img src="img/details/place-details-2.jpg" alt="123"></li>
-            <li><img src="img/details/place-details-3.jpg" alt="123"></li>
-            <li><img src="img/details/place-details-4.jpg" alt="123"></li>
-            <li><img src="img/details/place-details-5.jpg" alt="123"></li>
-            <li><img src="img/details/place-details-6.jpg" alt="123"></li>
-          </ul>
-          <div class="picSlideSmallBox"><span class="curNum"></span>/<span class="totalNum"></span></div>
-          <span class="picSlideBtn prev" id="picSlideBtnPrev"></span>
-          <span class="picSlideBtn next" id="picSlideBtnNext"></span>
-        </div>
-        <div class="detailInfo">
-          <h3>详细信息</h3>
-          <ul class="detailInfoText">
-            <li class="clearfix"><span>场地功能</span><i>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, cupiditate, distinctio. Praesentium asperiores quos vero hic facilis blanditiis explicabo! Quam excepturi, impedit doloremque, quo nisi ea aspernatur et at commodi!</i></li>
-            <li class="clearfix">
-              <span>场地功能</span>
-              <i>
-                <ul>
-                  <li>Lorem ipsum dolor sit amet, consectetur</li>
-                  <li>Lorem ipsum dolor sit amet, consectetur</li>
-                  <li>Lorem ipsum dolor sit amet, consectetur</li>
-                  <li>Lorem ipsum dolor sit amet, consectetur</li>
-                </ul>
-              </i>
-            </li>
-            <li class="clearfix"><span>场地功能</span><i>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, cupiditate, distinctio. Praesentium asperiores quos vero hic facilis blanditiis explicabo! Quam excepturi, impedit doloremque, quo nisi ea aspernatur et at commodi!</i></li>
-            <li class="clearfix"><span>场地功能</span><i>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, cupiditate, distinctio. Praesentium asperiores quos vero hic facilis blanditiis explicabo! Quam excepturi, impedit doloremque, quo nisi ea aspernatur et at commodi!</i></li>
-          </ul>
-        </div>
-      </div>
-    </section>
   </div>
   <!--页尾-->
   <footer>
@@ -150,6 +102,15 @@
   </ul>
   <div class="erweima">
     <img src="img/wechat.jpg" alt="123">
+  </div>
+
+  <!--弹出详情-->
+  <div class="detailCover">
+    <section class="detailContent">
+      <div class="comWidth" id="itemDetail">
+
+      </div>
+    </section>
   </div>
 
   <script src="js/jquery-2.0.0.min.js"></script>
