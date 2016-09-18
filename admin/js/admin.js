@@ -114,5 +114,69 @@ $(function () {
     console.log(thisIdName)
   });
 
+  // =================================
+  // 发布照片
+  // =================================
+
+  // 品项发布-图片新增一条信息
+  $('#fbzp-photo-add').on('click', function () {
+    num++;
+    $('#fbzp-photo-list tbody').append('<tr><td class="col-md-1"><input type="checkbox" class="checkboxStyle" name="fbzp-photo-list"></td><td class="col-md-6"><input type="text" class="form-control fbzp-inputfile-' + num + '"></td><td class="col-md-1"><label class="btn btn-primary" for="fbzp-inputfile-' + num + '">选择文件</label></td><td class="col-md-1"><input type="file" id="fbzp-inputfile-' + num + '" class="file"></td><td class="col-md-1"><button type="button" class="btn btn-warning fbzp-photo-delete">删除</button></td></tr>')
+  })
+
+  // 品项发布-图片删除一条信息
+  $('#fbzp-photo-list tbody').on('click', 'button.fbzp-photo-delete', function () {
+    $(this).parents('tr').remove();
+  })
+
+  // 修改品项-详情删除选中
+  $('#fbzp-photo-delete-all').on('click', function () {
+    $('#fbzp-photo-list input[type="checkbox"]:checked').each(function () {
+      $(this).parents('tr').remove();
+    })
+  })
+
+  // 上传文件获取文件名
+  // var filename = $('.fileName');
+  $('#fbzp-photo-list').on('change', '.file', function (e) {
+    //e.currentTarget.files 是一个数组，如果支持多个文件，则需要遍历
+    var name = e.currentTarget.files[0].name;
+    var thisIdName = $(this).attr('id')
+    $('.' + thisIdName).val(name).attr('disabled', 'disabled');
+    console.log(thisIdName)
+  });
+
+
+  // =================================
+  // 修改照片
+  // =================================
+
+  // 修改品项-图片新增一条信息
+  $('#xgzp-photo-add').on('click', function () {
+    numA++;
+    $('#xgzp-photo-list tbody').append('<tr><td class="col-md-1"><input type="checkbox" class="checkboxStyle" name="xgzp-photo-list"></td><td class="col-md-6"><input type="text" class="form-control xgzp-inputfile-' + numA + '"></td><td class="col-md-1"><label class="btn btn-primary" for="xgzp-inputfile-' + numA + '">选择文件</label></td><td class="col-md-1"><input type="file" id="xgzp-inputfile-' + numA + '" class="file"></td><td class="col-md-1"><button type="button" class="btn btn-warning xgzp-photo-delete">删除</button></td></tr>')
+  })
+
+  // 修改品项-图片删除一条信息
+  $('#xgzp-photo-list tbody').on('click', 'button.xgzp-photo-delete', function () {
+    $(this).parents('tr').remove();
+  })
+
+  // 修改品项-详情删除选中
+  $('#xgzp-photo-delete-all').on('click', function () {
+    $('#xgzp-photo-list input[type="checkbox"]:checked').each(function () {
+      $(this).parents('tr').remove();
+    })
+  })
+
+  // 上传文件获取文件名
+  // var filename = $('.fileName');
+  $('#xgzp-photo-list').on('change', '.file', function (e) {
+    //e.currentTarget.files 是一个数组，如果支持多个文件，则需要遍历
+    var name = e.currentTarget.files[0].name;
+    var thisIdName = $(this).attr('id')
+    $('.' + thisIdName).val(name).attr('disabled', 'disabled');
+    console.log(thisIdName)
+  });
 
 });

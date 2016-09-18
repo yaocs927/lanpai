@@ -47,6 +47,9 @@
           <li class="active"><a href="#glpx" class="myTab"><span class="glyphicon glyphicon-th-large"></span> 管理品项</a></li>
           <li><a href="#fbpx" class="myTab"><span class="glyphicon glyphicon-saved"></span> 发布品项</a></li>
           <li><a href="#xgpx" class="myTab"><span class="glyphicon glyphicon-edit"></span> 修改品项</a></li>
+          <li><a href="#zpq" class="myTab"><span class="glyphicon glyphicon-picture"></span> 管理照片墙</a></li>
+          <li><a href="#fbzp" class="myTab"><span class="glyphicon glyphicon-saved"></span> 发布照片</a></li>
+          <li><a href="#xgzp" class="myTab"><span class="glyphicon glyphicon-edit"></span> 修改照片</a></li>
         </ul>
       </div>
       <!--右侧栏-->
@@ -277,6 +280,140 @@
               </table>
             </div>
             <button type="button" class="btn btn-block btn-lg btn-success xgpx-confirm" data-toggle="modal" data-target="#fbpx-success"><span class="glyphicon glyphicon-ok"></span> 确认修改品项</button>
+          </form>
+        </div>
+        <!--管理照片墙-->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade" id="zpq">
+          <h1 class="page-header">管理照片墙</h1>
+          <form class="form-inline glpx-dropselect form-horizontal">
+            <label for=""></label>
+            <div class="myTab pull-right">
+              <a class="btn btn-primary myTab" href="#fbzp" role="button"><span class="glyphicon glyphicon-saved"></span> 发布一组新照片</a>
+            </div>
+          </form>
+          <div class="table-responsive">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th class="col-md-1">#</th>
+                  <th class="col-md-3">相册ID</th>
+                  <th class="col-md-4">相册名称</th>
+                  <th class="col-md-2">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>1275342986</td>
+                  <td>某团队活动照片</td>
+                  <td>
+                    <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#delete-px">删除</button>
+                    <button type="button" class="btn btn-sm btn-primary myTab" href="#xgzp">修改</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <ul class="pagination pull-right">
+            <li><a href="#">&laquo;</a></li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li class="disabled"><a href="#">5</a></li>
+            <li><a href="#">&raquo;</a></li>
+          </ul>
+        </div>
+        <!--发布新照片-->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade" id="fbzp">
+          <h1 class="page-header">发布一组新照片</h1>
+          <form class="form-inline glpx-dropselect form-horizontal">
+            <label for="">名称:</label>
+            <input type="text" class="form-control">
+          </form>
+          <form>
+            <legend class="mt20">增加照片</legend>
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary btn-sm" id="fbzp-photo-add"><span class="glyphicon glyphicon-plus"></span> 新增一条</button>
+              <button type="button" class="btn btn-default btn-sm" id="fbzp-photo-delete-all"><span class="glyphicon glyphicon-minus"></span> 删除选中</button>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover" id="fbzp-photo-list">
+                <thead>
+                  <tr>
+                    <th class="col-md-1">#</th>
+                    <th class="col-md-6">图片</th>
+                    <th class="col-md-1">图片</th>
+                    <th class="col-md-1"></th>
+                    <th class="col-md-1">操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="col-md-1">
+                      <input type="checkbox" class="checkboxStyle" name="fbzp-photo-list">
+                    </td>
+                    <td class="col-md-6">
+                      <input type="text" class="form-control fbzp-inputfile-0">
+                    </td>
+                    <td class="col-md-1">
+                      <label class="btn btn-primary" for="fbzp-inputfile-0">选择文件</label>
+                    </td>
+                    <td class="col-md-1">
+                      <input type="file" id="fbzp-inputfile-0" class="file" name="0">
+                    </td>
+                    <td class="col-md-1"><button type="button" class="btn btn-warning fbzp-photo-delete">删除</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <button type="button" class="btn btn-block btn-lg btn-success fbpx-confirm" data-toggle="modal" data-target="#fbpx-success"><span class="glyphicon glyphicon-ok"></span> 确认提交照片</button>
+          </form>
+        </div>
+        <!--修改照片-->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade" id="xgzp">
+          <h1 class="page-header">修改一组照片</h1>
+          <form class="form-inline xgpx-dropselect form-horizontal">
+            <label for="">名称:</label>
+            <input type="text" class="form-control">
+          </form>
+          <form>
+            <legend class="mt20">修改照片</legend>
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary btn-sm" id="xgzp-photo-add"><span class="glyphicon glyphicon-plus"></span> 新增一条</button>
+              <button type="button" class="btn btn-default btn-sm" id="xgzp-photo-delete-all"><span class="glyphicon glyphicon-minus"></span> 删除选中</button>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover" id="xgzp-photo-list">
+                <thead>
+                  <tr>
+                    <th class="col-md-1">#</th>
+                    <th class="col-md-6">图片</th>
+                    <th class="col-md-1">图片</th>
+                    <th class="col-md-1"></th>
+                    <th class="col-md-1">操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="col-md-1">
+                      <input type="checkbox" class="checkboxStyle" name="xgzp-photo-list">
+                    </td>
+                    <td class="col-md-6">
+                      <input type="text" class="form-control xgzp-inputfile-0">
+                    </td>
+                    <td class="col-md-1">
+                      <label class="btn btn-primary" for="xgzp-inputfile-0">选择文件</label>
+                    </td>
+                    <td class="col-md-1">
+                      <input type="file" id="xgzp-inputfile-0" class="file" name="0">
+                    </td>
+                    <td class="col-md-1"><button type="button" class="btn btn-warning xgzp-photo-delete">删除</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <button type="button" class="btn btn-block btn-lg btn-success xgpx-confirm" data-toggle="modal" data-target="#fbpx-success"><span class="glyphicon glyphicon-ok"></span> 确认修改照片</button>
           </form>
         </div>
       </div>
