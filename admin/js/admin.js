@@ -1,4 +1,6 @@
 $(function () {
+
+  // tab标签
   $('#adminAll').on('click', '.myTab', function (e) {
     e.preventDefault()
     $(this).tab('show');
@@ -10,6 +12,37 @@ $(function () {
     })
   })
 
+
+  // =================================
+  // 品项管理
+  // =================================
+
+  // 修改品项
+  var thisItemId;
+  $('#pxgl-lists').on('click', '.changeInfo', function () {
+    thisItemId = $(this).parent().siblings('.thisItemId').text();
+    $.ajax({
+      type: 'GET',
+      url: 'http://www.lanpartyclub.com/lanpartyclub/item/get?id=' + thisItemId,
+      dataType: 'JSONP',
+      jsonp: 'callback',
+      success: function (data) {
+        var datas = data.data;
+        $('#xgpxLevelOneTitle').val('' + datas.pclass.name + '');
+        $('#styleLists2').append('<option>' + datas.class.name + '</option>');
+        $('#itemTitle').val('' + datas.item.title + '');
+        $('#itemBrief').text(datas.item.brief);
+        $.each(datas.detail, function (i, cur) {
+          $('#xgpx-info-list tbody').append('<tr>' +
+            '<td><input type="checkbox" class="checkboxStyle" name="xgpx-info-list"></td>' +
+            '<td><input type="text" class="form-control detailsTitle" value="' + cur.name + '"></td>' +
+            '<td><input type="text" class="form-control detailsInfo" value="' + cur.content + '"></td>' +
+            '<td><button type="button" class="btn btn-warning xgpx-info-delete">删除</button></td>' +
+            '</tr>')
+        })
+      }
+    });
+  })
 
   // =================================
   // 发布品项
@@ -26,7 +59,7 @@ $(function () {
     $(this).parents('tr').remove();
   })
 
-  // 修改品项-详情删除选中
+  // 品项发布-详情删除选中
   $('#fbpx-info-delete-all').on('click', function () {
     $('#fbpx-info-list input[type="checkbox"]:checked').each(function () {
       $(this).parents('tr').remove();
@@ -61,9 +94,9 @@ $(function () {
   //   console.log(thisIdName)
   // });
 
-  // 上传文件获取文件名
 
 
+  // 发布品项--上传文件
   $("#file-1").fileinput({
     uploadUrl: '#',
     allowedFileExtensions: ['jpg', 'png', 'gif'],
@@ -79,6 +112,8 @@ $(function () {
 
 
 
+
+
   // =================================
   // 修改品项
   // =================================
@@ -86,7 +121,7 @@ $(function () {
   var numA = 1;
   // 修改品项-详情新增一条信息
   $('#xgpx-info-add').on('click', function () {
-    $('#xgpx-info-list tbody').append('<tr><td><input type="checkbox" class="checkboxStyle" name="xgpx-info-list"></td><td><input type="text" class="form-control"></td><td><input type="text" class="form-control"></td><td><button type="button" class="btn btn-warning xgpx-info-delete">删除</button></td></tr>')
+    $('#xgpx-info-list tbody').append('<tr><td><input type="checkbox" class="checkboxStyle" name="xgpx-info-list"></td><td><input type="text" class="form-control detailsTitle"></td><td><input type="text" class="form-control detailsInfo"></td><td><button type="button" class="btn btn-warning xgpx-info-delete">删除</button></td></tr>')
   })
 
   // 修改品项-详情删除一条信息
@@ -103,31 +138,43 @@ $(function () {
   })
 
   // 修改品项-图片新增一条信息
-  $('#xgpx-photo-add').on('click', function () {
-    numA++;
-    $('#xgpx-photo-list tbody').append('<tr><td><input type="checkbox" class="checkboxStyle" name="xgpx-photo-list"></td><td><input type="text" class="form-control xgpx-inputfile-' + numA + '"></td><td><label class="btn btn-primary" for="xgpx-inputfile-' + numA + '">选择文件</label></td><td><input type="file" id="xgpx-inputfile-' + numA + '" class="file"></td><td><button type="button" class="btn btn-warning xgpx-photo-delete">删除</button></td></tr>')
-  })
+  // $('#xgpx-photo-add').on('click', function () {
+  //   numA++;
+  //   $('#xgpx-photo-list tbody').append('<tr><td><input type="checkbox" class="checkboxStyle" name="xgpx-photo-list"></td><td><input type="text" class="form-control xgpx-inputfile-' + numA + '"></td><td><label class="btn btn-primary" for="xgpx-inputfile-' + numA + '">选择文件</label></td><td><input type="file" id="xgpx-inputfile-' + numA + '" class="file"></td><td><button type="button" class="btn btn-warning xgpx-photo-delete">删除</button></td></tr>')
+  // })
 
   // 修改品项-图片删除一条信息
-  $('#xgpx-photo-list tbody').on('click', 'button.xgpx-photo-delete', function () {
-    $(this).parents('tr').remove();
-  })
+  // $('#xgpx-photo-list tbody').on('click', 'button.xgpx-photo-delete', function () {
+  //   $(this).parents('tr').remove();
+  // })
 
   // 修改品项-详情删除选中
-  $('#xgpx-photo-delete-all').on('click', function () {
-    $('#xgpx-photo-list input[type="checkbox"]:checked').each(function () {
-      $(this).parents('tr').remove();
-    })
-  })
+  // $('#xgpx-photo-delete-all').on('click', function () {
+  //   $('#xgpx-photo-list input[type="checkbox"]:checked').each(function () {
+  //     $(this).parents('tr').remove();
+  //   })
+  // })
 
   // 上传文件获取文件名
   // var filename = $('.fileName');
-  $('#xgpx-photo-list').on('change', '.file', function (e) {
-    //e.currentTarget.files 是一个数组，如果支持多个文件，则需要遍历
-    var name = e.currentTarget.files[0].name;
-    var thisIdName = $(this).attr('id')
-    $('.' + thisIdName).val(name).attr('disabled', 'disabled');
-    console.log(thisIdName)
+  // $('#xgpx-photo-list').on('change', '.file', function (e) {
+  //e.currentTarget.files 是一个数组，如果支持多个文件，则需要遍历
+  //   var name = e.currentTarget.files[0].name;
+  //   var thisIdName = $(this).attr('id')
+  //   $('.' + thisIdName).val(name).attr('disabled', 'disabled');
+  //   console.log(thisIdName)
+  // });
+
+  // 发布品项--上传文件
+  $("#file-2").fileinput({
+    uploadUrl: '#',
+    allowedFileExtensions: ['jpg', 'png', 'gif'],
+    overwriteInitial: false,
+    maxFileSize: 1000,
+    maxFilesNum: 10,
+    slugCallback: function (filename) {
+      return filename.replace('(', '_').replace(']', '_');
+    }
   });
 
   // =================================
@@ -202,7 +249,7 @@ $(function () {
   // =================================
 
   // 管理品项--载入时获取--分类2
-  var para = $('#placeStyleLists');
+  var para = $('#styleLists');
   getLevelTwo(1, para);
 
   // 管理品项--载入时获取--列表
@@ -211,18 +258,21 @@ $(function () {
   // 管理品项--分类1改变时获取分类2
   $('#lanClass').on('change', function () {
     var leveloneCurVal = $('#lanClass option:selected').attr('value');
-    $('#placeStyleLists option[value="0"]').nextAll().remove();
+    $('#styleLists option[value="0"]').nextAll().remove();
     $('#pxgl-lists tbody').empty();
     // 获取分类2
-    var para = $('#placeStyleLists');
+    var para = $('#styleLists');
     getLevelTwo(leveloneCurVal, para);
     // 获取新列表
     getItemLists(leveloneCurVal);
   })
 
   // 管理品项--风格选择改变时列表拉取
-  $('#placeStyleLists').on('change', function () {
-    var leveltwoCurVal = $('#placeStyleLists option:selected').attr('value');
+  $('#styleLists').on('change', function () {
+    var leveltwoCurVal = $('#styleLists option:selected').attr('value');
+    if (leveltwoCurVal == 0) {
+      leveltwoCurVal = $('#lanClass option:selected').attr('value');
+    }
     $('#pxgl-lists tbody').empty();
     // 根据风格获取列表
     getItemLists(leveltwoCurVal)
@@ -231,35 +281,65 @@ $(function () {
   // 发布品项--载入时获取分类
   $('#fbpxTab').on('click', function () {
     var leveloneCurVal = $('#lanClass1 option:selected').attr('value');
-    var para = $('#placeStyleLists1');
+    var para = $('#styleLists1');
     classifyMenu(leveloneCurVal, para)
   })
 
   // 发布品项--分类1改变时获取分类2
   $('#lanClass1').on('change', function () {
     var leveloneCurVal = $('#lanClass1 option:selected').attr('value');
-    var para = $('#placeStyleLists1');
+    var para = $('#styleLists1');
     classifyMenu(leveloneCurVal, para)
   })
 
-
+  // 发布品项--上传图片 获取文件
   $('#file-1').on('change', function (e) {
     fbpxPhoto = e.currentTarget.files;
-    console.log(fbpxPhoto)
   });
+
+  // 修改品项--上传图片 获取文件
+  $('#file-2').on('change', function (e) {
+    fbpxPhoto = e.currentTarget.files;
+  });
+
+  // 提交发布
   $('#fbpxBtn').on('click', function () {
-    var aaa = $('#fbpx-title').serialize();
-    console.log(aaa);
+    var itemInfo = $('#fbpx-title').serialize();
     $.ajax({
       type: 'POST',
-      url: 'http://www.lanpartyclub.com/lanpartyclub/item/post?' + aaa,
+      url: 'http://www.lanpartyclub.com/lanpartyclub/item/post?' + itemInfo,
       dataType: 'JSONP',
       jsonp: 'callback',
       success: function (response) {
         if (response.status == 200) {
           var id = response.data.id;
-          fbpxDetails(id);
-          fbpxPhotos(id);
+          fbpxDetails(id, post);
+          fbpxPhotos(id, post);
+        } else {
+          console.log(response);
+        }
+      },
+      error: function (response) {
+        console.log(response);
+      }
+    })
+
+  })
+
+  // 提交修改
+  $('#xgpxBtn').on('click', function () {
+    var itemInfo = $('#xgpx-title').serialize();
+    var id = thisItemId;
+    $.ajax({
+      type: 'POST',
+      url: 'http://www.lanpartyclub.com/lanpartyclub/item/put?id=' + id + '&' + itemInfo,
+      dataType: 'JSONP',
+      jsonp: 'callback',
+      success: function (response) {
+        if (response.status == 200) {
+          // var id = response.data.id;
+          fbpxDetails(id, put);
+          fbpxPhotos(id, put);
         } else {
           console.log(response);
         }
@@ -312,7 +392,7 @@ function getItemLists(url) {
         var q = 0;
         $.each(item, function (i, cur) {
           q++;
-          $('#pxgl-lists tbody').append('<tr><td class="text-primary">' + q + '</td><td>' + cur.id + '</td><td>' + cur.pclass.name + '</td><td>' + cur.class.name + '</td><td>' + cur.title + '</td><td><button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#delete-px">删除</button><button type="button" class="btn btn-sm btn-primary myTab ml10" href="#xgpx">修改</button></td></tr>')
+          $('#pxgl-lists tbody').append('<tr><td class="text-primary">' + q + '</td><td class="thisItemId">' + cur.id + '</td><td>' + cur.pclass.name + '</td><td>' + cur.class.name + '</td><td>' + cur.title + '</td><td><button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#delete-px">删除</button><button type="button" class="btn btn-sm btn-primary myTab ml10 changeInfo" href="#xgpx">修改</button></td></tr>')
         })
       } else {
         $('#pxgl-lists tbody').append('<tr><td colspan="6" class="text-center text-danger">该分类暂无数据!</td></tr>')
@@ -328,7 +408,7 @@ function classifyMenu(url, ele) {
 }
 
 // 发布品项--详细信息
-function fbpxDetails(id) {
+function fbpxDetails(id, url) {
   var detailsTitle = [];
   var detailsInfo = [];
 
@@ -342,7 +422,7 @@ function fbpxDetails(id) {
   $.each(detailsTitle, function (i, cur) {
     $.ajax({
       type: 'POST',
-      url: 'http://www.lanpartyclub.com/lanpartyclub/item/detail/post?id=' + id + '&title=' + detailsTitle[i] + '&content=' + detailsInfo[i],
+      url: 'http://www.lanpartyclub.com/lanpartyclub/item/detail/' + url + '?id=' + id + '&title=' + detailsTitle[i] + '&content=' + detailsInfo[i],
       dataType: 'JSONP',
       jsonp: 'callback',
       success: function (response) {
@@ -356,14 +436,14 @@ function fbpxDetails(id) {
 }
 
 // 发布品项--照片
-function fbpxPhotos(id) {
+function fbpxPhotos(id, url) {
   $.each(fbpxPhoto, function (i, cur) {
     var iformData = new FormData();
     iformData.append('id', id)
     iformData.append('file', fbpxPhoto[i])
     $.ajax({
       type: 'POST',
-      url: '/lanpartyclub/item/photo/post',
+      url: '/lanpartyclub/item/photo/' + url + '',
       dataType: 'JSON',
       data: iformData,
       processData: false,

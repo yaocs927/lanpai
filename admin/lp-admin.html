@@ -65,7 +65,7 @@
               <option value="2">餐饮</option>
             </select>
             <label for="" class="ml20">分类2:</label>
-            <select class="form-control" id="placeStyleLists">
+            <select class="form-control" id="styleLists">
               <option value="0" >所有风格</option>
             </select>
             <div class="myTab pull-right">
@@ -107,7 +107,7 @@
               <option value="2">餐饮</option>
             </select>
             <label for="" class="ml20">分类2:</label>
-            <select class="form-control" id="placeStyleLists1" name="class">
+            <select class="form-control" id="styleLists1" name="class">
             </select>
             <input type="button" class="btn btn-primary" value="新增分类2" data-toggle="modal" data-target="#add-style">
             <label for="" class="ml20">名称:</label>
@@ -189,32 +189,26 @@
               <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
             </div>
           </form>
-
           <button type="button" class="btn btn-block btn-lg btn-success fbpx-confirm" data-toggle="modal" data-target="#fbpx-success" id="fbpxBtn"><span class="glyphicon glyphicon-ok"></span> 确认提交品项</button>
         </div>
         <!--修改品项-->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade" id="xgpx">
           <h1 class="page-header">修改品项</h1>
-          <form class="form-inline xgpx-dropselect form-horizontal">
+          <form class="form-inline xgpx-dropselect form-horizontal" id="xgpx-title">
             <label for="">分类1:</label>
-            <input type="text" class="form-control" style="width:80px;" disabled>
+            <input type="text" class="form-control" id="xgpxLevelOneTitle" style="width:80px;" disabled>
             <label for="" class="ml20">分类2:</label>
-            <select class="form-control">
-              <option>欧式风格</option>
-              <option>日式风格</option>
-              <option>日式风格</option>
-              <option>日式风格4</option>
-              <option>日式风格5</option>
+            <select class="form-control" id="styleLists2" name="class">
             </select>
             <input type="button" class="btn btn-primary" value="新增分类2" data-toggle="modal" data-target="#add-style">
             <label for="" class="ml20">名称:</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" id="itemTitle" name="title">
             <div class="mt20">
               <label for="">简介:</label>
-              <textarea class="form-control" rows="4" cols="82"></textarea>
+              <textarea class="form-control" rows="4" cols="82" name="brief" id="itemBrief"></textarea>
             </div>
           </form>
-          <form>
+          <form id="xgpx-details">
             <legend>品项详情信息</legend>
             <div class="btn-group">
               <button type="button" class="btn btn-primary btn-sm" id="xgpx-info-add"><span class="glyphicon glyphicon-plus"></span> 新增一条</button>
@@ -231,17 +225,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      <input type="checkbox" class="checkboxStyle" name="xgpx-info-list">
-                    </td>
-                    <td><input type="text" class="form-control"></td>
-                    <td><input type="text" class="form-control"></td>
-                    <td><button type="button" class="btn btn-warning xgpx-info-delete">删除</button></td>
-                  </tr>
                 </tbody>
               </table>
             </div>
+          </form>
+          <!--<form>
             <legend class="mt20">品项相关图片</legend>
             <div class="btn-group">
               <button type="button" class="btn btn-primary btn-sm" id="xgpx-photo-add"><span class="glyphicon glyphicon-plus"></span> 新增一条</button>
@@ -277,8 +265,14 @@
                 </tbody>
               </table>
             </div>
-            <button type="button" class="btn btn-block btn-lg btn-success xgpx-confirm" data-toggle="modal" data-target="#fbpx-success"><span class="glyphicon glyphicon-ok"></span> 确认修改品项</button>
+          </form>-->
+          <form enctype="multipart/form-data">
+            <legend class="mt20">品项相关图片</legend>
+            <div class="form-group">
+              <input id="file-2" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
+            </div>
           </form>
+          <button type="button" class="btn btn-block btn-lg btn-success xgpx-confirm" data-toggle="modal" data-target="#fbpx-success" id="xgpxBtn"><span class="glyphicon glyphicon-ok"></span> 确认修改品项</button>
         </div>
         <!--管理照片墙-->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade" id="zpq">

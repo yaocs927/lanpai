@@ -2,6 +2,14 @@
 
 /*CSS document*/
 
+body {
+  min-width: 1000px;
+}
+
+.sidebar {
+  min-width: 180px;
+}
+
 .ml20 {
   margin-left: 20px;
 }
