@@ -363,7 +363,7 @@ function fbpxPhotos(id) {
     iformData.append('file', fbpxPhoto[i])
     $.ajax({
       type: 'POST',
-      url: 'http://www.lanpartyclub.com/lanpartyclub/item/photo/post',
+      url: '/lanpartyclub/item/photo/post',
       dataType: 'JSON',
       data: iformData,
       processData: false,
