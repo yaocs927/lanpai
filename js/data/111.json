@@ -1,13 +1,32 @@
 ({
   "status": 200,
-  "message": "Success: 成功",
+  "info": "Success: 成功",
   "data": {
-    "item": [
+    "item": {
+      "id": 36,
+      "title": "了看哈但是",
+      "brief": "了看哈但是了看哈但是了看哈但是了看哈但是了看哈但是"
+    },
+    "class": {
+      "id": 6,
+      "name": "古典气息",
+      "pid": 1
+    },
+    "pclass": {
+      "id": 1,
+      "name": "场馆",
+      "pid": 0
+    },
+    "detail": [
       {
-        "id": 4,
-        "title": "删除场馆",
-        "brief": "删除场馆简介",
-        "cover": "default.jpg"
+        "id": 16,
+        "name": "都是废话",
+        "content": "是东方红东方红大师傅"
+      },
+      {
+        "id": 17,
+        "name": "还是德国",
+        "content": "大是大非东方红东方红东方红"
       }
     ]
   }
