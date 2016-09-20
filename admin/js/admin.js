@@ -365,8 +365,6 @@ $(function () {
       jsonp: 'callback',
       success: function (response) {
         if (response.status == 200) {
-        console.log(response);
-          debugger;
           fbpxPhotos(id, 'album', 'post');
         } else {
           console.log(response);
