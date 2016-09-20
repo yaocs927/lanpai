@@ -34,7 +34,7 @@ $(function () {
         if (data.status == 200) {
           var datas = data.data;
           $('#xgpxLevelOneTitle').val('' + datas.pclass.name + '');
-          $('#styleLists2').append('<option>' + datas.class.name + '</option>');
+          $('#styleLists2').append('<option value="' + datas.class.id + '">' + datas.class.name + '</option>');
           $('#itemTitle').val('' + datas.item.title + '');
           $('#itemBrief').text(datas.item.brief);
           if (datas.detail == undefined || datas.detail.length == 0) {
@@ -152,7 +152,7 @@ $(function () {
   // 修改相册照片
   var thisAlbumId;
   var thisAlbumTitle;
-  $('#zpqLists tbody').on('click', '.changeAblum', function () {
+  $('#zpqLists tbody').on('click', '.changealbum', function () {
     $('#xgzp-imgPreview tbody tr').empty();
     thisAlbumId = $(this).parent().siblings('.thisAlbumId').text();
     $.ajax({
@@ -163,7 +163,7 @@ $(function () {
       success: function (data) {
         if (data.status == 200) {
           var datas = data.data;
-          $('#ablumTitle').val('' + datas.album.title + '');
+          $('#albumTitle').val('' + datas.album.title + '');
           if (datas.photo == undefined || datas.photo.length == 0) {
             $('#xgzp-imgPreview tbody tr').append('<td class="text-center text-danger">暂无照片！</td>')
           } else {
@@ -179,17 +179,15 @@ $(function () {
   })
 
   // 删除相册
-  $('#zpqLists tbody').on('click', '.deleteAblum', function () {
+  $('#zpqLists tbody').on('click', '.deletealbum', function () {
     var that = $(this);
     thisAlbumId = that.parent().siblings('.thisAlbumId').text();
     thisAlbumTitle = that.parent().siblings('.thisAlbumTitle').text();
-    $('#deleteConfirm .modal-body').attr('id', thisAlbumId);
-    var o_thisAlbumId = $('#deleteConfirm .modal-body').attr('id');
     $('#deleteConfirm .modal-body').html('您确认删除 <span class="text-danger "><b>' + thisAlbumTitle + '</b></span> 吗？');
     $('#deleteConfirmBtn').on('click', function () {
       $.ajax({
         type: 'POST',
-        url: 'http://www.lanpartyclub.com/lanpartyclub/album/delete?id=' + o_thisAlbumId,
+        url: 'http://www.lanpartyclub.com/lanpartyclub/album/delete?id=' + thisAlbumId,
         dataType: 'JSONP',
         jsonp: 'callback',
         success: function (response) {
@@ -316,7 +314,7 @@ $(function () {
       jsonp: 'callback',
       success: function (response) {
         if (response.status == 200) {
-          fbpxDetails(id, 'put', 'xgpx-info-list');          
+          fbpxDetails(id, 'put', 'xgpx-info-list');
           fbpxDetails(id, 'post', 'xgpx-info-list1');
           fbpxPhotos(id, 'item', 'post');
         } else {
@@ -336,20 +334,40 @@ $(function () {
     getAlbumLists();
   })
 
-  // 提交相册
+  // 提交新相册
   $('#fbzpBtn').on('click', function () {
-    var ablumInfo = $('#fbzp-title').serialize();
+    var albumInfo = $('#fbzp-title').serialize();
     $.ajax({
       type: 'POST',
-      url: 'http://www.lanpartyclub.com/lanpartyclub/album/post?' + ablumInfo,
+      url: 'http://www.lanpartyclub.com/lanpartyclub/album/post?' + albumInfo,
       dataType: 'JSONP',
       jsonp: 'callback',
       success: function (response) {
         if (response.status == 200) {
           var id = response.data.id;
-          fbpxPhotos(id, 'ablum', 'post')
-          console.log(id);
+          fbpxPhotos(id, 'album', 'post')
           console.log(response);
+        } else {
+          console.log(response);
+        }
+      }
+    })
+  })
+
+  // 提交修改相册
+  $('#xgzpBtn').on('click', function () {
+    var albumInfo = $('#xgzp-title').serialize();
+    var id = thisAlbumId;
+    $.ajax({
+      type: 'POST',
+      url: 'http://www.lanpartyclub.com/lanpartyclub/album/put?id=' + id + '&' + albumInfo,
+      dataType: 'JSONP',
+      jsonp: 'callback',
+      success: function (response) {
+        if (response.status == 200) {
+        console.log(response);
+          debugger;
+          fbpxPhotos(id, 'album', 'post');
         } else {
           console.log(response);
         }
@@ -429,11 +447,12 @@ function fbpxDetails(id, url, p) {
   var detailsTitle = [];
   var detailsInfo = [];
   // 详情标题
-  $('#'+ p +' .detailsTitle').each(function () {
+  $('#' + p + ' .detailsTitle').each(function () {
     detailsTitle.push($(this).val());
+    console.log($(this).val())
   })
   // 详情内容
-  $('#'+ p +' .detailsInfo').each(function () {
+  $('#' + p + ' .detailsInfo').each(function () {
     detailsInfo.push($(this).val());
   })
 
@@ -455,6 +474,7 @@ function fbpxDetails(id, url, p) {
 
 // 发布品项--照片
 function fbpxPhotos(id, urlA, urlB) {
+  if (pxPhoto == undefined) return false;
   if (pxPhoto.length == 0) return false;
   $.each(pxPhoto, function (i, cur) {
     var iformData = new FormData();
@@ -494,7 +514,7 @@ function getAlbumLists() {
           '<td class="thisAlbumId">' + cur.id + '</td>' +
           '<td class="thisAlbumTitle">' + cur.title + '</td>' +
           '<td>' +
-          '<button type="button" class="btn btn-sm btn-warning deleteAblum" data-toggle="modal" data-target="#deleteConfirm">删除</button><button type="button" class="btn btn-sm btn-primary myTab ml10 changeAblum" href="#xgzp">修改</button>' +
+          '<button type="button" class="btn btn-sm btn-warning deletealbum" data-toggle="modal" data-target="#deleteConfirm">删除</button><button type="button" class="btn btn-sm btn-primary myTab ml10 changealbum" href="#xgzp">修改</button>' +
           '</td></tr>')
       })
     }
