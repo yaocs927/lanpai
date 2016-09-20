@@ -2,41 +2,51 @@
   "status": 200,
   "info": "Success: 成功",
   "data": {
-    "item": {
-      "id": 1,
-      "title": "夏威夷馆（测试）",
-      "brief": "夏威夷馆简介夏威夷馆简介夏威夷馆简介夏威夷馆简介夏威夷馆简介"
-    },
-    "class": {
-      "id": 5,
-      "name": "异域风情",
-      "pid": 1
-    },
-    "pclass": {
-      "id": 1,
-      "name": "场馆",
-      "pid": 0
-    },
-    "detail": [
+    "album": [
       {
         "id": 1,
-        "name": "设施",
-        "content": "荷花池 KTV XBOX 荷花池 KTV XBOX 荷花池 KTV XBOX 荷花池 KTV XBOX 荷花池 KTV XBOX 荷花池 KTV XBOX 荷花池 KTV XBOX 荷花池 KTV XBOX 荷花池 KTV XBOX 荷花池 KTV XBOX 荷花池 KTV XBOX 荷花池 KTV XBOX 荷花池 KTV XBOX 荷花池 KTV XBOX 荷花池 KTV XBOX 荷花池 KTV XBOX 荷花池 KTV XBOX "
+        "title": "相册1",
+        "cover": "default1.jpg"
       },
       {
         "id": 2,
-        "name": "须知",
-        "content": "夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知夏威夷馆须知"
-      }
-    ],
-    "photo": [
-      {
-        "id": 1,
-        "url": "default1.jpg"
+        "title": "相册2",
+        "cover": "default2.jpg"
       },
       {
-        "id": 2,
-        "url": "default2.jpg"
+        "id": 3,
+        "title": "相册3",
+        "cover": "default3.jpg"
+      },
+      {
+        "id": 4,
+        "title": "相册4",
+        "cover": "default4.jpg"
+      },
+      {
+        "id": 5,
+        "title": "相册5",
+        "cover": "default5.jpg"
+      },
+      {
+        "id": 6,
+        "title": "相册6",
+        "cover": "default6.jpg"
+      },
+      {
+        "id": 7,
+        "title": "相册7",
+        "cover": "default7.jpg"
+      },
+      {
+        "id": 8,
+        "title": "相册8",
+        "cover": "default8.jpg"
+      },
+      {
+        "id": 9,
+        "title": "相册9",
+        "cover": "default9.jpg"
       }
     ]
   }

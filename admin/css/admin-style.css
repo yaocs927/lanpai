@@ -53,26 +53,29 @@ input[type="checkbox"].checkboxStyle  {
   cursor: pointer;
 }
 
-/*.checkboxLabel:after {
+.imgPreview td {
+  position: relative !important;
+}
+
+.imgPreview td img {
+  width: 100%;
+  height: auto;
+  max-height: 150px;
+  max-width: 250px;
+}
+
+.imgPreview td button {
+  display: none;
   position: absolute;
-  top: 2px;
-  left: 2px;
+  top: 10px;
+  left: 10px;
+}
+
+.imgPreview td:hover button {
   display: block;
-  content: "";
-  width: 14px;
-  height: 8px;
-  background-color: transparent;
-  border: 3px solid transparent;
-  border-left-color: #ccc;
-  border-bottom-color: #ccc;
-  transform: rotate(-45deg);
-  opacity: 0;
 }
 
-input[type="checkbox"]:checked + label.checkboxLabel:after {
-  opacity: 1;
+#xgzpTab a,
+#xgpxTab a {
+  cursor: default;
 }
-
-.checkboxHidden {
-  visibility: hidden;
-}*/
