@@ -168,7 +168,7 @@ $(function () {
             $('#xgzp-imgPreview tbody tr').append('<td class="text-center text-danger">暂无照片！</td>')
           } else {
             $.each(datas.photo, function (i, cur) {
-              $('#xgzp-imgPreview tbody tr').append('<td class="col-md-3"><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="活动照片"><button type="button" class="btn btn-warning btn-sm deleteImg">删除</button></td>')
+              $('#xgzp-imgPreview tbody tr').append('<td><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="活动照片"><button type="button" class="btn btn-warning btn-sm deleteImg">删除</button></td>')
             })
           }
         } else {
@@ -307,25 +307,23 @@ $(function () {
   $('#xgpxBtn').on('click', function () {
     var itemInfo = $('#xgpx-title').serialize();
     var id = thisItemId;
-    $.ajax({
-      type: 'POST',
-      url: 'http://www.lanpartyclub.com/lanpartyclub/item/put?id=' + id + '&' + itemInfo,
-      dataType: 'JSONP',
-      jsonp: 'callback',
-      success: function (response) {
-        if (response.status == 200) {
-          fbpxDetails(id, 'put', 'xgpx-info-list');
-          fbpxDetails(id, 'post', 'xgpx-info-list1');
-          fbpxPhotos(id, 'item', 'post');
-        } else {
-          console.log(response);
-        }
-      },
-      error: function (response) {
-        console.log(response);
-      }
-    })
+    updateSome(id, 'put', itemInfo);
+    fbpxDetails(id, 'put', 'xgpx-info-list');
+    fbpxDetails(id, 'post', 'xgpx-info-list1');
+    fbpxPhotos(id, 'item', 'post');
+    // $.ajax({
+    //   type: 'POST',
+    //   url: 'http://www.lanpartyclub.com/lanpartyclub/item/put?id=' + id + '&' + itemInfo,
+    //   dataType: 'JSONP',
+    //   jsonp: 'callback',
+    //   success: function (response) {
 
+    //   },
+    //   error: function (response) {
+    //     alert('页面出错了，请尝试刷新！')
+    //   }
+    // })
+    
   })
 
   // 照片墙管理--拉取列表
@@ -358,19 +356,18 @@ $(function () {
   $('#xgzpBtn').on('click', function () {
     var albumInfo = $('#xgzp-title').serialize();
     var id = thisAlbumId;
-    $.ajax({
-      type: 'POST',
-      url: 'http://www.lanpartyclub.com/lanpartyclub/album/put?id=' + id + '&' + albumInfo,
-      dataType: 'JSONP',
-      jsonp: 'callback',
-      success: function (response) {
-        if (response.status == 200) {
-          fbpxPhotos(id, 'album', 'post');
-        } else {
-          console.log(response);
-        }
-      }
-    })
+    updateSome(id, 'album', albumInfo);
+    fbpxPhotos(id, 'album', 'post');
+    // $.ajax({
+    //   type: 'POST',
+    //   url: 'http://www.lanpartyclub.com/lanpartyclub/album/put?id=' + id + '&' + albumInfo,
+    //   dataType: 'JSONP',
+    //   jsonp: 'callback',
+    //   success: function (response) {
+    //     fbpxPhotos(id, 'album', 'post');
+    //     console.log(response);
+    //   }
+    // })
   })
 
 
@@ -492,6 +489,22 @@ function fbpxPhotos(id, urlA, urlB) {
         console.log(response);
       }
     })
+  })
+}
+
+// 数据修改
+function updateSome(id, url, odata) {
+  $.ajax({
+    type: 'POST',
+    url: 'http://www.lanpartyclub.com/lanpartyclub/' + url + '/put?id=' + id + '&' + odata,
+    dataType: 'JSONP',
+    jsonp: 'callback',
+    success: function (response) {
+      console.log('修改成功');
+    },
+    error: function (response) {
+      alert('页面出错了，请尝试刷新！')
+    }
   })
 }
 

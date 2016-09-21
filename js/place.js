@@ -383,3 +383,12 @@ function itemDetails(itemId) {
     }
   });
 }
+
+//显示加载数据
+function ShowDiv() {
+  $("#loading").show();
+}
+//隐藏加载数据
+function HiddenDiv() {
+  $("#loading").hide();
+}

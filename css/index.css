@@ -74,7 +74,7 @@
 .fullpage-ad .ad-content img.num2 {
   width: 70%;
   max-width: 54.5rem;
-  margin-top: 6rem;
+  margin-top: 5rem;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
@@ -89,7 +89,7 @@
   width: 40%;
   max-width: 18rem;
   height: 0.2rem;
-  margin: 10.5rem auto 0;
+  margin: 10rem auto 0;
   background-color: #fbd34b;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
@@ -142,7 +142,7 @@
 .fullpage-ad .slidePoint {
   position: fixed;
   left: 50%;
-  bottom: 10%;
+  bottom: 9%;
   z-index: 999;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
@@ -1132,14 +1132,13 @@ footer p {
 .stick .wechat {
   padding: 40px 0 10px;
   background-image: url(../img/nav-icon.png);
-  background-position: 10px 11px;
+  background-position: -102px 11px;
   background-repeat: no-repeat;
   line-height: 1.3;
-  color: #fff;
+  color: #00233d;
 }
 
 .stick .wechat:hover {
-  background-position: -102px 11px;
   color: #00233d;
 }
 
@@ -1394,24 +1393,6 @@ footer p {
 
 
 /*详情图片*/
-
-.picSlideBox {
-  /*position: absolute;
-  left: 50%;
-  top: 53%;
-  transform: translate(-50%, -50%);*/
-}
-
-.picSlideBox .picSlideBig {
-  /*position: absolute;*/
-  /*left: 50%;*/
-  /*top: 53%;*/
-  /*transform: translate(-50%, -50%);*/
-  /*min-width: 200px;*/
-  /*height: auto;*/
-  /*max-width: 1200px;*/
-  /*max-height: 500px;*/
-}
 
 .picSlideBox .picSlideBig li {
   display: none;
@@ -1780,7 +1761,6 @@ footer p {
     transform: translateY(-100px) translateX(-50px);
     opacity: 0;
   }
- 
   100% {
     -webkit-transform: translateY(0) translateX(0);
     -moz-transform: translateY(0) translateX(0);
