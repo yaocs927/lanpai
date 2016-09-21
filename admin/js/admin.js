@@ -20,10 +20,12 @@ $(function () {
   // 修改品项
   var thisItemId;
   var thisItemTitle;
+  var thisItemPclassId;
+  var thisItemclassId;
   $('#pxgl-lists').on('click', '.PXchangeInfo', function () {
     $('#styleLists2').empty();
     $('#xgpx-info-list tbody').empty();
-    $('#xgpx-imgPreview tbody tr').empty();
+    $('#xgpx-imgPreview').empty();
     thisItemId = $(this).parent().siblings('.thisItemId').text();
     $.ajax({
       type: 'GET',
@@ -31,10 +33,26 @@ $(function () {
       dataType: 'JSONP',
       jsonp: 'callback',
       success: function (data) {
+        thisItemPclassId = data.data.pclass.id;
+        thisItemclassId = data.data.class.id;
         if (data.status == 200) {
           var datas = data.data;
           $('#xgpxLevelOneTitle').val('' + datas.pclass.name + '');
-          $('#styleLists2').append('<option value="' + datas.class.id + '">' + datas.class.name + '</option>');
+          var para2 = $('#styleLists2');
+          para2.empty();
+          $.ajax({
+            type: 'GET',
+            url: 'http://www.lanpartyclub.com/lanpartyclub/class/get/child?id=' + thisItemPclassId,
+            dataType: 'JSONP',
+            jsonp: 'callback',
+            success: function (data) {
+              var iclass = data.data.class;
+              $.each(iclass, function (i, cur) {
+                para2.append('<option value="' + cur.id + '">' + cur.name + '</option>');
+                $('#styleLists2 option[value="' + thisItemclassId + '"]').attr('selected', true);
+              });
+            }
+          })
           $('#itemTitle').val('' + datas.item.title + '');
           $('#itemBrief').text(datas.item.brief);
           if (datas.detail == undefined || datas.detail.length == 0) {
@@ -50,14 +68,14 @@ $(function () {
             })
           }
           if (datas.photo == undefined || datas.photo.length == 0) {
-            $('#xgpx-imgPreview tbody tr').append('<td class="text-center text-danger">暂无照片！</td>')
+            $('#xgpx-imgPreview').append('<li class="text-center text-danger">暂无照片！</li>')
           } else {
             $.each(datas.photo, function (i, cur) {
-              $('#xgpx-imgPreview tbody tr').append('<td class="col-md-3"><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="活动照片" name="' + cur.id + '" ><button type="button" class="btn btn-warning btn-sm deleteImg">删除</button></td>')
+              $('#xgpx-imgPreview').append('<li class="col-md-3"><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="活动照片" name="' + cur.id + '" ><button type="button" class="btn btn-warning btn-sm deleteImg">删除</button></li>')
             })
           }
         } else {
-          $('#xgpx-imgPreview tbody tr').append('<td class="text-center text-danger">暂无照片！</td>')
+          $('#xgpx-imgPreview').append('<li class="text-center text-danger">暂无照片！</li>')
         }
       }
     });
@@ -152,8 +170,9 @@ $(function () {
   // 修改相册照片
   var thisAlbumId;
   var thisAlbumTitle;
+  var thisAlbumPhotoId;
   $('#zpqLists tbody').on('click', '.changealbum', function () {
-    $('#xgzp-imgPreview tbody tr').empty();
+    $('#xgzp-imgPreview').empty();
     thisAlbumId = $(this).parent().siblings('.thisAlbumId').text();
     $.ajax({
       type: 'GET',
@@ -165,14 +184,15 @@ $(function () {
           var datas = data.data;
           $('#albumTitle').val('' + datas.album.title + '');
           if (datas.photo == undefined || datas.photo.length == 0) {
-            $('#xgzp-imgPreview tbody tr').append('<td class="text-center text-danger">暂无照片！</td>')
+            $('#xgzp-imgPreview').append('<li class="text-center text-danger">暂无照片！</li>')
           } else {
             $.each(datas.photo, function (i, cur) {
-              $('#xgzp-imgPreview tbody tr').append('<td><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="活动照片"><button type="button" class="btn btn-warning btn-sm deleteImg">删除</button></td>')
+              thisAlbumPhotoId = cur.id;
+              $('#xgzp-imgPreview').append('<li class="col-md-3"><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="活动照片" name="' + thisAlbumPhotoId + '"><button type="button" class="btn btn-warning btn-sm deleteImg">删除</button></li>')
             })
           }
         } else {
-          $('#xgzp-imgPreview tbody tr').append('<td class="text-center text-danger">暂无照片！</td>')
+          $('#xgzp-imgPreview').append('<li class="text-center text-danger">暂无照片！</li>')
         }
       }
     });
@@ -245,7 +265,7 @@ $(function () {
     $('#styleLists option[value="0"]').nextAll().remove();
     $('#pxgl-lists tbody').empty();
     // 获取分类2
-    var para = $('#styleLists');
+    // var para = $('#styleLists');
     getLevelTwo(leveloneCurVal, para);
     // 获取新列表
     getItemLists(leveloneCurVal);
@@ -282,23 +302,33 @@ $(function () {
 
   // 提交发布品项
   $('#fbpxBtn').on('click', function () {
+    if (pxPhoto == undefined) {
+      alert('请上传照片！');
+      return false;
+    }
     var itemInfo = $('#fbpx-title').serialize();
     $.ajax({
       type: 'POST',
       url: 'http://www.lanpartyclub.com/lanpartyclub/item/post?' + itemInfo,
       dataType: 'JSONP',
       jsonp: 'callback',
+      beforeSend: function () {
+        $('#fbpxBtn').html('<span class="sendLoading"></span>');
+      },
       success: function (response) {
         if (response.status == 200) {
           var id = response.data.id;
           fbpxDetails(id, 'post', 'fbpx-info-list');
           fbpxPhotos(id, 'item', 'post');
+          window.location.reload();
         } else {
-          console.log(response);
+          alert('品项名重复，请修改品项名！');
+          $('#fbpxBtn').html('<span class="glyphicon glyphicon-ok"></span> 确认提交品项 ');
         }
       },
-      error: function (response) {
-        console.log(response);
+      error: function () {
+        alert('网络错误，请检查网络！');
+        $('#fbpxBtn').html('<span class="glyphicon glyphicon-ok"></span> 确认提交品项 ');
       }
     })
   })
@@ -311,6 +341,7 @@ $(function () {
     fbpxDetails(id, 'put', 'xgpx-info-list');
     fbpxDetails(id, 'post', 'xgpx-info-list1');
     fbpxPhotos(id, 'item', 'post');
+    window.location.reload();
     // $.ajax({
     //   type: 'POST',
     //   url: 'http://www.lanpartyclub.com/lanpartyclub/item/put?id=' + id + '&' + itemInfo,
@@ -323,7 +354,7 @@ $(function () {
     //     alert('页面出错了，请尝试刷新！')
     //   }
     // })
-    
+
   })
 
   // 照片墙管理--拉取列表
@@ -334,20 +365,33 @@ $(function () {
 
   // 提交新相册
   $('#fbzpBtn').on('click', function () {
+    if (pxPhoto == undefined) {
+      alert('请上传照片！');
+      return false;
+    }
     var albumInfo = $('#fbzp-title').serialize();
     $.ajax({
       type: 'POST',
       url: 'http://www.lanpartyclub.com/lanpartyclub/album/post?' + albumInfo,
       dataType: 'JSONP',
       jsonp: 'callback',
+      beforeSend: function () {
+        $('#fbzpBtn').html('<span class="sendLoading"></span>');
+      },
       success: function (response) {
+        console.log(response);
         if (response.status == 200) {
           var id = response.data.id;
-          fbpxPhotos(id, 'album', 'post')
-          console.log(response);
+          fbpxPhotos(id, 'album', 'post');
+          window.location.reload();
         } else {
-          console.log(response);
+          alert('相册重名，请修改相册名！');
+          $('#fbzpBtn').html('<span class="glyphicon glyphicon-ok"></span> 确认提交照片 ');
         }
+      },
+      error: function () {
+        alert('网络错误，请检查网络！');
+        $('#fbzpBtn').html('<span class="glyphicon glyphicon-ok"></span> 确认提交照片 ');
       }
     })
   })
@@ -378,7 +422,6 @@ $(function () {
 var pxPhoto;
 
 
-
 /*
  *
  * 
@@ -386,10 +429,10 @@ var pxPhoto;
  */
 
 // 分类2获取
-function getLevelTwo(url, ele) {
+function getLevelTwo(id, ele) {
   $.ajax({
     type: 'GET',
-    url: 'http://www.lanpartyclub.com/lanpartyclub/class/get/child?id=' + url,
+    url: 'http://www.lanpartyclub.com/lanpartyclub/class/get/child?id=' + id,
     dataType: 'JSONP',
     jsonp: 'callback',
     success: function (data) {
@@ -482,6 +525,7 @@ function fbpxPhotos(id, urlA, urlB) {
       data: iformData,
       processData: false,
       contentType: false,
+      async: false,
       success: function (response) {
         console.log(response);
       },
@@ -500,7 +544,11 @@ function updateSome(id, url, odata) {
     dataType: 'JSONP',
     jsonp: 'callback',
     success: function (response) {
+      if (response.status == 200) {
       console.log('修改成功');
+      } else {
+        alert('标题名重复，请修改！')
+      }
     },
     error: function (response) {
       alert('页面出错了，请尝试刷新！')

@@ -187,7 +187,7 @@
               <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
             </div>
           </form>
-          <button type="button" class="btn btn-block btn-lg btn-success fbpx-confirm" data-toggle="modal" data-target="#fbpx-success" id="fbpxBtn"><span class="glyphicon glyphicon-ok"></span> 确认提交品项</button>
+          <button type="button" class="btn btn-block btn-lg btn-success fbpx-confirm" id="fbpxBtn"><span class="glyphicon glyphicon-ok"></span> 确认提交品项</button>
         </div>
         <!--修改品项-->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade" id="xgpx">
@@ -282,13 +282,8 @@
           </form>-->
           <form>
             <legend class="mt20">已有图片预览</legend>
-            <table class="table table-hover imgPreview" id="xgpx-imgPreview">
-              <tbody>
-                <tr>
-
-                </tr>
-              </tbody>
-            </table>
+            <ul class="imgPreview clearfix" id="xgpx-imgPreview">
+            </ul>
 
           </form>
           <form enctype="multipart/form-data">
@@ -318,9 +313,7 @@
                   <th class="col-md-2">操作</th>
                 </tr>
               </thead>
-              <tbody>
-
-              </tbody>
+              <tbody></tbody>
             </table>
           </div>
           <ul class="pagination pull-right">
@@ -346,7 +339,7 @@
               <input id="file-3" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
             </div>
           </form>
-          <button type="button" class="btn btn-block btn-lg btn-success fbpx-confirm" data-toggle="modal" data-target="#fbpx-success" id="fbzpBtn"><span class="glyphicon glyphicon-ok"></span> 确认提交照片</button>
+          <button type="button" class="btn btn-block btn-lg btn-success" id="fbzpBtn"><span class="glyphicon glyphicon-ok"></span> 确认提交照片 </button>
         </div>
         <!--修改照片-->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade" id="xgzp">
@@ -357,10 +350,10 @@
           </form>
           <form>
             <legend class="mt20">已有图片预览</legend>
-            <table class="table table-hover imgPreview" id="xgzp-imgPreview">
-              <tbody>
-                <tr></tr>
-                <!--<tr>
+            <!--<table class="table table-hover imgPreview" id="xgzp-imgPreview">-->
+            <!--<tbody>-->
+            <!--<tr></tr>-->
+            <!--<tr>
                   <td class="col-md-3"><img src="../img/about/aboutTop-bg.jpg" alt=""><button type="button" class="btn btn-warning btn-sm deleteImg">删除</button></td>
                   <td class="col-md-3"><img src="../img/details/place-details-1.jpg" alt=""><button type="button" class="btn btn-warning btn-sm deleteImg">删除</button></td>
                   <td class="col-md-3"><img src="../img/daily-img-1.jpg" alt=""><button type="button" class="btn btn-warning btn-sm deleteImg">删除</button></td>
@@ -370,8 +363,10 @@
                   <td class="col-md-3"><img src="../img/daily-img-1.jpg" alt=""></td>
                   <td class="col-md-3"><img src="../img/details/place-details-1.jpg" alt=""></td>
                 </tr>-->
-              </tbody>
-            </table>
+            <!--</tbody>-->
+            <!--</table>-->
+            <ul class="imgPreview clearfix" id="xgzp-imgPreview">
+            </ul>
 
           </form>
           <form enctype="multipart/form-data">
@@ -380,7 +375,7 @@
               <input id="file-4" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
             </div>
           </form>
-          <button type="button" class="btn btn-block btn-lg btn-success fbpx-confirm" data-toggle="modal" data-target="#fbpx-success" id="xgzpBtn"><span class="glyphicon glyphicon-ok"></span> 确认提交照片</button>
+          <button type="button" class="btn btn-block btn-lg btn-success" data-toggle="modal" data-target="#fbpx-success" id="xgzpBtn"><span class="glyphicon glyphicon-ok"></span> 确认提交照片</button>
         </div>
       </div>
     </div>
