@@ -87,7 +87,8 @@ $(function () {
     thisItemId = that.parent().siblings('.thisItemId').text();
     thisItemTitle = that.parent().siblings('.thisItemTitle').text();
     $('#deleteConfirm .modal-body').html('您确认删除 <span class="text-danger "><b>' + thisItemTitle + '</b></span> 吗？');
-    $('#deleteConfirmBtn').on('click', function () {
+    $('#deleteConfirm .modal-footer').html('<button type="button" class="btn btn-default" data-dismiss="modal">返回</button><button type="button" class="btn btn-primary" id="delItemConfirmBtn-' + thisItemId + '" data-dismiss="modal">确认</button>');
+    $('#deleteConfirm').on('click', '#delItemConfirmBtn-' + thisItemId + '', function () {
       $.ajax({
         type: 'POST',
         url: 'http://www.lanpartyclub.com/lanpartyclub/item/delete?id=' + thisItemId,
@@ -201,10 +202,12 @@ $(function () {
   // 删除相册
   $('#zpqLists tbody').on('click', '.deletealbum', function () {
     var that = $(this);
+    console.log(that.parent().siblings('.thisAlbumTitle').text());
     thisAlbumId = that.parent().siblings('.thisAlbumId').text();
     thisAlbumTitle = that.parent().siblings('.thisAlbumTitle').text();
     $('#deleteConfirm .modal-body').html('您确认删除 <span class="text-danger "><b>' + thisAlbumTitle + '</b></span> 吗？');
-    $('#deleteConfirmBtn').on('click', function () {
+    $('#deleteConfirm .modal-footer').html('<button type="button" class="btn btn-default" data-dismiss="modal">返回</button><button type="button" class="btn btn-primary" id="delAlbumConfirmBtn-' + thisAlbumId + '" data-dismiss="modal">确认</button>');
+    $('#deleteConfirm').on('click', '#delAlbumConfirmBtn-' + thisAlbumId + '', function () {
       $.ajax({
         type: 'POST',
         url: 'http://www.lanpartyclub.com/lanpartyclub/album/delete?id=' + thisAlbumId,
@@ -337,7 +340,7 @@ $(function () {
   $('#xgpxBtn').on('click', function () {
     var itemInfo = $('#xgpx-title').serialize();
     var id = thisItemId;
-    updateSome(id, 'put', itemInfo);
+    updateSome(id, 'item', itemInfo);
     fbpxDetails(id, 'put', 'xgpx-info-list');
     fbpxDetails(id, 'post', 'xgpx-info-list1');
     fbpxPhotos(id, 'item', 'post');
@@ -402,16 +405,6 @@ $(function () {
     var id = thisAlbumId;
     updateSome(id, 'album', albumInfo);
     fbpxPhotos(id, 'album', 'post');
-    // $.ajax({
-    //   type: 'POST',
-    //   url: 'http://www.lanpartyclub.com/lanpartyclub/album/put?id=' + id + '&' + albumInfo,
-    //   dataType: 'JSONP',
-    //   jsonp: 'callback',
-    //   success: function (response) {
-    //     fbpxPhotos(id, 'album', 'post');
-    //     console.log(response);
-    //   }
-    // })
   })
 
 
@@ -545,7 +538,7 @@ function updateSome(id, url, odata) {
     jsonp: 'callback',
     success: function (response) {
       if (response.status == 200) {
-      console.log('修改成功');
+        console.log('修改成功');
       } else {
         alert('标题名重复，请修改！')
       }

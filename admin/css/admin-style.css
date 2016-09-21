@@ -109,7 +109,10 @@ input[type="checkbox"].checkboxStyle {
   display: block;
 }
 
-#fbzpBtn {
+#fbpxBtn,
+#xgzpBtn,
+#fbzpBtn,
+#xgzpBtn {
   position: relative !important;
   height: 46px;
 }
