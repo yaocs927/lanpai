@@ -61,7 +61,7 @@ $(function () {
             $.each(datas.detail, function (i, cur) {
               $('#xgpx-info-list tbody').append('<tr>' +
                 '<td><input type="checkbox" class="checkboxStyle" name="xgpx-info-list"></td>' +
-                '<td data-cid="' + cur.id + '" class="thisDetailTitle"><input type="text" class="form-control detailsTitle" value="' + cur.name + '"></td>' +
+                '<td data-cid="' + cur.id + '" class="thisDetailTitle"><input type="text" class="form-control detailsTitle" value="' + cur.title + '"></td>' +
                 '<td><input type="text" class="form-control detailsInfo" value="' + cur.content + '"></td>' +
                 '<td><button type="button" class="btn btn-warning xgpx-info-delete1">删除</button></td>' +
                 '</tr>')
@@ -412,6 +412,11 @@ $(function () {
     window.location.reload();
   })
 
+  $('#outPage').on('click', function () {
+    DeleteCookie('account_lpc');
+    window.location.href = 'admin-login.html';
+  })
+
 
 
 });
@@ -643,4 +648,11 @@ function fileOnChange(z) {
   z.on('change', function (e) {
     pxPhoto = e.currentTarget.files;
   });
+}
+
+function DeleteCookie(name) {
+  var exp = new Date();
+  exp.setTime(exp.getTime() - 100);
+  var cval = GetCookie(name);
+  window.document.cookie = name + "=" + cval + "; expires=" + exp.toGMTString() + ";path=/";
 }
