@@ -767,7 +767,7 @@
 
 .daily .daily-left .dailyPic ul {
   position: absolute;
-  width: 200rem;
+  width: 2000rem;
 }
 
 .daily .daily-left .dailyPic ul li {
@@ -989,7 +989,6 @@
     height: 19.8rem;
   }
   .daily .daily-left .dailyPic ul {
-    width: 180rem;
     height: 19.8rem;
   }
   .daily .daily-left .daily-slideBtn {

@@ -1,23 +1,22 @@
+var dtImgSize;
+var widthaaa;
+
 $(document).ready(function () {
   // 设置首屏高度
   var height = $(window).height();
   $('.topBox').css('height', height);
 
+
   // 每日推荐轮播
   var dailyIndex = 0;
-  var clone = $('#dailySlidePic li').first().clone();
-  $('#dailySlidePic').append(clone);
-  var dailySize = $('#dailySlidePic li').size();
-  var dailyPicWidth = $('.dailyPic li').outerWidth();
-
+  var dailySize;
+  var dailyPicWidth;
   $('.daily-slideBtn .next').on('click', function () {
     dailyNext();
   })
-
   $('.daily-slideBtn .prev').on('click', function () {
     dailyPrev();
   })
-
   function dailyNext() {
     dailyIndex += 1;
     if (dailyIndex == dailySize) {
@@ -30,7 +29,6 @@ $(document).ready(function () {
       'left': -dailyIndex * dailyPicWidth + 'px'
     }, 300)
   }
-
   function dailyPrev() {
     dailyIndex -= 1;
     if (dailyIndex == -1) {
@@ -43,7 +41,6 @@ $(document).ready(function () {
       'left': -dailyIndex * dailyPicWidth + 'px'
     }, 300)
   }
-
   $('.daily-slideBtn span').each(function () {
     $(this).hover(function () {
       $(this).addClass('active')
@@ -120,7 +117,6 @@ $(document).ready(function () {
 
   })
 
-
   // 回到顶部
   $('.stick .backtop').on('click', function () {
     $('body').animate({
@@ -144,7 +140,7 @@ $(document).ready(function () {
   // 详情部分
   // =================
 
-  var widthaaa;
+
   // 每日推荐详情弹出
   $('.daily').on('click', '.detailBtn', function () {
     var itemNum = $(this).attr('id').split('-');
@@ -155,7 +151,6 @@ $(document).ready(function () {
     $('body').css('overflow-y', 'hidden');
     $('#itemDetail').children().remove();
     itemDetails(itemIdNum);
-    widthaaa = $('.picSlideBox').outerWidth();
   })
 
   // 品项列表详情弹出
@@ -168,7 +163,6 @@ $(document).ready(function () {
     $('body').css('overflow-y', 'hidden');
     $('#itemDetail').children().remove();
     itemDetails(itemIdNum);
-    widthaaa = $('.picSlideBox').outerWidth();
   })
 
   $('#allItems').on('click', '.detailBtnTouch', function () {
@@ -180,11 +174,10 @@ $(document).ready(function () {
     $('body').css('overflow-y', 'hidden');
     $('#itemDetail').children().remove();
     itemDetails(itemIdNum);
-    widthaaa = $('.picSlideBox').outerWidth();
   })
 
   // 设置图片宽度
-  $('.picSlideBig li').css('width', widthaaa + 'px');
+  
 
   // 关闭按钮
   $('.detailCover').on('click', '#closeBtn', function () {
@@ -196,14 +189,8 @@ $(document).ready(function () {
 
   // 详情轮播
   var dtIndex = 0;
-  $('.picSlideSmall li').eq(0).addClass('active').siblings().removeClass('active');
-  var dtClone = $('.picSlideBig li').first().clone();
-  $('.picSlideBig').append(dtClone);
-  var dtImgSize = $('.picSlideBig li').size();
-  $('.totalNum').text(dtImgSize - 1);
-  $('.curNum').text('1');
 
-  $('#picSlideBtnNext').on('click', function () {
+  $('#itemDetail').on('click', '#picSlideBtnNext', function () {
     dtIndex += 1;
     if (dtIndex == dtImgSize) {
       $('.picSlideBig').css('left', 0);
@@ -218,8 +205,10 @@ $(document).ready(function () {
     }
   })
 
-  $('#picSlideBtnPrev').on('click', function () {
+  $('#itemDetail').on('click', '#picSlideBtnPrev', function () {
+
     dtIndex -= 1;
+    console.log(dtIndex)
     if (dtIndex == -1) {
       $('.picSlideBig').css('left', -(dtImgSize - 1) * widthaaa);
       dtIndex = dtImgSize - 2;
@@ -262,71 +251,88 @@ $(document).ready(function () {
   // =================
 
   // 场地每日推荐
-  $.ajax({
-    type: 'GET',
-    url: 'http://www.lanpartyclub.com/lanpartyclub/item/get/class/random?id=1',
-    dataType: 'JSONP',
-    jsonp: 'callback',
-    success: function (data) {
-      var dailyitem = data.data.item;
-      var dailyPhoto = data.data.photo;
-      $.each(dailyPhoto, function (i, cur) {
-        $('#placeDaily').find('#dailySlidePic').append('<li><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="图片"></li>');
-      })
-      $('#placeDaily').find('.dailySlidePic-info').attr('id', 'dailyItem-' + dailyitem.id + '').text(dailyitem.title);
-      $('#placeDaily').find('.daily-right').append('<h1>' + dailyitem.title + '<br>别墅轰趴馆</h1><div class="dailyStrip"></div><p class="dailyContent introduce">别墅介绍：' + dailyitem.brief + '</p><div class="detailBtn dailyDetailBtn" id="dailyItem-' + dailyitem.id + '">VIEW</div>')
-    }
-  })
+  if (document.getElementById('placeDaily')) {
+    $.ajax({
+      type: 'GET',
+      url: 'http://www.lanpartyclub.com/lanpartyclub/item/get/class/random?id=1',
+      dataType: 'JSONP',
+      jsonp: 'callback',
+      success: function (data) {
+        var dailyitem = data.data.item;
+        var dailyPhoto = data.data.photo;
+        $.each(dailyPhoto, function (i, cur) {
+          $('#placeDaily').find('#dailySlidePic').append('<li><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="图片"></li>');
+        })
+        $('#placeDaily').find('.dailySlidePic-info').attr('id', 'dailyItem-' + dailyitem.id + '').text(dailyitem.title);
+        $('#placeDaily').find('.daily-right').append('<h1>' + dailyitem.title + '<br>别墅轰趴馆</h1><div class="dailyStrip"></div><p class="dailyContent introduce">别墅介绍：' + dailyitem.brief + '</p><div class="detailBtn dailyDetailBtn" id="dailyItem-' + dailyitem.id + '">VIEW</div>')
+
+
+        // 每日推荐轮播
+        var clone = $('#dailySlidePic li').first().clone();
+        $('#dailySlidePic').append(clone);
+        dailySize = $('#dailySlidePic li').size();
+        dailyPicWidth = $('.dailyPic li').outerWidth();
+
+
+      }
+    })
+  }
 
   // 餐饮每日推荐
-  $.ajax({
-    type: 'GET',
-    url: 'http://www.lanpartyclub.com/lanpartyclub/item/get/class/random?id=2',
-    dataType: 'JSONP',
-    jsonp: 'callback',
-    success: function (data) {
-      var dailyitem = data.data.item;
-      var dailyPhoto = data.data.photo;
-      $.each(dailyPhoto, function (i, cur) {
-        $('#foodDaily').find('#dailySlidePic').append('<li><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="图片"></li>');
-      })
-      $('#foodDaily').find('.dailySlidePic-info').attr('id', 'dailyItem-' + dailyitem.id + '').text(dailyitem.title);
-      $('#foodDaily').find('.daily-right').append('<h1>' + dailyitem.title + '<br>别墅轰趴馆</h1><div class="dailyStrip"></div><p class="dailyContent introduce">别墅介绍：' + dailyitem.brief + '</p><div class="detailBtn dailyDetailBtn" id="dailyItem-' + dailyitem.id + '">VIEW</div>')
-    }
-  })
-
+  if (document.getElementById('foodDaily')) {
+    $.ajax({
+      type: 'GET',
+      url: 'http://www.lanpartyclub.com/lanpartyclub/item/get/class/random?id=2',
+      dataType: 'JSONP',
+      jsonp: 'callback',
+      success: function (data) {
+        var dailyitem = data.data.item;
+        var dailyPhoto = data.data.photo;
+        $.each(dailyPhoto, function (i, cur) {
+          $('#foodDaily').find('#dailySlidePic').append('<li><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="图片"></li>');
+        })
+        $('#foodDaily').find('.dailySlidePic-info').attr('id', 'dailyItem-' + dailyitem.id + '').text(dailyitem.title);
+        $('#foodDaily').find('.daily-right').append('<h1>' + dailyitem.title + '<br>别墅轰趴馆</h1><div class="dailyStrip"></div><p class="dailyContent introduce">别墅介绍：' + dailyitem.brief + '</p><div class="detailBtn dailyDetailBtn" id="dailyItem-' + dailyitem.id + '">VIEW</div>')
+      }
+    })
+  }
 
   // 场地风格列表
-  $.ajax({
-    type: 'GET',
-    url: 'http://www.lanpartyclub.com/lanpartyclub/class/get/child?id=1',
-    dataType: 'JSONP',
-    jsonp: "callback",
-    success: function (data) {
-      var classTitle = data.data.class;
-      $.each(classTitle, function (i, cur) {
-        var thisClassIdNum = cur.id;
-        $('#placeList').append('<section class="typeList clearfix" id="itemStyle-' + thisClassIdNum + '"><div class="typeList-title flyLeftAnimate"><h2>' + cur.name + '</h2><span><i></i><i></i><i></i></span></div><div class="colList clearfix flyRightAnimate"></div></section>')
-        itemLists(thisClassIdNum);
-      });
-    }
-  });
+  if (document.getElementById('placeList')) {
+    $.ajax({
+      type: 'GET',
+      url: 'http://www.lanpartyclub.com/lanpartyclub/class/get/child?id=1',
+      dataType: 'JSONP',
+      jsonp: "callback",
+      success: function (data) {
+        var classTitle = data.data.class;
+        $.each(classTitle, function (i, cur) {
+          var thisClassIdNum = cur.id;
+          $('#placeList').append('<section class="typeList clearfix" id="itemStyle-' + thisClassIdNum + '"><div class="typeList-title flyLeftAnimate"><h2>' + cur.name + '</h2><span><i></i><i></i><i></i></span></div><div class="colList clearfix flyRightAnimate"></div></section>')
+          itemLists(thisClassIdNum);
+        });
+      }
+    });
+  }
 
   // 餐饮风格列表
-  $.ajax({
-    type: 'GET',
-    url: 'http://www.lanpartyclub.com/lanpartyclub/class/get/child?id=2',
-    dataType: 'JSONP',
-    jsonp: 'callback',
-    success: function (data) {
-      var classTitle = data.data.class;
-      $.each(classTitle, function (i, cur) {
-        var thisClassIdNum = cur.id;
-        $('#foodList').append('<section class="typeList clearfix" id="itemStyle-' + thisClassIdNum + '"><div class="typeList-title flyLeftAnimate"><h2>' + cur.name + '</h2><span><i></i><i></i><i></i></span></div><div class="colList clearfix flyRightAnimate"></div></section>')
-        itemLists(thisClassIdNum);
-      });
-    }
-  });
+  if (document.getElementById('foodList')) {
+    $.ajax({
+      type: 'GET',
+      url: 'http://www.lanpartyclub.com/lanpartyclub/class/get/child?id=2',
+      dataType: 'JSONP',
+      jsonp: 'callback',
+      success: function (data) {
+        var classTitle = data.data.class;
+        $.each(classTitle, function (i, cur) {
+          var thisClassIdNum = cur.id;
+          $('#foodList').append('<section class="typeList clearfix" id="itemStyle-' + thisClassIdNum + '"><div class="typeList-title flyLeftAnimate"><h2>' + cur.name + '</h2><span><i></i><i></i><i></i></span></div><div class="colList clearfix flyRightAnimate"></div></section>')
+          itemLists(thisClassIdNum);
+        });
+      }
+    });
+  }
+
 })
 
 
@@ -375,8 +381,27 @@ function itemDetails(itemId) {
           $('.picSlideBig').append('<li><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="详情照片"></li>')
         });
         $.each(detail, function (j, ocur) {
-          $('.detailInfoText').append('<li class="clearfix"><span>' + ocur.name + '</span><i>' + ocur.content + '</i></li>')
+          $('.detailInfoText').append('<li class="clearfix"><span>' + ocur.title + '</span><i>' + ocur.content + '</i></li>')
         });
+
+
+        $('.picSlideSmall li').eq(0).addClass('active').siblings().removeClass('active');
+        dtImgSize = $('.picSlideBig li').size();
+        if (dtImgSize == 1) {
+          $('.picSlideBtn').hide();
+          $('.totalNum').text('1');
+        } else {
+          var dtClone = $('.picSlideBig li').first().clone();
+          $('.picSlideBig').append(dtClone);
+          dtImgSize = $('.picSlideBig li').size();
+          $('.totalNum').text(dtImgSize - 1);
+        }
+        $('.curNum').text('1');
+
+        widthaaa = $('.picSlideBox').outerWidth();
+        $('.picSlideBig li').css('width', widthaaa + 'px');
+        console.log(widthaaa)
+
       } else {
         alert('暂无详情！');
       }
@@ -388,6 +413,7 @@ function itemDetails(itemId) {
 function ShowDiv() {
   $("#loading").show();
 }
+
 //隐藏加载数据
 function HiddenDiv() {
   $("#loading").hide();
