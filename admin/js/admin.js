@@ -323,6 +323,7 @@ $(function () {
           var id = response.data.id;
           fbpxDetails(id, 'post', 'fbpx-info-list');
           fbpxPhotos(id, 'item', 'post');
+          alert('品项发布成功！');
           window.location.reload();
         } else {
           alert('品项名重复，请修改品项名！');
@@ -344,6 +345,7 @@ $(function () {
     fbpxDetails(id, 'put', 'xgpx-info-list');
     fbpxDetails(id, 'post', 'xgpx-info-list1');
     fbpxPhotos(id, 'item', 'post');
+    alert('品项修改成功！');
     window.location.reload();
     // $.ajax({
     //   type: 'POST',
@@ -386,6 +388,7 @@ $(function () {
         if (response.status == 200) {
           var id = response.data.id;
           fbpxPhotos(id, 'album', 'post');
+          alert('相册发布成功！');
           window.location.reload();
         } else {
           alert('相册重名，请修改相册名！');
@@ -405,6 +408,8 @@ $(function () {
     var id = thisAlbumId;
     updateSome(id, 'album', albumInfo);
     fbpxPhotos(id, 'album', 'post');
+    alert('相册修改成功！');
+    window.location.reload();
   })
 
 
@@ -537,7 +542,7 @@ function updateSome(id, url, odata) {
     dataType: 'JSONP',
     jsonp: 'callback',
     success: function (response) {
-      if (response.status == 200) {
+      if (response.status == 200 || response.status == 204) {
         console.log('修改成功');
       } else {
         alert('标题名重复，请修改！')
@@ -559,6 +564,12 @@ function getAlbumLists() {
     success: function (data) {
       var album = data.data.album;
       var q = 0;
+      // var pageSize = 20;
+      // var pageTotal = Math.ceil(album.length / pageSize);
+      // console.log(pageTotal);
+      // for (i = 1; i <= pageTotal; i++) {
+      //   $('#paginationAlbum .oPrev').after('<li><a href="#">' + i + '</a></li>')
+      // }
       $.each(album, function (i, cur) {
         q++;
         $('#zpqLists tbody').append('<tr>' +

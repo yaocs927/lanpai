@@ -86,15 +86,6 @@
               <tbody></tbody>
             </table>
           </div>
-          <ul class="pagination pull-right">
-            <li><a href="#">&laquo;</a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li class="disabled"><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
-          </ul>
         </div>
         <!--发布品项-->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade" id="fbpx">
@@ -293,6 +284,7 @@
             </div>
           </form>
           <button type="button" class="btn btn-block btn-lg btn-success xgpx-confirm" data-toggle="modal" data-target="#fbpx-success" id="xgpxBtn"><span class="glyphicon glyphicon-ok"></span> 确认修改品项</button>
+          <p class="tips text-danger">TIPS: 1.只进行删除照片操作，无需点击确认提交按钮</p>
         </div>
         <!--管理照片墙-->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade" id="zpq">
@@ -316,15 +308,15 @@
               <tbody></tbody>
             </table>
           </div>
-          <ul class="pagination pull-right">
-            <li><a href="#">&laquo;</a></li>
+          <!--<ul class="pagination pull-right" id="paginationAlbum">
+            <li class="oPrev"><a href="#">&laquo;</a></li>
             <li class="active"><a href="#">1</a></li>
             <li><a href="#">2</a></li>
             <li><a href="#">3</a></li>
             <li><a href="#">4</a></li>
             <li class="disabled"><a href="#">5</a></li>
             <li><a href="#">&raquo;</a></li>
-          </ul>
+          </ul>-->
         </div>
         <!--发布新照片-->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade" id="fbzp">
@@ -375,7 +367,8 @@
               <input id="file-4" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
             </div>
           </form>
-          <button type="button" class="btn btn-block btn-lg btn-success" id="xgzpBtn"><span class="glyphicon glyphicon-ok"></span> 确认提交照片</button>
+          <button type="button" class="btn btn-block btn-lg btn-success" id="xgzpBtn"><span class="glyphicon glyphicon-ok"></span> 确认提交修改</button>
+          <p class="tips text-danger">TIPS: 1.只进行删除照片操作，无需点击确认提交按钮</p>
         </div>
       </div>
     </div>
