@@ -305,6 +305,42 @@ $(function () {
 
   // 提交发布品项
   $('#fbpxBtn').on('click', function () {
+    // 判断品项标题
+    if ($('#itemTitle1').val().length <= 0) {
+      alert('品项名不能为空，请修改！')
+      return false;
+    }
+    if ($('#itemTitle1').val().length > 50) {
+      alert('品项名过长，请修改！')
+      return false;
+    }
+    // 判断品项简介
+    if ($('#itemBrief1').val().length <= 0) {
+      alert('品项简介不能为空，请修改！')
+      return false;
+    }
+    if ($('#itemBrief1').val().length > 200) {
+      alert('品项简介过长，请修改！')
+      return false;
+    }
+    // 判断品项详情
+    $('#fbpx-info-list .detailsTitle').each(function () {
+      if ($(this).val().length <= 0) {
+        alert('品项详情名不能为空，请检查！')
+        return false;
+      }
+      if ($(this).val().length >= 10) {
+        alert('品项详情名过长，请检查！')
+        return false;
+      }
+    })
+    $('#fbpx-info-list .detailsInfo').each(function () {
+      if ($(this).val().length <= 0) {
+        alert('品项详情名不能为空，请检查！')
+        return false;
+      }
+    })
+    // 照片判断
     if (pxPhoto == undefined) {
       alert('请上传照片！');
       return false;
@@ -339,6 +375,57 @@ $(function () {
 
   // 提交修改品项
   $('#xgpxBtn').on('click', function () {
+    // 判断品项标题
+    if ($('#itemTitle').val().length <= 0) {
+      alert('品项名不能为空，请修改！')
+      return false;
+    }
+    if ($('#itemTitle').val().length > 50) {
+      alert('品项名过长，请修改！')
+      return false;
+    }
+    // 判断品项简介
+    if ($('#itemBrief').val().length <= 0) {
+      alert('品项简介不能为空，请修改！')
+      return false;
+    }
+    if ($('#itemBrief').val().length > 200) {
+      alert('品项简介过长，请修改！')
+      return false;
+    }
+    // 判断品项详情
+    $('#xgpx-info-list .detailsTitle').each(function () {
+      if ($(this).val().length <= 0) {
+        alert('品项详情名不能为空，请检查！')
+        return false;
+      }
+      if ($(this).val().length >= 10) {
+        alert('品项详情名过长，请检查！')
+        return false;
+      }
+    })
+    $('#xgpx-info-list .detailsInfo').each(function () {
+      if ($(this).val().length <= 0) {
+        alert('品项详情名不能为空，请检查！')
+        return false;
+      }
+    })
+    $('#xgpx-info-list1 .detailsTitle').each(function () {
+      if ($(this).val().length <= 0) {
+        alert('品项详情名不能为空，请检查！')
+        return false;
+      }
+      if ($(this).val().length >= 10) {
+        alert('品项详情名过长，请检查！')
+        return false;
+      }
+    })
+    $('#xgpx-info-list1 .detailsInfo').each(function () {
+      if ($(this).val().length <= 0) {
+        alert('品项详情名不能为空，请检查！')
+        return false;
+      }
+    })
     var itemInfo = $('#xgpx-title').serialize();
     var id = thisItemId;
     updateSome(id, 'item', itemInfo);
@@ -347,18 +434,6 @@ $(function () {
     fbpxPhotos(id, 'item', 'post');
     alert('品项修改成功！');
     window.location.reload();
-    // $.ajax({
-    //   type: 'POST',
-    //   url: 'http://www.lanpartyclub.com/lanpartyclub/item/put?id=' + id + '&' + itemInfo,
-    //   dataType: 'JSONP',
-    //   jsonp: 'callback',
-    //   success: function (response) {
-
-    //   },
-    //   error: function (response) {
-    //     alert('页面出错了，请尝试刷新！')
-    //   }
-    // })
 
   })
 
@@ -370,6 +445,15 @@ $(function () {
 
   // 提交新相册
   $('#fbzpBtn').on('click', function () {
+    // 判断品项标题
+    if ($('#albumTitle1').val().length <= 0) {
+      alert('品项名不能为空，请修改！')
+      return false;
+    }
+    if ($('#albumTitle1').val().length > 50) {
+      alert('品项名过长，请修改！')
+      return false;
+    }
     if (pxPhoto == undefined) {
       alert('请上传照片！');
       return false;
@@ -404,6 +488,15 @@ $(function () {
 
   // 提交修改相册
   $('#xgzpBtn').on('click', function () {
+    // 判断品项标题
+    if ($('#albumTitle').val().length <= 0) {
+      alert('品项名不能为空，请修改！')
+      return false;
+    }
+    if ($('#albumTitle').val().length > 50) {
+      alert('品项名过长，请修改！')
+      return false;
+    }
     var albumInfo = $('#xgzp-title').serialize();
     var id = thisAlbumId;
     updateSome(id, 'album', albumInfo);

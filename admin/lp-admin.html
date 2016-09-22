@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="renderer" content="webkit">
   <title>【蓝派】--后台管理</title>
-  <script type="text/javascript">
+  <!--<script type="text/javascript">
     var lpcname = GetCookie('account_lpc');
     if (lpcname == undefined || lpcname !== 'lpcadmin') {
       window.location.href = 'admin-login.html';
@@ -33,7 +33,7 @@
         endstr = window.document.cookie.length;
       return unescape(window.document.cookie.substring(offset, endstr));
     }
-  </script>
+  </script>-->
   <link href="../admin/css/bootstrap.min.css" rel="stylesheet">
   <link href="../admin/css/dashboard.css" rel="stylesheet">
   <link href="../admin/css/admin-style.css" rel="stylesheet">
@@ -127,10 +127,10 @@
             <select class="form-control" id="styleLists1" name="class">
             </select>
             <label for="" class="ml20">名称:</label>
-            <input type="text" class="form-control" name="title">
+            <input type="text" class="form-control" name="title" id="itemTitle1">
             <div class="mt20">
               <label for="">简介:</label>
-              <textarea class="form-control" rows="4" cols="82" name="brief"></textarea>
+              <textarea class="form-control" rows="4" cols="82" name="brief" id="itemTitle1"></textarea>
             </div>
           </form>
           <form id="fbpx-details">
@@ -205,7 +205,7 @@
               <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
             </div>
           </form>
-          <button type="button" class="btn btn-block btn-lg btn-success fbpx-confirm" id="fbpxBtn"><span class="glyphicon glyphicon-ok"></span> 确认提交品项<span class="sendLoading"></span></button>
+          <button type="button" class="btn btn-block btn-lg btn-success fbpx-confirm" id="fbpxBtn"><span class="glyphicon glyphicon-ok"></span> 确认提交品项</button>
         </div>
         <!--修改品项-->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade" id="xgpx">
@@ -310,7 +310,7 @@
               <input id="file-2" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
             </div>
           </form>
-          <button type="button" class="btn btn-block btn-lg btn-success xgpx-confirm" data-toggle="modal" data-target="#fbpx-success" id="xgpxBtn"><span class="glyphicon glyphicon-ok"></span> 确认修改品项</button>
+          <button type="button" class="btn btn-block btn-lg btn-success xgpx-confirm" id="xgpxBtn"><span class="glyphicon glyphicon-ok"></span> 确认修改品项</button>
           <p class="tips text-danger">TIPS: 1.只进行删除照片操作，无需点击确认提交按钮</p>
         </div>
         <!--管理照片墙-->
@@ -335,22 +335,13 @@
               <tbody></tbody>
             </table>
           </div>
-          <!--<ul class="pagination pull-right" id="paginationAlbum">
-            <li class="oPrev"><a href="#">&laquo;</a></li>
-            <li class="active"><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li class="disabled"><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
-          </ul>-->
         </div>
         <!--发布新照片-->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade" id="fbzp">
           <h1 class="page-header">发布一组新照片</h1>
           <form class="form-inline glpx-dropselect form-horizontal" id="fbzp-title">
             <label for="">名称:</label>
-            <input type="text" class="form-control" name="title">
+            <input type="text" class="form-control" name="title" id="albumTitle1">
           </form>
           <form enctype="multipart/form-data">
             <legend class="mt20">增加照片</legend>

@@ -28,7 +28,7 @@
             msgFileNotReadable: 'File "{name}" is not readable.',
             msgFilePreviewAborted: 'File preview aborted for "{name}".',
             msgFilePreviewError: 'An error occurred while reading the file "{name}".',
-            msgInvalidFileType: 'Invalid type for file "{name}". Only "{types}" files are supported.',
+            msgInvalidFileType: '上传格式错误. 只支持 "{types}" 类型文件.',
             msgInvalidFileExtension: 'Invalid extension for file "{name}". Only "{extensions}" files are supported.',
             msgValidationError: 'File Upload Error',
             msgLoading: 'Loading file {index} of {files} &hellip;',
