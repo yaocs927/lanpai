@@ -177,7 +177,7 @@ $(document).ready(function () {
   })
 
   // 设置图片宽度
-  
+
 
   // 关闭按钮
   $('.detailCover').on('click', '#closeBtn', function () {
@@ -260,13 +260,15 @@ $(document).ready(function () {
       success: function (data) {
         var dailyitem = data.data.item;
         var dailyPhoto = data.data.photo;
-        $.each(dailyPhoto, function (i, cur) {
-          $('#placeDaily').find('#dailySlidePic').append('<li><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="图片"></li>');
-        })
+        if (dailyPhoto.length == 0) {
+          $('#placeDaily').find('#dailySlidePic').append('<li><img src="img/default_img.jpg" alt="默认图片"></li>');
+        } else {
+          $.each(dailyPhoto, function (i, cur) {
+            $('#placeDaily').find('#dailySlidePic').append('<li><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="图片"></li>');
+          })
+        }
         $('#placeDaily').find('.dailySlidePic-info').attr('id', 'dailyItem-' + dailyitem.id + '').text(dailyitem.title);
         $('#placeDaily').find('.daily-right').append('<h1>' + dailyitem.title + '<br>别墅轰趴馆</h1><div class="dailyStrip"></div><p class="dailyContent introduce">别墅介绍：' + dailyitem.brief + '</p><div class="detailBtn dailyDetailBtn" id="dailyItem-' + dailyitem.id + '">VIEW</div>')
-
-
         // 每日推荐轮播
         var clone = $('#dailySlidePic li').first().clone();
         $('#dailySlidePic').append(clone);
@@ -288,11 +290,20 @@ $(document).ready(function () {
       success: function (data) {
         var dailyitem = data.data.item;
         var dailyPhoto = data.data.photo;
-        $.each(dailyPhoto, function (i, cur) {
-          $('#foodDaily').find('#dailySlidePic').append('<li><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="图片"></li>');
-        })
+        if (dailyPhoto.length == 0) {
+          $('#foodDaily').find('#dailySlidePic').append('<li><img src="img/default_img.jpg" alt="默认图片"></li>');
+        } else {
+          $.each(dailyPhoto, function (i, cur) {
+            $('#foodDaily').find('#dailySlidePic').append('<li><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="图片"></li>');
+          })
+        }
         $('#foodDaily').find('.dailySlidePic-info').attr('id', 'dailyItem-' + dailyitem.id + '').text(dailyitem.title);
         $('#foodDaily').find('.daily-right').append('<h1>' + dailyitem.title + '<br>别墅轰趴馆</h1><div class="dailyStrip"></div><p class="dailyContent introduce">别墅介绍：' + dailyitem.brief + '</p><div class="detailBtn dailyDetailBtn" id="dailyItem-' + dailyitem.id + '">VIEW</div>')
+        // 每日推荐轮播
+        var clone = $('#dailySlidePic li').first().clone();
+        $('#dailySlidePic').append(clone);
+        dailySize = $('#dailySlidePic li').size();
+        dailyPicWidth = $('.dailyPic li').outerWidth();
       }
     })
   }
@@ -353,7 +364,13 @@ function itemLists(classId) {
       if (data.status == 200) {
         var items = data.data.item;
         $.each(items, function (i, cur) {
-          $('#itemStyle-' + classId).find('.typeList-title').siblings('.colList').append('<div class="product left" id="item-' + cur.id + '"><div class="productPic"><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.cover + '" alt="图片"></div><div class="productPic-info detailBtnTouch" id="sitem-' + cur.id + '">' + cur.title + '</div><div class="product-content-bg"><div class="product-content"><h3>' + cur.title + '</h3><p class="introduce">' + cur.brief + '</p><span class="productStrip"></span></div></div><div class="detailBtn productBtn">VIEW</div></div>')
+          var curUrl;
+          if (cur.cover == "") {
+            curUrl = 'img/default_img.jpg';
+          } else {
+            curUrl = 'http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.cover + '';
+          }
+          $('#itemStyle-' + classId).find('.typeList-title').siblings('.colList').append('<div class="product left" id="item-' + cur.id + '"><div class="productPic"><img src="' + curUrl + '" alt="图片"></div><div class="productPic-info detailBtnTouch" id="sitem-' + cur.id + '">' + cur.title + '</div><div class="product-content-bg"><div class="product-content"><h3>' + cur.title + '</h3><p class="introduce">' + cur.brief + '</p><span class="productStrip"></span></div></div><div class="detailBtn productBtn">VIEW</div></div>')
           // 设置分类标题高度
           $('.typeList-title').height($('.colList .product').height());
         })
@@ -377,9 +394,13 @@ function itemDetails(itemId) {
         var photo = data.data.photo;
         var detail = data.data.detail;
         $('#itemDetail').append('<h2 id="detailTitle-' + itemId + '">' + item.title + '<span class="closeBtn closeBtnAnimate" id="closeBtn"><i></i><i></i></span></h2><div class="detailPic picSlideBox clearfix"><ul class="picSlideBig"></ul><div class="picSlideSmallBox"><span class="curNum"></span>/<span class="totalNum"></span></div><span class="picSlideBtn prev" id="picSlideBtnPrev"></span><span class="picSlideBtn next" id="picSlideBtnNext"></span></div><div class="detailInfo"><h3>详细信息</h3><ul class="detailInfoText"></ul></div>');
-        $.each(photo, function (i, cur) {
-          $('.picSlideBig').append('<li><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="详情照片"></li>')
-        });
+        if (photo.length == 0) {
+          $('.picSlideBig').append('<li><img src="img/default_img.jpg" alt="详情照片"></li>')
+        } else {
+          $.each(photo, function (i, cur) {
+            $('.picSlideBig').append('<li><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="详情照片"></li>')
+          });
+        }
         $.each(detail, function (j, ocur) {
           $('.detailInfoText').append('<li class="clearfix"><span>' + ocur.title + '</span><i>' + ocur.content + '</i></li>')
         });

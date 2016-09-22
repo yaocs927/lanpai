@@ -323,23 +323,6 @@ $(function () {
       alert('品项简介过长，请修改！')
       return false;
     }
-    // 判断品项详情
-    $('#fbpx-info-list .detailsTitle').each(function () {
-      if ($(this).val().length <= 0) {
-        alert('品项详情名不能为空，请检查！')
-        return false;
-      }
-      if ($(this).val().length >= 10) {
-        alert('品项详情名过长，请检查！')
-        return false;
-      }
-    })
-    $('#fbpx-info-list .detailsInfo').each(function () {
-      if ($(this).val().length <= 0) {
-        alert('品项详情名不能为空，请检查！')
-        return false;
-      }
-    })
     // 照片判断
     if (pxPhoto == undefined) {
       alert('请上传照片！');
@@ -393,39 +376,6 @@ $(function () {
       alert('品项简介过长，请修改！')
       return false;
     }
-    // 判断品项详情
-    $('#xgpx-info-list .detailsTitle').each(function () {
-      if ($(this).val().length <= 0) {
-        alert('品项详情名不能为空，请检查！')
-        return false;
-      }
-      if ($(this).val().length >= 10) {
-        alert('品项详情名过长，请检查！')
-        return false;
-      }
-    })
-    $('#xgpx-info-list .detailsInfo').each(function () {
-      if ($(this).val().length <= 0) {
-        alert('品项详情名不能为空，请检查！')
-        return false;
-      }
-    })
-    $('#xgpx-info-list1 .detailsTitle').each(function () {
-      if ($(this).val().length <= 0) {
-        alert('品项详情名不能为空，请检查！')
-        return false;
-      }
-      if ($(this).val().length >= 10) {
-        alert('品项详情名过长，请检查！')
-        return false;
-      }
-    })
-    $('#xgpx-info-list1 .detailsInfo').each(function () {
-      if ($(this).val().length <= 0) {
-        alert('品项详情名不能为空，请检查！')
-        return false;
-      }
-    })
     var itemInfo = $('#xgpx-title').serialize();
     var id = thisItemId;
     updateSome(id, 'item', itemInfo);
