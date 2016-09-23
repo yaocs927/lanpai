@@ -778,9 +778,9 @@
 }
 
 .daily .daily-left .dailyPic ul li img {
-  width: auto;
-  height: 100%;
-  min-width: 100%;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
 }
 
 .daily .daily-left .daily-slideBtn {
@@ -986,7 +986,7 @@
     height: 21.78rem;
   }
   .daily .daily-left .dailyPic ul li,
-  .daily .daily-left .dailyPic ul li img,
+  /*.daily .daily-left .dailyPic ul li img,*/
   .daily .daily-left .daily-bg {
     width: 31.92rem;
     height: 19.8rem;
@@ -1070,7 +1070,7 @@
     height: 21.78rem;
   }
   .daily .daily-left .dailyPic ul li,
-  .daily .daily-left .dailyPic ul li img,
+  /*.daily .daily-left .dailyPic ul li img,*/
   .daily .daily-left .daily-bg {
     width: 26.6rem;
     height: 19.8rem;
@@ -1101,7 +1101,7 @@
     height: 20.78rem;
   }
   .daily .daily-left .dailyPic ul li,
-  .daily .daily-left .dailyPic ul li img,
+  /*.daily .daily-left .dailyPic ul li img,*/
   .daily .daily-left .daily-bg {
     width: 22rem;
     height: 18.8rem;
