@@ -33,13 +33,11 @@ $(function () {
       dataType: 'JSONP',
       jsonp: 'callback',
       success: function (data) {
-        thisItemPclassId = data.data.pclass.id;
-        thisItemclassId = data.data.class.id;
+        var datas = data.data;
+        thisItemPclassId = datas.pclass.id;
+        thisItemclassId = datas.class.id;
         if (data.status == 200) {
-          var datas = data.data;
           $('#xgpxLevelOneTitle').val('' + datas.pclass.name + '');
-          var para2 = $('#styleLists2');
-          para2.empty();
           $.ajax({
             type: 'GET',
             url: 'http://www.lanpartyclub.com/lanpartyclub/class/get/child?id=' + thisItemPclassId,
@@ -48,7 +46,7 @@ $(function () {
             success: function (data) {
               var iclass = data.data.class;
               $.each(iclass, function (i, cur) {
-                para2.append('<option value="' + cur.id + '">' + cur.name + '</option>');
+                $('#styleLists2').append('<option value="' + cur.id + '">' + cur.name + '</option>');
                 $('#styleLists2 option[value="' + thisItemclassId + '"]').attr('selected', true);
               });
             }
@@ -75,7 +73,7 @@ $(function () {
             })
           }
         } else {
-          $('#xgpx-imgPreview').append('<li class="text-center text-danger">暂无照片！</li>')
+          alert('数据获取失败，请刷新页面');
         }
       }
     });
@@ -395,6 +393,7 @@ $(function () {
 
   // 提交新相册
   $('#fbzpBtn').on('click', function () {
+    $('#fbzpBtn').html('<span class="sendLoading"></span>');
     // 判断品项标题
     if ($('#albumTitle1').val().length <= 0) {
       alert('相册名不能为空，请修改！')
@@ -438,6 +437,7 @@ $(function () {
 
   // 提交修改相册
   $('#xgzpBtn').on('click', function () {
+    $('#xgzpBtn').html('<span class="sendLoading"></span>');
     // 判断品项标题
     if ($('#albumTitle').val().length <= 0) {
       alert('相册名不能为空，请修改！')
@@ -455,6 +455,7 @@ $(function () {
     window.location.reload();
   })
 
+  // 删除cookie
   $('#outPage').on('click', function () {
     DeleteCookie('account_lpc');
     window.location.href = 'admin-login.html';

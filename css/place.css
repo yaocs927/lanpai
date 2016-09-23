@@ -1326,6 +1326,9 @@
   font-size: 20px;
   line-height: 3;
   color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .typeList .colList .product .product-content p {
@@ -1918,25 +1921,25 @@ footer .info .info-nr p {
   position: relative;
   width: 100%;
   max-width: 1100px;
-  height: 470px;
+  height: 600px;
   overflow: hidden;
 }
 
 @media only screen and (max-width: 1200px) {
   .picSlideBox {
-    height: 400px;
+    height: 500px;
   }
 }
 
 @media only screen and (max-width: 770px) {
   .picSlideBox {
-    height: 285px;
+    height: 450px;
   }
 }
 
 @media only screen and (max-width: 480px) {
   .picSlideBox {
-    height: 135px;
+    height: 200px;
   }
 }
 
@@ -1953,13 +1956,14 @@ footer .info .info-nr p {
   float: left;
   max-width: 1100px;
   height: auto;
+  text-align: center;
   overflow: hidden;
 }
 
 .picSlideBox .picSlideBig li img {
-  max-width: 1100px;
+  /*max-width: 1100px;*/
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 .picSlideBox .picSlideSmallBox {
@@ -2042,6 +2046,7 @@ footer .info .info-nr p {
   float: right;
   width: 80%;
   font-style: normal;
+  line-height: 33px;
 }
 
 
@@ -2630,7 +2635,7 @@ footer .info .info-nr p {
   .aboutus-info .aboutus-info-text h3 {
     display: none;
   }
-    .about-container .contactus .contactus-info {
+  .about-container .contactus .contactus-info {
     width: 100%;
   }
   .about-container .contactus img {
@@ -2729,6 +2734,7 @@ footer .info .info-nr p {
 
 
 /*数据拉取等待动画*/
+
 .loading {
   height: 30px;
   width: 50px;
