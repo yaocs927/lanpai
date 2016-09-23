@@ -22,6 +22,7 @@ $(function () {
   var thisItemTitle;
   var thisItemPclassId;
   var thisItemclassId;
+  var thisDetailId;
   $('#pxgl-lists').on('click', '.PXchangeInfo', function () {
     $('#styleLists2').empty();
     $('#xgpx-info-list tbody').empty();
@@ -57,9 +58,10 @@ $(function () {
             $('#xgpx-info-list tbody').append('<tr><td colspan="4" class="text-center text-danger">暂无数据!</td></tr>')
           } else {
             $.each(datas.detail, function (i, cur) {
+              thisDetailId = cur.id;
               $('#xgpx-info-list tbody').append('<tr>' +
                 '<td><input type="checkbox" class="checkboxStyle" name="xgpx-info-list"></td>' +
-                '<td data-cid="' + cur.id + '" class="thisDetailTitle"><input type="text" class="form-control detailsTitle" value="' + cur.title + '"></td>' +
+                '<td data-cid="' + thisDetailId + '" class="thisDetailTitle"><input type="text" class="form-control detailsTitle" value="' + cur.title + '"></td>' +
                 '<td><input type="text" class="form-control detailsInfo" value="' + cur.content + '"></td>' +
                 '<td><button type="button" class="btn btn-warning xgpx-info-delete1">删除</button></td>' +
                 '</tr>')
@@ -348,7 +350,7 @@ $(function () {
         }
       },
       error: function () {
-        alert('网络错误，请检查网络！');
+        alert('页面出错了，请尝试刷新！');
         $('#fbpxBtn').html('<span class="glyphicon glyphicon-ok"></span> 确认提交品项 ');
       }
     })
@@ -377,7 +379,7 @@ $(function () {
     var itemInfo = $('#xgpx-title').serialize();
     var id = thisItemId;
     updateSome(id, 'item', itemInfo);
-    fbpxDetails(id, 'put', 'xgpx-info-list');
+    fbpxDetails(thisDetailId, 'put', 'xgpx-info-list');
     fbpxDetails(id, 'post', 'xgpx-info-list1');
     fbpxPhotos(id, 'item', 'post');
     alert('品项修改成功！');
@@ -393,7 +395,6 @@ $(function () {
 
   // 提交新相册
   $('#fbzpBtn').on('click', function () {
-    $('#fbzpBtn').html('<span class="sendLoading"></span>');
     // 判断品项标题
     if ($('#albumTitle1').val().length <= 0) {
       alert('相册名不能为空，请修改！')
@@ -429,7 +430,7 @@ $(function () {
         }
       },
       error: function () {
-        alert('网络错误，请检查网络！');
+        alert('页面出错了，请尝试刷新！');
         $('#fbzpBtn').html('<span class="glyphicon glyphicon-ok"></span> 确认提交照片 ');
       }
     })
@@ -437,7 +438,6 @@ $(function () {
 
   // 提交修改相册
   $('#xgzpBtn').on('click', function () {
-    $('#xgzpBtn').html('<span class="sendLoading"></span>');
     // 判断品项标题
     if ($('#albumTitle').val().length <= 0) {
       alert('相册名不能为空，请修改！')
@@ -534,7 +534,6 @@ function fbpxDetails(id, url, p) {
   // 详情标题
   $('#' + p + ' .detailsTitle').each(function () {
     detailsTitle.push($(this).val());
-    console.log($(this).val())
   })
   // 详情内容
   $('#' + p + ' .detailsInfo').each(function () {
@@ -548,7 +547,7 @@ function fbpxDetails(id, url, p) {
       dataType: 'JSONP',
       jsonp: 'callback',
       success: function (response) {
-        console.log(response);
+        console.log('成功');
       },
       error: function (response) {
         console.log(response);
@@ -568,16 +567,17 @@ function fbpxPhotos(id, urlA, urlB) {
     $.ajax({
       type: 'POST',
       url: '/lanpartyclub/' + urlA + '/photo/' + urlB + '',
-      dataType: 'JSON',
+      // dataType: 'JSON',
       data: iformData,
       processData: false,
       contentType: false,
       async: false,
       success: function (response) {
-        console.log(response);
+        console.log('成功');
       },
       error: function (response) {
         console.log(response);
+        alert('页面出错了，请尝试刷新！');
       }
     })
   })
@@ -592,7 +592,7 @@ function updateSome(id, url, odata) {
     jsonp: 'callback',
     success: function (response) {
       if (response.status == 200 || response.status == 204) {
-        console.log('修改成功');
+        console.log('成功');
       } else {
         alert('标题名重复，请修改！')
       }
