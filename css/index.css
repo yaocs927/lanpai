@@ -272,10 +272,9 @@
 }
 
 .fullpage-ad .photoList>ul>li img {
-  /*max-width: 200px;*/
-  height: 300px;
+  height: 100%;
   width: auto;
-  /*height: auto;*/
+  min-width: 200px;
 }
 
 .fullpage-ad .photoList>ul>li span {

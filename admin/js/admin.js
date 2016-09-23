@@ -397,11 +397,11 @@ $(function () {
   $('#fbzpBtn').on('click', function () {
     // 判断品项标题
     if ($('#albumTitle1').val().length <= 0) {
-      alert('品项名不能为空，请修改！')
+      alert('相册名不能为空，请修改！')
       return false;
     }
-    if ($('#albumTitle1').val().length > 50) {
-      alert('品项名过长，请修改！')
+    if ($('#albumTitle1').val().length > 15) {
+      alert('相册名过长，请修改！')
       return false;
     }
     if (pxPhoto == undefined) {
@@ -440,11 +440,11 @@ $(function () {
   $('#xgzpBtn').on('click', function () {
     // 判断品项标题
     if ($('#albumTitle').val().length <= 0) {
-      alert('品项名不能为空，请修改！')
+      alert('相册名不能为空，请修改！')
       return false;
     }
-    if ($('#albumTitle').val().length > 50) {
-      alert('品项名过长，请修改！')
+    if ($('#albumTitle').val().length > 15) {
+      alert('相册名过长，请修改！')
       return false;
     }
     var albumInfo = $('#xgzp-title').serialize();
@@ -612,18 +612,18 @@ function getAlbumLists() {
     success: function (data) {
       var album = data.data.album;
       var q = 0;
-      // var pageSize = 20;
-      // var pageTotal = Math.ceil(album.length / pageSize);
-      // console.log(pageTotal);
-      // for (i = 1; i <= pageTotal; i++) {
-      //   $('#paginationAlbum .oPrev').after('<li><a href="#">' + i + '</a></li>')
-      // }
       $.each(album, function (i, cur) {
+        var thistitle;
+        if (cur.cover == "") {
+          thistitle = cur.title + ' <span class="text-danger"> ( 该相册无照片请检查！ ) </span>';
+        } else {
+          thistitle = cur.title;
+        }
         q++;
         $('#zpqLists tbody').append('<tr>' +
           '<td>' + q + '</td>' +
           '<td class="thisAlbumId">' + cur.id + '</td>' +
-          '<td class="thisAlbumTitle">' + cur.title + '</td>' +
+          '<td class="thisAlbumTitle">' + thistitle + '</td>' +
           '<td>' +
           '<button type="button" class="btn btn-sm btn-warning deletealbum" data-toggle="modal" data-target="#deleteConfirm">删除</button><button type="button" class="btn btn-sm btn-primary myTab ml10 changealbum" href="#xgzp">修改</button>' +
           '</td></tr>')

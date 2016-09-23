@@ -407,8 +407,7 @@ function itemDetails(itemId) {
 
 
         $('.picSlideSmall li').eq(0).addClass('active').siblings().removeClass('active');
-        dtImgSize = $('.picSlideBig li').size();
-        if (dtImgSize == 1) {
+        if ($('.picSlideBig li').size() == 1) {
           $('.picSlideBtn').hide();
           $('.totalNum').text('1');
         } else {
@@ -421,7 +420,6 @@ function itemDetails(itemId) {
 
         widthaaa = $('.picSlideBox').outerWidth();
         $('.picSlideBig li').css('width', widthaaa + 'px');
-        console.log(widthaaa)
 
       } else {
         alert('暂无详情！');

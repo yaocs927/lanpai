@@ -114,9 +114,15 @@ $(document).ready(function () {
         var photos = data.data.album;
         var numZ = 0;
         $.each(photos, function (i, cur) {
+          var thisCover;
           albumId = cur.id;
           numZ++;
-          $('.photoList ul').append('<li class="viewPhotos ani-' + numZ + '"  name="' + albumId + '"><i class="photostyle"><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.cover + '" alt="' + cur.id + '"></i><i class="line topLine"></i><i class="line rightLine"></i><i class="line bottomLine"></i><i class="line leftLine"></i><span class="teamName">' + cur.title + '活动<em>观看相册</em></span></li>')
+          if (cur.cover == "") {
+            thisCover = 'img/default_img1.jpg';
+          } else {
+            thisCover = 'http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.cover;
+          }
+          $('.photoList ul').append('<li class="viewPhotos ani-' + numZ + '"  name="' + albumId + '"><i class="photostyle"><img src="' + thisCover + '" alt="' + cur.id + '"></i><i class="line topLine"></i><i class="line rightLine"></i><i class="line bottomLine"></i><i class="line leftLine"></i><span class="teamName">' + cur.title + '活动<em>观看相册</em></span></li>')
         });
         // 相册页面样式
         $('.photoList li').hover(function () {
@@ -140,7 +146,7 @@ $(document).ready(function () {
 
   // 弹出相册
   $('.photoList ul').on('click', '.viewPhotos', function () {
-  // $('.viewPhotos').on('click', function () {
+    // $('.viewPhotos').on('click', function () {
     var thisAlbumId = $(this).attr('name')
     $('.detailCover').animate({
       left: 0
@@ -156,37 +162,46 @@ $(document).ready(function () {
         var albumT = data.data.album;
         var photos = data.data.photo;
         $('.detailCover').append('<h2>' + albumT.title + '活动纪念照片<span class="closeBtn closeBtnAnimate" id="closeBtn"><i></i><i></i></span></h2><div class="detailPic picSlideBox clearfix"><ul class="picSlideBig"></ul><div class="picSlideSmallBox"><span class="curNum"></span>/<span class="totalNum"></span></div><span class="picSlideBtn prev" id="picSlideBtnPrev"></span><span class="picSlideBtn next" id="picSlideBtnNext"></span></div>');
-        $.each(photos, function (i, cur) {
-          $('.picSlideBig').append('<li><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="活动照片"></li>')
-        })
+        if (photos.length == 0) {
+          $('.picSlideBig').append('<li><img src="img/default_img.jpg" alt="活动照片"></li>')
+        } else {
+          $.each(photos, function (i, cur) {
+            $('.picSlideBig').append('<li><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="活动照片"></li>')
+          })
+        }
 
         // 设置宽度弹出层照片宽度
         $('.picSlideBox .picSlideBig li').css('width', .9 * windowWidth + 'px');
         // 轮播
-        var dtIndex = 0;
+        var dtIndex = 1;
         var dtImgSize = $('.picSlideBig li').size();
         $('.picSlideBig li').eq(0).show();
         $('.totalNum').text(dtImgSize);
         $('.curNum').text('1');
+        if (dtImgSize == 1) {
+          $('.picSlideBtn').hide();
+        }
 
         $('#picSlideBtnNext').on('click', function () {
-          dtIndex += 1;
           if (dtIndex == dtImgSize) {
-            dtIndex = 0;
+            dtIndex = 1;
             $('.curNum').text('1');
+          } else {
+            dtIndex++;
           }
-          $('.curNum').text(dtIndex + 1);
-          $('.picSlideBig li').eq(dtIndex).fadeIn().siblings().fadeOut();
+          $('.curNum').text(dtIndex);
+          $('.picSlideBig li').eq(dtIndex - 1).stop().fadeIn().siblings().fadeOut();
         })
 
         $('#picSlideBtnPrev').on('click', function () {
-          dtIndex -= 1;
-          if (dtIndex < 0) {
-            dtIndex = dtImgSize - 1;
-            $('.curNum').text('8');
+          if (dtIndex == 1) {
+            dtIndex = dtImgSize;
+            $('.curNum').text(dtImgSize);
+          } else {
+            dtIndex--;
           }
           $('.curNum').text(dtIndex);
-          $('.picSlideBig li').eq(dtIndex).fadeIn().siblings().fadeOut();
+          $('.picSlideBig li').eq(dtIndex - 1).fadeIn().siblings().fadeOut();
         })
       }
     })
