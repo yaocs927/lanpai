@@ -366,7 +366,7 @@ function itemLists(classId) {
         $.each(items, function (i, cur) {
           var curUrl;
           if (cur.cover == "") {
-            curUrl = 'img/default_img.jpg';
+            curUrl = 'img/default_img2.jpg';
           } else {
             curUrl = 'http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.cover + '';
           }
