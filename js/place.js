@@ -17,6 +17,7 @@ $(document).ready(function () {
   $('.daily-slideBtn .prev').on('click', function () {
     dailyPrev();
   })
+
   function dailyNext() {
     dailyIndex += 1;
     if (dailyIndex == dailySize) {
@@ -29,6 +30,7 @@ $(document).ready(function () {
       'left': -dailyIndex * dailyPicWidth + 'px'
     }, 300)
   }
+
   function dailyPrev() {
     dailyIndex -= 1;
     if (dailyIndex == -1) {
@@ -48,17 +50,6 @@ $(document).ready(function () {
       $(this).removeClass('active')
     })
   })
-
-  // 设置介绍字段长度 
-  var maxTextWidth = 100;
-  $('.introduce').each(function () {
-    var curTextWidth = $(this).text().length;
-    if (curTextWidth > maxTextWidth) {
-      $(this).text($(this).text().substring(0, maxTextWidth));
-      $(this).html($(this).text() + '...');
-    }
-  })
-
 
   // 滚动事件
   $(window).scroll(function () {
@@ -269,11 +260,21 @@ $(document).ready(function () {
         }
         $('#placeDaily').find('.dailySlidePic-info').attr('id', 'dailyItem-' + dailyitem.id + '').text(dailyitem.title);
         $('#placeDaily').find('.daily-right').append('<h1>' + dailyitem.title + '<br>别墅轰趴馆</h1><div class="dailyStrip"></div><p class="dailyContent introduce">别墅介绍：' + dailyitem.brief + '</p><div class="detailBtn dailyDetailBtn" id="dailyItem-' + dailyitem.id + '">VIEW</div>')
-        // 每日推荐轮播
+          // 每日推荐轮播
         var clone = $('#dailySlidePic li').first().clone();
         $('#dailySlidePic').append(clone);
         dailySize = $('#dailySlidePic li').size();
         dailyPicWidth = $('.dailyPic li').outerWidth();
+
+        // 设置介绍字段长度 
+        var maxTextWidth = 100;
+        $('.introduce').each(function () {
+          var curTextWidth = $(this).text().length;
+          if (curTextWidth > maxTextWidth) {
+            $(this).text($(this).text().substring(0, maxTextWidth));
+            $(this).html($(this).text() + '...');
+          }
+        })
 
 
       }
@@ -299,11 +300,21 @@ $(document).ready(function () {
         }
         $('#foodDaily').find('.dailySlidePic-info').attr('id', 'dailyItem-' + dailyitem.id + '').text(dailyitem.title);
         $('#foodDaily').find('.daily-right').append('<h1>' + dailyitem.title + '<br>别墅轰趴馆</h1><div class="dailyStrip"></div><p class="dailyContent introduce">别墅介绍：' + dailyitem.brief + '</p><div class="detailBtn dailyDetailBtn" id="dailyItem-' + dailyitem.id + '">VIEW</div>')
-        // 每日推荐轮播
+          // 每日推荐轮播
         var clone = $('#dailySlidePic li').first().clone();
         $('#dailySlidePic').append(clone);
         dailySize = $('#dailySlidePic li').size();
         dailyPicWidth = $('.dailyPic li').outerWidth();
+
+        // 设置介绍字段长度 
+        var maxTextWidth = 100;
+        $('.introduce').each(function () {
+          var curTextWidth = $(this).text().length;
+          if (curTextWidth > maxTextWidth) {
+            $(this).text($(this).text().substring(0, maxTextWidth));
+            $(this).html($(this).text() + '...');
+          }
+        })
       }
     })
   }
@@ -371,8 +382,18 @@ function itemLists(classId) {
             curUrl = 'http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.cover + '';
           }
           $('#itemStyle-' + classId).find('.typeList-title').siblings('.colList').append('<div class="product left" id="item-' + cur.id + '"><div class="productPic"><img src="' + curUrl + '" alt="图片"></div><div class="productPic-info detailBtnTouch" id="sitem-' + cur.id + '">' + cur.title + '</div><div class="product-content-bg"><div class="product-content"><h3>' + cur.title + '</h3><p class="introduce">' + cur.brief + '</p><span class="productStrip"></span></div></div><div class="detailBtn productBtn">VIEW</div></div>')
-          // 设置分类标题高度
+            // 设置分类标题高度
           $('.typeList-title').height($('.colList .product').height());
+
+          // 设置介绍字段长度 
+          var maxTextWidth = 100;
+          $('.introduce').each(function () {
+            var curTextWidth = $(this).text().length;
+            if (curTextWidth > maxTextWidth) {
+              $(this).text($(this).text().substring(0, maxTextWidth));
+              $(this).html($(this).text() + '...');
+            }
+          })
         })
       } else {
         $('#itemStyle-' + classId).remove();
