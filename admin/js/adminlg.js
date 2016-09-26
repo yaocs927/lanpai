@@ -3,7 +3,7 @@ window.onload = function () {
   var oUserAccount = document.getElementById('userAccount');
   var oUserPassword = document.getElementById('userPassword');
   oLogin.onclick = function () {
-    if (oUserAccount.value === 'lpcadmin' && oUserPassword.value === 'lpc111111') {
+    if (oUserAccount.value === '15026777791' && oUserPassword.value === '15026777791') {
       setCookie('account_lpc', oUserAccount.value);
       window.location.href = 'lp-admin.html';
     } else {

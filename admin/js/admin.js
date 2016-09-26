@@ -458,7 +458,7 @@ $(function () {
   // 删除cookie
   $('#outPage').on('click', function () {
     DeleteCookie('account_lpc');
-    window.location.href = 'admin-login.html';
+    window.location.href = 'index.html';
   })
 
 
