@@ -122,7 +122,12 @@ $(document).ready(function () {
           } else {
             thisCover = 'http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.cover;
           }
-          $('.photoList ul').append('<li class="viewPhotos ani-' + numZ + '"  name="' + albumId + '"><i class="photostyle"><img src="' + thisCover + '" alt="' + cur.id + '"></i><i class="line topLine"></i><i class="line rightLine"></i><i class="line bottomLine"></i><i class="line leftLine"></i><span class="teamName">' + cur.title + '活动<em>观看相册</em></span></li>')
+          $('.photoList ul').append('<li class="viewPhotos ani-' + numZ + '"  name="' + albumId + '">' +
+            '<i class="photostyle" style="background: url('+ thisCover +') no-repeat center center;" data-aname="' + cur.id + '"></i>' +
+            '<i class="line topLine"></i><i class="line rightLine"></i>' +
+            '<i class="line bottomLine"></i>' +
+            '<i class="line leftLine"></i>' +
+            '<span class="teamName">' + cur.title + '活动<em>观看相册</em></span></li>')
         });
         // 相册页面样式
         $('.photoList li').hover(function () {
