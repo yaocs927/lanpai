@@ -2362,10 +2362,10 @@ footer .info .info-nr p {
     height: 2.5rem;
   }
   .topBox .aboutTop-leftSlogan {
-    width: 8rem;
+    /*width: 8rem;*/
   }
   .topBox .aboutTop-rightSlogan {
-    width: 7rem;
+    /*width: 8rem;*/
   }
   .topBox .aboutTop-strip {
     width: 12.5rem;
@@ -2410,7 +2410,7 @@ footer .info .info-nr p {
 
 .about-container .aboutus img {
   position: absolute;
-  top: .5rem;
+  top: 2.3rem;
   left: 0;
   z-index: 10;
   width: 60rem;
@@ -2437,7 +2437,7 @@ footer .info .info-nr p {
 .aboutus-info .aboutus-info-text {
   position: absolute;
   left: 30%;
-  top: 5%;
+  top: 7%;
   width: 60%;
 }
 
