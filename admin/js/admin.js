@@ -716,7 +716,7 @@ function upLoadImg(d) {
     allowedFileExtensions: ['jpg', 'png', 'gif'],
     overwriteInitial: false,
     maxFileSize: 4500,
-    maxFilesNum: 10,
+    maxFilesNum: 20,
     slugCallback: function (filename) {
       return filename.replace('(', '_').replace(']', '_');
     }
