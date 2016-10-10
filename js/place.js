@@ -18,6 +18,13 @@ $(document).ready(function () {
     dailyPrev();
   })
 
+  var ttimer = setInterval(dailyNext, 2000);
+  $('.daily-slideBtn').hover(function () {
+    clearInterval(ttimer);
+  }, function () {
+    ttimer = setInterval(dailyNext, 2000);
+  })
+
   function dailyNext() {
     dailyIndex += 1;
     if (dailyIndex == dailySize) {
@@ -59,8 +66,10 @@ $(document).ready(function () {
     // 回到顶部按钮出现
     if (scrollHeight >= 200) {
       $('.stick .backtop').slideDown();
+      $('.detailBackTop').fadeIn();
     } else {
       $('.stick .backtop').slideUp();
+      $('.detailBackTop').fadeOut();
     }
 
     // 页面滚动内容飞入
@@ -108,9 +117,28 @@ $(document).ready(function () {
 
   })
 
+  $('.detailCover').scroll(function () {
+    var windowHeight = $(this).height();
+    var scrollHeight = $(this).scrollTop();
+
+    // 回到顶部按钮出现
+    if (scrollHeight >= 200) {
+      $('.detailBackTop').fadeIn();
+    } else {
+      $('.detailBackTop').fadeOut();
+    }
+  })
+
   // 回到顶部
   $('.stick .backtop').on('click', function () {
-    $('body').animate({
+    $('body,html').animate({
+      scrollTop: 0
+    }, 300);
+    return false;
+  })
+
+  $('.detailBackTop').on('click', function () {
+    $('.detailCover').animate({
       scrollTop: 0
     }, 300);
     return false;
@@ -148,6 +176,7 @@ $(document).ready(function () {
   $('.container').on('click', '.detailBtn', function () {
     var itemNum = $(this).parent('.product').attr('id').split('-');
     var itemIdNum = itemNum[1];
+    $('.detailBackTop').hide();
     $('.detailCover').stop().animate({
       left: 0
     }, 400).show();
@@ -178,6 +207,13 @@ $(document).ready(function () {
     $('body').css('overflow-y', 'auto');
   })
 
+  $('.detailCover').on('click', '.backList', function () {
+    $(this).parents('.detailCover').stop().animate({
+      left: '100%'
+    }, 300).hide(300);
+    $('body').css('overflow-y', 'auto');
+  })
+
   // 详情轮播
   var dtIndex = 0;
 
@@ -197,9 +233,7 @@ $(document).ready(function () {
   })
 
   $('#itemDetail').on('click', '#picSlideBtnPrev', function () {
-
     dtIndex -= 1;
-    console.log(dtIndex)
     if (dtIndex == -1) {
       $('.picSlideBig').css('left', -(dtImgSize - 1) * widthaaa);
       dtIndex = dtImgSize - 2;

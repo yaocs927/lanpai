@@ -379,7 +379,7 @@ $(function () {
     var itemInfo = $('#xgpx-title').serialize();
     var id = thisItemId;
     updateSome(id, 'item', itemInfo);
-    fbpxDetails(thisDetailId, 'put', 'xgpx-info-list');
+    xgpxDetails('put', 'xgpx-info-list');
     fbpxDetails(id, 'post', 'xgpx-info-list1');
     fbpxPhotos(id, 'item', 'post');
     alert('品项修改成功！');
@@ -533,8 +533,8 @@ function fbpxDetails(id, url, p) {
   var detailsInfo = [];
   // 详情标题
   $('#' + p + ' .detailsTitle').each(function () {
-    detailsTitle.push($(this).val());
-  })
+      detailsTitle.push($(this).val());
+    })
   // 详情内容
   $('#' + p + ' .detailsInfo').each(function () {
     detailsInfo.push($(this).val());
@@ -542,10 +542,44 @@ function fbpxDetails(id, url, p) {
 
   $.each(detailsTitle, function (i, cur) {
     $.ajax({
-      type: 'POST',
-      url: 'http://www.lanpartyclub.com/lanpartyclub/item/detail/' + url + '?id=' + id + '&title=' + detailsTitle[i] + '&content=' + detailsInfo[i],
-      dataType: 'JSONP',
-      jsonp: 'callback',
+      type: 'GET',
+      url: '/lanpartyclub/item/detail/' + url,
+      data: 'id=' + id + '&title=' + detailsTitle[i] + '&content=' + detailsInfo[i],
+      async: false,
+      success: function (response) {
+        console.log('成功');
+      },
+      error: function (response) {
+        console.log(response);
+      }
+    })
+  })
+}
+
+// 修改品项--详细信息
+function xgpxDetails(url, p) {
+  var detailsTitle = [];
+  var detailsInfo = [];
+  var curDetailId = [];
+  // 详情标题
+  $('#' + p + ' .detailsTitle').each(function () {
+      detailsTitle.push($(this).val());
+    })
+  // 详情内容
+  $('#' + p + ' .detailsInfo').each(function () {
+    detailsInfo.push($(this).val());
+  })
+  // 当前详情ID
+  $('#' + p + ' .thisDetailTitle').each(function () {
+    curDetailId.push($(this).attr('data-cid'));
+  })
+
+  $.each(detailsTitle, function (i, cur) {
+    $.ajax({
+      type: 'GET',
+      url: '/lanpartyclub/item/detail/' + url,
+      data: 'id=' + curDetailId[i] + '&title=' + detailsTitle[i] + '&content=' + detailsInfo[i],
+      async: false,
       success: function (response) {
         console.log('成功');
       },
@@ -586,15 +620,17 @@ function fbpxPhotos(id, urlA, urlB) {
 // 数据修改
 function updateSome(id, url, odata) {
   $.ajax({
-    type: 'POST',
-    url: 'http://www.lanpartyclub.com/lanpartyclub/' + url + '/put?id=' + id + '&' + odata,
-    dataType: 'JSONP',
-    jsonp: 'callback',
+    type: 'GET',
+    url: '/lanpartyclub/' + url + '/put',
+    // dataType: 'JSON',
+    data: 'id=' + id + '&' + odata,
+    async: false,
     success: function (response) {
+      console.log(response.status);
       if (response.status == 200 || response.status == 204) {
         console.log('成功');
       } else {
-        alert('标题名重复，请修改！')
+        alert('品项名与其他品项重复，请修改！')
       }
     },
     error: function (response) {
@@ -679,7 +715,7 @@ function upLoadImg(d) {
     uploadUrl: '#',
     allowedFileExtensions: ['jpg', 'png', 'gif'],
     overwriteInitial: false,
-    maxFileSize: 1000,
+    maxFileSize: 2048,
     maxFilesNum: 10,
     slugCallback: function (filename) {
       return filename.replace('(', '_').replace(']', '_');

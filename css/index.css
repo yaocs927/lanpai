@@ -1437,10 +1437,11 @@ footer p {
 
 .picSlideBox .picSlideBtn {
   position: absolute;
-  bottom: 0;
+  top: 50%;
+  margin-top: -20px;
   display: block;
   width: 50px;
-  height: 26px;
+  height: 80px;
   cursor: pointer;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
@@ -1448,15 +1449,13 @@ footer p {
 }
 
 .picSlideBox .prev {
-  left: 50%;
+  left: 10%;
   background: rgba(55, 91, 127, .7) url(../img/details/prev.png) no-repeat center center;
-  margin-left: -75px;
 }
 
 .picSlideBox .next {
-  left: 50%;
+  right: 10%;
   background: rgba(55, 91, 127, .7) url(../img/details/next.png) no-repeat center center;
-  margin-left: 25px;
 }
 
 .picSlideBox .prev:hover,

@@ -1709,8 +1709,9 @@ footer .info .info-nr p {
 
 @media only screen and (max-width: 480px) {
   .stick,
-  .erweima {
-    display: none;
+  .erweima,
+  .detailBackTop {
+    display: none !important;
   }
 }
 
@@ -1925,6 +1926,10 @@ footer .info .info-nr p {
   overflow: hidden;
 }
 
+.picSlideBox:hover .picSlideBtn {
+  display: block;
+}
+
 @media only screen and (max-width: 1200px) {
   .picSlideBox {
     height: 500px;
@@ -1970,7 +1975,7 @@ footer .info .info-nr p {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 50px;
+  width: 60px;
   height: 26px;
   background-color: rgba(55, 91, 127, .7);
   font-size: 14px;
@@ -1985,16 +1990,17 @@ footer .info .info-nr p {
 
 .picSlideBox .picSlideBtn {
   position: absolute;
-  bottom: 0;
-  display: block;
+  top: 50%;
+  margin-top: -40px;
+  display: none;
   width: 50px;
-  height: 26px;
+  height: 80px;
   cursor: pointer;
   transition: all .2s ease-in-out;
 }
 
 .picSlideBox .prev {
-  right: 50px;
+  left: 0;
   background: rgba(55, 91, 127, .7) url(../img/details/prev.png) no-repeat center center;
 }
 
@@ -2264,6 +2270,36 @@ footer .info .info-nr p {
     -ms-transform: rotate(-45deg);
     transform: rotate(-45deg);
   }
+}
+
+.backList {
+  max-width: 100%;
+  width: 100px;
+  padding: 10px;
+  margin: 0 auto 40px;
+  background-color: #fbd34b;
+  color: #000;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.backList:hover {
+  background-color: #ebc237;
+}
+
+.detailBackTop {
+  display: none;
+  position: fixed;
+  right: 3%;
+  bottom: 50px;
+  width: 50px;
+  height: 50px;
+  background-color: #fbd34b;
+  color: #000;
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
 }
 
 
