@@ -2061,9 +2061,16 @@ footer .info .info-nr p {
 .closeBtn {
   position: relative;
   top: 6px;
-  width: 24px;
+  /*width: 60px;*/
   height: 24px;
   cursor: pointer;
+  font-size: 14px;
+  text-align: right;
+  transition: color .3s;
+}
+
+.closeBtn:hover {
+  color: #fbd34b;
 }
 
 .closeBtn i {
