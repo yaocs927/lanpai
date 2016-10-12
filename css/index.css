@@ -72,7 +72,7 @@
 }
 
 .fullpage-ad .ad-content img.num2 {
-  width: 70%;
+  /*width: 70%;*/
   max-width: 54.5rem;
   margin-top: 5rem;
   -webkit-transition: all .2s ease-in-out;
@@ -1483,9 +1483,15 @@ footer p {
   position: absolute;
   top: 3%;
   right: 2%;
-  width: 40px;
+  /*width: 40px;*/
   height: 40px;
   cursor: pointer;
+  font-size: 16px;
+  transition: all .3s;
+}
+
+.closeBtn:hover {
+  color: #fbd34b;
 }
 
 .closeBtn i {

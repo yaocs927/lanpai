@@ -53,6 +53,7 @@ $(function () {
             }
           })
           $('#itemTitle').val('' + datas.item.title + '');
+          $('#itemTitle').attr('data-thisItemId', thisItemId);
           $('#itemBrief').text(datas.item.brief);
           if (datas.detail == undefined || datas.detail.length == 0) {
             $('#xgpx-info-list tbody').append('<tr><td colspan="4" class="text-center text-danger">暂无数据!</td></tr>')
@@ -202,7 +203,6 @@ $(function () {
   // 删除相册
   $('#zpqLists tbody').on('click', '.deletealbum', function () {
     var that = $(this);
-    console.log(that.parent().siblings('.thisAlbumTitle').text());
     thisAlbumId = that.parent().siblings('.thisAlbumId').text();
     thisAlbumTitle = that.parent().siblings('.thisAlbumTitle').text();
     $('#deleteConfirm .modal-body').html('您确认删除 <span class="text-danger "><b>' + thisAlbumTitle + '</b></span> 吗？');
@@ -240,10 +240,16 @@ $(function () {
   // =================================  
 
   // 上传文件
+  // upLoadImg($("#file-1"), 'item', 'post', fbpxId);
+  // upLoadImg($("#file-2"), 'item', 'post', 10);
+  // upLoadImg($("#file-3"), 'album', 'post', newXCid);
+  // upLoadImg($("#file-4"), 'album', 'post', xgxcId);
+
+  // 上传文件
   upLoadImg($("#file-1"));
   upLoadImg($("#file-2"));
   upLoadImg($("#file-3"));
-  upLoadImg($("#file-4"));
+  upLoadImg($("#file-4"));  
   // 上传文件监听
   fileOnChange($("#file-1"));
   fileOnChange($("#file-2"));
@@ -386,7 +392,7 @@ $(function () {
     window.location.reload();
 
   })
-
+  
   // 照片墙管理--拉取列表
   $('#zpqTab').on('click', function () {
     $('#zpqLists tbody').empty();
@@ -535,7 +541,7 @@ function fbpxDetails(id, url, p) {
   $('#' + p + ' .detailsTitle').each(function () {
       detailsTitle.push($(this).val());
     })
-  // 详情内容
+    // 详情内容
   $('#' + p + ' .detailsInfo').each(function () {
     detailsInfo.push($(this).val());
   })
@@ -565,11 +571,11 @@ function xgpxDetails(url, p) {
   $('#' + p + ' .detailsTitle').each(function () {
       detailsTitle.push($(this).val());
     })
-  // 详情内容
+    // 详情内容
   $('#' + p + ' .detailsInfo').each(function () {
-    detailsInfo.push($(this).val());
-  })
-  // 当前详情ID
+      detailsInfo.push($(this).val());
+    })
+    // 当前详情ID
   $('#' + p + ' .thisDetailTitle').each(function () {
     curDetailId.push($(this).attr('data-cid'));
   })
@@ -716,16 +722,39 @@ function upLoadImg(d) {
     allowedFileExtensions: ['jpg', 'png', 'gif'],
     overwriteInitial: false,
     maxFileSize: 4500,
-    maxFilesNum: 20,
+    maxFilesNum: 15,
+    showUpload: false,
     slugCallback: function (filename) {
       return filename.replace('(', '_').replace(']', '_');
     }
   });
 }
 
+// 上传图片
+// function upLoadImg(d, urlA, urlB) {
+//   var id = $('#itemTitle').attr('data-thisItemId');
+//   d.fileinput({
+//     uploadUrl: '/lanpartyclub/' + urlA + '/photo/' + urlB,
+//     uploadExtraData: {
+//       id: id
+//     },
+//     allowedFileExtensions: ['jpg', 'png', 'gif'],
+//     overwriteInitial: false,
+//     maxFileSize: 4500,
+//     maxFilesNum: 20,
+//     showUpload: false,
+//     slugCallback: function (filename) {
+//       return filename.replace('(', '_').replace(']', '_');
+//     }
+//   })
+// }
+
+
 // 上传文件监听
 function fileOnChange(z) {
   z.on('change', function (e) {
+   // $('.btn-file').html('<i class="glyphicon glyphicon-folder-open"></i> &nbsp;重新选择 … <input id="'+ id +'" type="file" multiple="" class="file">')
+    $('.file-preview-thumbnails').empty();
     pxPhoto = e.currentTarget.files;
   });
 }

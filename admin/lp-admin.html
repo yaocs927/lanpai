@@ -166,14 +166,16 @@
           <form enctype="multipart/form-data">
             <legend class="mt20">品项相关图片</legend>
             <div class="form-group">
-              <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
+              <input id="file-1" type="file" multiple class="file">
             </div>
           </form>
           <button type="button" class="btn btn-block btn-lg btn-success fbpx-confirm" id="fbpxBtn"><span class="glyphicon glyphicon-ok"></span> 确认提交品项</button>
           <p class="tips text-danger">TIPS: <br />1.品项名字数 50 字以内；
             </br />2.品项简介字数 200 字以内；
             </br />3.品项详情标题字数 10 字以内；
-            </br />3.品项详情内容字数 500 字以内。</p>
+            </br />4.品项详情标题不可重复；
+            </br />5.品项详情内容字数 500 字以内；
+            </br />6.照片一次上传最多 15 张，每张大小 4M 以内，每次点击选择文件按钮需重新选择所有图片。</p>
         </div>
         <!--修改品项-->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade" id="xgpx">
@@ -233,18 +235,20 @@
             <legend class="mt20">已有图片预览</legend>
             <ul class="imgPreview clearfix" id="xgpx-imgPreview"></ul>
           </form>
-          <form enctype="multipart/form-data">
+          <form enctype="multipart/form-data" id="xgbxsczp">
             <legend class="mt20">品项相关图片</legend>
             <div class="form-group">
-              <input id="file-2" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
+              <input id="file-2" type="file" multiple class="file">
             </div>
           </form>
           <button type="button" class="btn btn-block btn-lg btn-success xgpx-confirm" id="xgpxBtn"><span class="glyphicon glyphicon-ok"></span> 确认修改品项</button>
           <p class="tips text-danger">TIPS: <br />1.品项名字数 50 字以内；
             </br />2.品项简介字数 200 字以内；
             </br />3.品项详情标题字数 10 字以内；
-            </br />3.品项详情内容字数 500 字以内；
-            </br />4.若只进行删除照片操作，无需点击确认提交按钮。</p>
+            </br />4.品项详情标题不可重复；
+            </br />5.品项详情内容字数 500 字以内；
+            </br />6.若只进行删除照片操作，无需点击确认提交按钮；
+            </br />7.照片一次上传最多 15 张，每张大小 4M 以内，每次点击选择文件按钮需重新选择所有图片。</p>
         </div>
         <!--管理照片墙-->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade" id="zpq">
@@ -279,11 +283,11 @@
           <form enctype="multipart/form-data">
             <legend class="mt20">增加照片</legend>
             <div class="form-group">
-              <input id="file-3" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
+              <input id="file-3" type="file" multiple class="file">
             </div>
           </form>
           <button type="button" class="btn btn-block btn-lg btn-success" id="fbzpBtn"><span class="glyphicon glyphicon-ok"></span> 确认提交照片 </button>
-          <p class="tips text-danger">TIPS: <br />1.相册名字数 15 字以内。</p>
+          <p class="tips text-danger">TIPS: <br />1.相册名字数 15 字以内。</br />2.照片一次上传最多 15 张，每张大小 4M 以内，每次点击选择文件按钮需重新选择所有图片。</p>
         </div>
         <!--修改照片-->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main tab-pane fade" id="xgzp">
@@ -299,12 +303,13 @@
           <form enctype="multipart/form-data">
             <legend class="mt20">修改照片</legend>
             <div class="form-group">
-              <input id="file-4" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
+              <input id="file-4" type="file" multiple class="file">
             </div>
           </form>
           <button type="button" class="btn btn-block btn-lg btn-success" id="xgzpBtn"><span class="glyphicon glyphicon-ok"></span> 确认提交修改</button>
           <p class="tips text-danger">TIPS: <br />1.相册名字数 15 字以内；
-            </br />4.若只进行删除照片操作，无需点击确认提交按钮。</p>
+            </br />2.若只进行删除照片操作，无需点击确认提交按钮；
+            </br />3.照片一次上传最多 15 张，每张大小 4M 以内，每次点击选择文件按钮需重新选择所有图片。</p>
         </div>
       </div>
     </div>

@@ -35,7 +35,7 @@
             msgProgress: 'Loading file {index} of {files} - {name} - {percent}% completed.',
             msgSelected: '选中{n}个文件',
             msgFoldersNotAllowed: 'Drag & drop files only! {n} folder(s) dropped were skipped.',
-            dropZoneTitle: '拖拽文件到此处 &hellip;'
+            dropZoneTitle: '图片预览区 &hellip;'
     };
 
     $.extend($.fn.fileinput.defaults, $.fn.fileinput.locales.es);

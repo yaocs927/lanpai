@@ -166,7 +166,7 @@ $(document).ready(function () {
       success: function (data) {
         var albumT = data.data.album;
         var photos = data.data.photo;
-        $('.detailCover').append('<h2>' + albumT.title + '活动纪念照片<span class="closeBtn closeBtnAnimate" id="closeBtn"><i></i><i></i></span></h2><div class="detailPic picSlideBox clearfix"><ul class="picSlideBig"></ul><div class="picSlideSmallBox"><span class="curNum"></span>/<span class="totalNum"></span></div><span class="picSlideBtn prev" id="picSlideBtnPrev"></span><span class="picSlideBtn next" id="picSlideBtnNext"></span></div>');
+        $('.detailCover').append('<h2>' + albumT.title + '活动纪念照片<span class="closeBtn closeBtnAnimate" id="closeBtn"><<返回</span></h2><div class="detailPic picSlideBox clearfix"><ul class="picSlideBig"></ul><div class="picSlideSmallBox"><span class="curNum"></span>/<span class="totalNum"></span></div><span class="picSlideBtn prev" id="picSlideBtnPrev"></span><span class="picSlideBtn next" id="picSlideBtnNext"></span></div>');
         if (photos.length == 0) {
           $('.picSlideBig').append('<li><img src="img/default_img.jpg" alt="活动照片"></li>')
         } else {
