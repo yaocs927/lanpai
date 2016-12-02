@@ -269,7 +269,10 @@ $(function () {
   getItemLists(1);
 
   // 管理品项--分类1改变时获取分类2
+  var nummm;
   $('#lanClass').on('change', function () {
+    nummm = $('#lanClass option:selected').attr('value')
+    console.log('1:' + nummm)
     var leveloneCurVal = $('#lanClass option:selected').attr('value');
     $('#styleLists option[value="0"]').nextAll().remove();
     $('#pxgl-lists tbody').empty();
@@ -293,12 +296,27 @@ $(function () {
 
   // 发布品项--载入时获取分类
   $('#fbpxTab').on('click', function () {
+    console.log('2:' + nummm)
+    var opts = $('#lanClass1 option');
+    $.each(opts, function (i, cur) {
+      // console.log($(cur).attr('value'))
+      if ($(cur).attr('value') === nummm) {
+        $(cur).attr('selected', 'selected').siblings().removeAttr('selected');
+      }
+    })
     var leveloneCurVal = $('#lanClass1 option:selected').attr('value');
     classifyMenu(leveloneCurVal);
   })
 
   // 发布品项--载入时获取分类
   $('#addNewPX').on('click', function () {
+    console.log('3:' + nummm)
+    var opts = $('#lanClass1 option');
+    $.each(opts, function (i, cur) {
+      if ($(cur).attr('value') === nummm) {
+        $(cur).attr('selected', 'selected').siblings().removeAttr('selected');
+      }
+    })
     var leveloneCurVal = $('#lanClass1 option:selected').attr('value');
     classifyMenu(leveloneCurVal);
   })
