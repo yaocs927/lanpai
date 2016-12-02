@@ -362,14 +362,14 @@ $(document).ready(function () {
         var dailyitem = data.data.item;
         var dailyPhoto = data.data.photo;
         if (dailyPhoto.length == 0) {
-          $('#foodDaily').find('#dailySlidePic').append('<li><img src="img/default_img.jpg" alt="默认图片"></li>');
+          $('#serviceDaily').find('#dailySlidePic').append('<li><img src="img/default_img.jpg" alt="默认图片"></li>');
         } else {
           $.each(dailyPhoto, function (i, cur) {
-            $('#foodDaily').find('#dailySlidePic').append('<li><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="图片"></li>');
+            $('#serviceDaily').find('#dailySlidePic').append('<li><img src="http://www.lanpartyclub.com/upload/lanpartyclub/images/album/' + cur.url + '" alt="图片"></li>');
           })
         }
-        $('#foodDaily').find('.dailySlidePic-info').attr('id', 'dailyItem-' + dailyitem.id + '').text(dailyitem.title);
-        $('#foodDaily').find('.daily-right').append('<h1>' + dailyitem.title + '<br>专业服务</h1><div class="dailyStrip"></div><p class="dailyContent introduce">服务介绍：' + dailyitem.brief + '</p><div class="detailBtn dailyDetailBtn" id="dailyItem-' + dailyitem.id + '">VIEW</div>')
+        $('#serviceDaily').find('.dailySlidePic-info').attr('id', 'dailyItem-' + dailyitem.id + '').text(dailyitem.title);
+        $('#serviceDaily').find('.daily-right').append('<h1>' + dailyitem.title + '<br>专业服务</h1><div class="dailyStrip"></div><p class="dailyContent introduce">服务介绍：' + dailyitem.brief + '</p><div class="detailBtn dailyDetailBtn" id="dailyItem-' + dailyitem.id + '">VIEW</div>')
           // 每日推荐轮播
         var clone = $('#dailySlidePic li').first().clone();
         $('#dailySlidePic').append(clone);
@@ -434,9 +434,10 @@ $(document).ready(function () {
       jsonp: "callback",
       success: function (data) {
         var classTitle = data.data.class;
+        console.log(classTitle)
         $.each(classTitle, function (i, cur) {
           var thisClassIdNum = cur.id;
-          $('#placeList').append('<section class="typeList clearfix" id="itemStyle-' + thisClassIdNum + '"><div class="typeList-title flyLeftAnimate"><h2>' + cur.name + '</h2><span><i></i><i></i><i></i></span></div><div class="colList clearfix flyRightAnimate"></div></section>')
+          $('#serviceList').append('<section class="typeList clearfix" id="itemStyle-' + thisClassIdNum + '"><div class="typeList-title flyLeftAnimate"><h2>' + cur.name + '</h2><span><i></i><i></i><i></i></span></div><div class="colList clearfix flyRightAnimate"></div></section>')
           itemLists(thisClassIdNum);
         });
       }
