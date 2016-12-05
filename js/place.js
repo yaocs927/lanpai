@@ -301,7 +301,7 @@ $(document).ready(function () {
         dailyPicWidth = $('.dailyPic li').outerWidth();
 
         // 设置介绍字段长度 
-        var maxTextWidth = 200;
+        var maxTextWidth = 120;
         $('.introduce').each(function () {
           var curTextWidth = $(this).text().length;
           if (curTextWidth > maxTextWidth) {
@@ -339,7 +339,7 @@ $(document).ready(function () {
         dailyPicWidth = $('.dailyPic li').outerWidth();
 
         // 设置介绍字段长度 
-        var maxTextWidth = 100;
+        var maxTextWidth = 120;
         $('.introduce').each(function () {
           var curTextWidth = $(this).text().length;
           if (curTextWidth > maxTextWidth) {
@@ -377,7 +377,7 @@ $(document).ready(function () {
         dailyPicWidth = $('.dailyPic li').outerWidth();
 
         // 设置介绍字段长度 
-        var maxTextWidth = 100;
+        var maxTextWidth = 120;
         $('.introduce').each(function () {
           var curTextWidth = $(this).text().length;
           if (curTextWidth > maxTextWidth) {

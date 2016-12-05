@@ -458,9 +458,9 @@ header nav.defaultView {
 header nav.defaultView a {
   display: block;
   float: left;
-  margin: 0 .83rem;
+  margin: 0 1rem;
   line-height: 30px;
-  font-size: 1.17rem;
+  font-size: 1.25rem;
   color: #fff;
   text-decoration: none;
   -webkit-transition: all .3s ease-in-out;

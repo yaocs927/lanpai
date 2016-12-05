@@ -64,9 +64,9 @@
 .topBox header .defaultView a {
   display: block;
   float: left;
-  margin: 0 .83rem;
+  margin: 0 1rem;
   line-height: 30px;
-  font-size: 1.17rem;
+  font-size: 1.25rem;
   color: #fff;
   text-decoration: none;
   -webkit-transition: all .3s ease-in-out;
@@ -863,7 +863,7 @@
   left: 0;
   height: 9.2rem;
   font-size: 14px;
-  line-height: 1.4;
+  line-height: 1.6;
   color: #fff;
   /*overflow: hidden;*/
   text-align: justify;
