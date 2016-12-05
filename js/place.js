@@ -293,7 +293,7 @@ $(document).ready(function () {
           })
         }
         $('#placeDaily').find('.dailySlidePic-info').attr('id', 'dailyItem-' + dailyitem.id + '').text(dailyitem.title);
-        $('#placeDaily').find('.daily-right').append('<h1>' + dailyitem.title + '<br>别墅轰趴馆</h1><div class="dailyStrip"></div><p class="dailyContent introduce">别墅介绍：' + dailyitem.brief + '</p><div class="detailBtn dailyDetailBtn" id="dailyItem-' + dailyitem.id + '">VIEW</div>')
+        $('#placeDaily').find('.daily-right').append('<h1>' + dailyitem.title + '<br>顶级别墅</h1><div class="dailyStrip"></div><p class="dailyContent introduce">别墅介绍：' + dailyitem.brief + '</p><div class="detailBtn dailyDetailBtn" id="dailyItem-' + dailyitem.id + '">VIEW</div>')
           // 每日推荐轮播
         var clone = $('#dailySlidePic li').first().clone();
         $('#dailySlidePic').append(clone);
@@ -301,7 +301,7 @@ $(document).ready(function () {
         dailyPicWidth = $('.dailyPic li').outerWidth();
 
         // 设置介绍字段长度 
-        var maxTextWidth = 100;
+        var maxTextWidth = 200;
         $('.introduce').each(function () {
           var curTextWidth = $(this).text().length;
           if (curTextWidth > maxTextWidth) {
@@ -475,7 +475,7 @@ function itemLists(classId) {
           $('.typeList-title').height($('.colList .product').height());
 
           // 设置介绍字段长度 
-          var maxTextWidth = 100;
+          var maxTextWidth = 60;
           $('.introduce').each(function () {
             var curTextWidth = $(this).text().length;
             if (curTextWidth > maxTextWidth) {
